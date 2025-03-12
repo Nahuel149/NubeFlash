@@ -1,0 +1,25 @@
+{
+  "name": "lanube-api-backend",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "bootstrap": "^4.5.2",
+    "moment": "^2.27.0",
+    "chart.js": "^2.9.3",
+    "select2": "^4.0.13",
+    "ckeditor": "^4.14.1",
+    "bootstrap-validator": "^0.11.9",
+    "bootstrap-daterangepicker": "3.0.5",
+    "dropzone": "^5.9.3",
+    "datatables.net": "^1.10.21",
+    "datatables.net-bs": "^2.1.1",
+    "fullcalendar": "^5.3.0",
+    "perfect-scrollbar": "0.6.14",
+    "tether": "^1.4.7",
+    "fancybox": "^3.5.7",
+    "trumbowyg": "^2.21.0",
+    "sweetalert": "^2.1.2",
+    "font-awesome": "^6.7.2",
+    "summernote": "^0.9.1",
+    "editable-table": "*"
+  }
+}

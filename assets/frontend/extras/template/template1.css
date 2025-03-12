@@ -1,0 +1,350 @@
+body {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: visible;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+footer {
+  width: 100%;
+}
+.card-categories {
+  margin-bottom: 20px;
+}
+.icono-w {
+  max-width: 167px;
+}
+.seccion-publi .card-categories > .card-header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-radius: 0px;
+}
+.card-categories .fondo-header h4 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.carousel-thumbs {
+  position: relative;
+}
+.difer-texto {
+  text-align: center;
+  margin: 5px;
+}
+.fondo-header {
+  background-color: #203d80;
+  letter-spacing: 2px;
+}
+.font-46 {
+  font-size: 40px;
+  color: #fff;
+  font-weight: 500;
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  letter-spacing: 3px;
+}
+.img-footer {
+  width: 100%;
+  max-width: 215px;
+}
+
+.section-breadcrumb .row {
+  min-height: 200px;
+}
+.la-empresa .card-body p.card-text {
+  padding: 20px 0;
+}
+.servicio .card-body p.card-text {
+  padding: 20px 0;
+}
+
+.owl-carousel .ficha_carousel_img {
+  margin: 0px !important;
+}
+.box-color {
+  width: 40px;
+  height: 40px;
+  border: 2px solid transparent;
+}
+.ficha_carousel_img {
+  width: 100%;
+  margin: 15px 5px 15px;
+  border: 1px solid #e1e1e1;
+}
+.owl-prev.izquierda_ficha {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 10;
+  background-color: #d6d6d6;
+  color: #fff;
+  width: 20px;
+  height: 25px;
+  padding-left: 3px;
+}
+.owl-prev.izquierda {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 10;
+  background: rgb(64, 64, 64);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+.owl-next.derecha_ficha {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 10;
+  background-color: #d6d6d6;
+  color: #fff;
+  width: 19px;
+  height: 25px;
+  right: 0;
+  padding-left: 2px;
+}
+.owl-next.derecha {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 10;
+  background: rgb(64, 64, 64);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  right: 0;
+}
+.seccion-publi .carousel-thumbs a:hover {
+  background-color: #234e94;
+}
+.seccion-publi .card .card-body .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.seccion-footer {
+  background-color: #203d80;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.seccion-footer a:hover {
+  color: #0f76b9;
+}
+
+.section-page .breadcrumb li.breadcrumb-item a.text-regular {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #777777;
+}
+.section-page .breadcrumb li.v_text {
+  color: #3b548e;
+  font-weight: 500;
+}
+.section-page .breadcrumb li.breadcrumb-item a:hover,
+.section-page .breadcrumb li.breadcrumb-item a:focus {
+  text-decoration: none;
+}
+.seccion-publi .texto-nombre {
+  color: #203d80;
+  font-weight: 600;
+  font-size: 23px;
+}
+.seccion-publi .texto-descripcion {
+  color: #959595;
+  font-weight: 400;
+  font-size: 13px;
+}
+.seccion-publi .texto-precio {
+  color: #454545;
+  font-weight: 500;
+  font-size: 24px;
+}
+.seccion-publi .breadcrumb li.breadcrumb-item a.text-regular {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #777777;
+  font-weight: 400;
+}
+.seccion-publi .breadcrumb li.v_text {
+  color: #3b548e;
+  font-weight: 500;
+}
+.seccion-publi .breadcrumb li.breadcrumb-item a:hover,
+.seccion-publi .breadcrumb li.breadcrumb-item a:focus {
+  text-decoration: none;
+}
+.seccion-publi .card {
+  border: none;
+  border-radius: 0;
+}
+.seccion-publi .card.card-producto {
+  box-shadow: 1px 2px 4px #e0e0e0;
+}
+.seccion-publi .card-header .fas {
+  font-size: 1.5rem;
+}
+.seccion-publi .card-header {
+  border-bottom: 0px;
+  padding: 0.9rem 1.25rem;
+}
+.seccion-publi .card:after {
+  position: absolute;
+  width: 88%;
+  content: " ";
+  border-bottom: 1px solid #efefef;
+  bottom: 0px;
+  z-index: 99;
+  margin: auto;
+  display: block;
+  margin: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.accordion > .card .card-header {
+  margin-bottom: 0px;
+}
+.seccion-publi .bg-white:hover,
+.seccion-publi .bg-white:focus,
+.seccion-publi .bg-white.show {
+  background-color: #03bbe9 !important;
+}
+.seccion-publi .bg-white:hover a,
+.seccion-publi .bg-white:focus a,
+.seccion-publi .bg-white.show a {
+  color: #fff;
+  text-decoration: none;
+}
+.seccion-publi .boton-cat {
+  color: #dedcdc;
+}
+.seccion-publi .bg-white:hover .boton-cat {
+  color: #fff;
+}
+
+.seccion-publi .card-header .card-icon-category {
+  position: absolute;
+  right: 10px;
+  background: #f1f1f1;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  color: #b8b8b8;
+  text-align: center;
+  font-weight: 300;
+  font-size: 26px;
+}
+
+.seccion-publi .accordion .card-header:hover .card-icon-category {
+  background: #fff;
+  color: #03bbe9;
+}
+
+.seccion-publi .card-header .card-icon-category:before {
+  line-height: 0;
+  text-align: center;
+  margin-left: 1px;
+  content: "+";
+  vertical-align: 8px;
+}
+
+.seccion-publi .card-header.show .card-icon-category:before {
+  content: "-";
+  vertical-align: 10px;
+}
+.seccion-publi .card-header.show .text-regular {
+  font-weight: 500;
+}
+.seccion-publi .text-regular {
+  font-weight: 700;
+  font-size: 14px;
+  color: #3e5791;
+  text-transform: uppercase;
+}
+.seccion-publi a.text-regular-b {
+  color: #959595;
+  margin-left: 5px;
+}
+.seccion-publi a.text-regular-b:hover,
+.seccion-publi a.text-regular-b:focus,
+.seccion-publi a.text-regular-b.active {
+  text-decoration: none;
+  color: #03bbe9;
+}
+
+.breadcrumb {
+  background: transparent;
+}
+a.decoration-none {
+  text-decoration: none !important;
+}
+/*.seccion-publi .card-body i.fas{
+    color: #959595;
+}*/
+.seccion-publi .card-footer {
+  background-color: transparent;
+  border-top: transparent;
+  /* min-height: 52px; */
+  padding: 10px 8px 14px 8px;
+}
+.seccion-publi .card-footer-oferta {
+  background-color: transparent;
+  border-top: transparent;
+  padding: 0px 6px 15px 6px;
+}
+.seccion-publi .card-footer p.card-text {
+  line-height: 1;
+}
+.seccion-publi .card-footer-oferta p.card-text {
+  line-height: 1;
+}
+.seccion-publi .divisor-producto {
+  box-shadow: 0px 2px 1px #dcdcdc;
+}
+.seccion-publi .divisor-producto:hover {
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+  -moz-box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+  box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+}
+.seccion-publi .divisor-producto-oferta:hover {
+  -webkit-box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+  -moz-box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+  box-shadow: 0px 3px 3px 0px rgba(176, 176, 176, 1);
+}
+.seccion-publi .divisor-producto a.text-product {
+  font-weight: 600;
+  font-size: 14px;
+}
+.seccion-publi .divisor-producto-oferta a.text-product-oferta {
+  font-weight: 500;
+}
+
+.valoracion input {
+  position: absolute;
+  top: -100px;
+}
+
+.valoracion label {
+  float: right;
+  color: #c1b8b8;
+  font-size: 24px;
+}
+.rating label {
+  font-size: 50px;
+}
+.valoracion.rating label:hover,
+.valoracion.rating label:hover ~ label,
+.valoracion.rating input:checked ~ label {
+  color: var(--color-primary);
+}
+.valoracion span.active {
+  color: var(--color-primary);
+}
+.valoracion span {
+  font-size: 30px;
+  color: #c1b8b8;
+}

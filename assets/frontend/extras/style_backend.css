@@ -1,0 +1,8 @@
+.width-dropdown-menu{
+    width: 70% !important;
+}
+@media(max-width: 767px){
+	.fondoLogin{
+        display: none;
+    }
+}

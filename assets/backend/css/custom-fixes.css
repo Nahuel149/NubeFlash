@@ -1,0 +1,256 @@
+/* Custom fixes for dropdown menu alignment */
+.logged-user-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    min-width: 160px;
+    padding: 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    overflow: hidden;
+}
+
+.logged-user-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.logged-user-menu ul li {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logged-user-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.logged-user-menu ul li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #fff !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background-color: #047bf8;
+}
+
+.logged-user-menu ul li a:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a span {
+    font-size: 14px;
+    color: #fff !important;
+}
+
+/* Fix for the dropdown menu in the image */
+.logged-user-w .logged-user-i .logged-user-menu {
+    width: 280px;
+    padding: 0;
+    left: auto;
+    right: -10px;
+    top: 100%;
+    transform: translateY(0);
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    background-color: #047bf8;
+}
+
+.logged-user-w .logged-user-i:hover .logged-user-menu {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.logged-user-w .logged-user-i .logged-user-menu .logged-user-avatar-info {
+    padding: 20px;
+    background-color: #047bf8;
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.logged-user-w .logged-user-i .logged-user-menu .logged-user-avatar-info .avatar-w {
+    margin-right: 10px;
+}
+
+.logged-user-w .logged-user-i .logged-user-menu .logged-user-avatar-info .logged-user-info-w {
+    color: #fff;
+}
+
+.logged-user-w .logged-user-i .logged-user-menu .logged-user-avatar-info .logged-user-info-w .logged-user-name {
+    font-weight: 500;
+}
+
+.logged-user-w .logged-user-i .logged-user-menu .logged-user-avatar-info .logged-user-info-w .logged-user-role {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Apply consistent styling to all menu items */
+/* Mi cuenta */
+.logged-user-menu ul li a[href*="micuenta"] {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="micuenta"]:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="micuenta"] i {
+    color: #fff !important;
+}
+
+/* Cambiar contraseña */
+.logged-user-menu ul li a[href*="change_password"] {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="change_password"]:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="change_password"] i {
+    color: #fff !important;
+}
+
+/* Logout */
+.logged-user-menu ul li a[href*="logout"] {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="logout"]:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li a[href*="logout"] i {
+    color: #fff !important;
+}
+
+/* Direct targeting for menu items by position */
+/* First item (Mi cuenta) */
+.logged-user-menu ul li:nth-child(1) a {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(1) a:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(1) a i {
+    color: #fff !important;
+}
+
+/* Second item (Cambiar contraseña) */
+.logged-user-menu ul li:nth-child(2) a {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(2) a:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(2) a i {
+    color: #fff !important;
+}
+
+/* Third item (Logout) */
+.logged-user-menu ul li:nth-child(3) a {
+    background-color: #047bf8;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(3) a:hover {
+    background-color: #0362c6;
+    color: #fff !important;
+}
+
+.logged-user-menu ul li:nth-child(3) a i {
+    color: #fff !important;
+}
+
+/* Dashboard Menu Enhancement Styles */
+#adminMenuTabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+
+#adminMenuTabs .nav-link {
+    padding: 0.75rem 1rem;
+    color: #495057;
+    border: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+#adminMenuTabs .nav-link:hover {
+    color: #007bff;
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+#adminMenuTabs .nav-link.active {
+    color: #007bff;
+    background-color: transparent;
+    border-bottom: 3px solid #007bff;
+}
+
+#adminMenuTabs .nav-link i {
+    margin-right: 5px;
+}
+
+.tab-content .card {
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-content .card.bg-light {
+    opacity: 0.85;
+}
+
+.tab-content .card-body {
+    padding: 1.5rem;
+}
+
+.tab-content .card-title {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.tab-content .text-muted {
+    font-size: 0.85rem;
+} 

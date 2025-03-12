@@ -1,0 +1,114 @@
+form.form-contact .form-group input.form-control {
+
+	font-family: 'Lato', sans-serif;
+
+	font-size: 15px;
+
+}
+
+.work_titulo{
+
+	margin-bottom: 100px;
+
+}
+
+.boton-enviar{
+
+	margin-bottom: 0;
+
+}
+
+.la-empresa,.seccion-como-comprar, .section-page{
+
+	margin-bottom: 0px;
+
+}
+
+#seccion-contacto .card .card-body .container{
+
+	padding-top: 20px;
+
+	padding-bottom: 20px;
+
+}
+
+.seccion-contacto_lista{
+
+	margin: 10px 0 0;
+
+}
+
+.seccion-contacto_lista a{
+
+	color: rgb(1,1,1);
+
+	font-family: 'Lato', sans-serif;
+
+	font-size: 20px;
+
+	font-weight: 700;
+
+}
+
+
+
+.seccion-contacto_lista_texto {
+
+	font-family: 'Lato', sans-serif;
+
+	font-size: 15px;
+
+}
+
+
+
+.seccion-contacto_panel_borde{
+
+	margin: 15px 0;
+
+}
+
+
+
+.seccion-contacto_enviar{
+
+	background-color: #203d80;
+
+	color: #fff;
+
+	font-family: 'Lato', sans-serif;
+
+	font-size: 15px;
+
+	border-radius: 5px;
+
+}
+
+.seccion-contacto_enviar:hover{
+
+	color: #fff;
+
+}
+
+
+
+@media screen (min-width: 768px) {
+
+	#seccion-contacto{
+
+		padding-top: 170px;
+
+	}
+
+}
+
+@media screen (max-width: 767px) {
+
+	.work_titulo{
+
+		margin-bottom: 50px!important;
+
+	}
+
+}
+

@@ -1,0 +1,42 @@
+# CodeIgniter specific
+application/cache/*
+!application/cache/index.html
+application/logs/*
+!application/logs/index.html
+!application/*/.htaccess
+
+# Configuration files with potential sensitive information
+application/config/development/*
+application/config/production/*
+
+# Composer and vendor directories
+/vendor/
+composer.lock
+
+# IDE specific files
+.DS_Store
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+system/
+
+# User uploaded content
+uploads/*
+!uploads/index.html
+
+# Database configuration with credentials
+# application/config/database.php
+
+# Environment specific configuration
+.env
+
+# Session files
+/ci_sessions/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp 

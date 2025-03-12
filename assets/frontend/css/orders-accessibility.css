@@ -1,0 +1,43 @@
+/**
+ * Accessibility fixes for orders page
+ */
+
+/* Fix for aria-hidden warnings */
+[aria-hidden="true"] {
+    display: none !important;
+}
+
+/* Ensure proper focus styles */
+:focus {
+    outline: 2px solid #007bff !important;
+    outline-offset: 2px !important;
+}
+
+/* Ensure modal dialogs are properly hidden when not visible */
+.modal:not(.show) {
+    display: none !important;
+}
+
+/* Fix for modal fade animation */
+.modal.fade {
+    transition: opacity 0.15s linear;
+}
+
+/* Fix for modal backdrop */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.modal-backdrop.fade {
+    opacity: 0;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+} 

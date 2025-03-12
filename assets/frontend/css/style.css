@@ -1,0 +1,308 @@
+div.header-menu-navbar {
+    border-bottom: 1px solid #c7c7c7;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.13) !important;
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.13) !important;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.13) !important;
+}
+
+#sombra-panel {
+    -webkit-box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.45) !important;
+    -moz-box-shadow: 0px 1px 19px -1px rgba(0,0,0,0.45) !important;
+    box-shadow: 0px 1px 20px 0px rgba(137, 137, 137, 0.45) !important;
+}
+
+.txt-contendio-slider {
+    padding: 20px 20px !important;
+}
+
+.txt-parrafo-a-1 {
+	font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin: 0;
+    line-height: 38px;
+}
+
+.txt-parrafo-a-2 {
+	font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.txt-caption-size {
+    margin-bottom: 18px !important;
+}
+
+.txt-caption-size .fa {
+	font-size: 22px;
+    padding-right: 5px;
+}
+
+.txt-parrafo-b {
+    margin: 0;
+    padding: 0 15px;
+}
+
+ol.carousel-indicators-a {
+	position: initial;
+    text-align: center;
+    width: 100%;
+    margin: 18px 0px 16px;
+}
+
+ol.carousel-indicators-a li {
+	border-radius: initial;
+    background-color: #e9e9e9;
+    width: 28px !important;
+    height: 8px !important;
+    margin: 0 !important;
+}
+
+ol.carousel-indicators-a li.active {
+	background-color: #646464;
+}
+
+.parrafo-ultimo {
+    margin-bottom: 5px;
+}
+
+#linea-ultimo, #linea-radionline, #linea-ultimas, #linea-consigna, #linea-beneficios, #linea-encuesta {
+	min-height: initial !important;
+    height: 18px !important;
+    margin: 8px 0;
+}
+
+#linea-radionline, #linea-ultimas, #linea-consigna, #linea-beneficios, #linea-encuesta {
+	padding: 0 !important;
+}
+
+#seccion-noticias {
+    margin-top: 20px;
+}
+
+.txt-parrafo-esp-ultima-noticia {
+	color: #fff;
+	text-decoration: none;
+}
+
+.txt-parrafo-esp-ultima-noticia:hover, .txt-parrafo-esp-ultima-noticia:focus {
+	text-decoration: none !important;
+}
+
+.txt-parrafo-esp-b-ultima-noticia {
+    line-height: 14px;
+}
+
+.txt-calendar-ultima-noticia .fa {
+	padding-right: 5px;
+    margin-top: 5px;
+}
+
+.txt-calendar-ultima-noticia {
+	margin-bottom: 8px;
+}
+
+.btn-default.btn-ultima-noticia {
+    background-color: rgba(76, 76, 76, 0.5) !important;
+    border-color: rgba(76, 76, 76, 0.5) !important;
+    top: 10px !important;
+    border: 0;
+}
+#txt-aling-slider {
+    bottom: 0;
+}
+
+/* Password validation styles */
+#password-feedback, 
+#confirm-password-feedback {
+    font-size: 0.85em;
+    margin-top: 5px;
+    padding: 3px 0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#password-feedback[style*="color: green"],
+#confirm-password-feedback[style*="color: green"] {
+    color: #28a745 !important;
+}
+
+#password-feedback[style*="color: red"],
+#confirm-password-feedback[style*="color: red"] {
+    color: #dc3545 !important;
+}
+
+/* Enhance password fields with validation styles */
+.form-control:focus {
+    border-color: #ced4da;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input[name="password"]:focus.is-valid,
+input[name="re-password"]:focus.is-valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+input[name="password"]:focus.is-invalid,
+input[name="re-password"]:focus.is-invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+#new-password-feedback, #repeat-password-feedback, #current-password-feedback {
+    font-size: 0.9em;
+    margin-top: 5px;
+    font-weight: 500;
+}
+#new-password-feedback[style*="color: green"],
+#repeat-password-feedback[style*="color: green"],
+#current-password-feedback[style*="color: green"] {
+    color: #28a745 !important;
+}
+#new-password-feedback[style*="color: red"],
+#repeat-password-feedback[style*="color: red"],
+#current-password-feedback[style*="color: red"] {
+    color: #dc3545 !important;
+}
+
+/* Fix for aria-hidden warning */
+[aria-hidden="true"] {
+    display: none !important;
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050 !important;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    display: none;
+}
+
+.modal.show {
+    display: block !important;
+}
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+    transform: none !important;
+    transition: transform 0.3s ease-out;
+}
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 500px;
+        margin: 1.75rem auto;
+    }
+}
+
+.modal.fade .modal-dialog {
+    transform: translate(0, -50px);
+}
+
+.modal.show .modal-dialog {
+    transform: none !important;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+/* Password Change Modal Specific Styles */
+#cambiarpass {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-right: 0 !important;
+}
+
+#cambiarpass .modal-dialog {
+    max-width: 400px;
+    margin: 1.75rem auto;
+    transform: none !important;
+}
+
+#cambiarpass .modal-content {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cambiarpass .modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 1rem;
+}
+
+#cambiarpass .modal-body {
+    padding: 1.5rem;
+}
+
+#cambiarpass .modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem;
+}
+
+#cambiarpass .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#cambiarpass .form-control {
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+#cambiarpass .btn {
+    padding: 0.5rem 1.5rem;
+}
+
+#cambiarpass .close {
+    font-size: 1.5rem;
+    opacity: .5;
+    transition: opacity .15s;
+}
+
+#cambiarpass .close:hover {
+    opacity: 1;
+}
+
+/* Fix dropdown menu display */
+.dropdown-menu {
+    z-index: 1000;
+}
+
+/* Ensure navbar doesn't overlap modal */
+.navbar {
+    z-index: 1030;
+}

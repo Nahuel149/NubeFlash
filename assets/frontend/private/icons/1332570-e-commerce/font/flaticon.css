@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+.fimanager:before {
+      display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    display: block;
+}
+
+.flaticon-001-add:before { content: "\f100"; }
+.flaticon-002-gift-card:before { content: "\f101"; }
+.flaticon-003-add:before { content: "\f102"; }
+.flaticon-004-rupees:before { content: "\f103"; }
+.flaticon-005-address:before { content: "\f104"; }
+.flaticon-006-bag:before { content: "\f105"; }
+.flaticon-007-shopping-cart:before { content: "\f106"; }
+.flaticon-008-shopping-cart:before { content: "\f107"; }
+.flaticon-009-shopping-online:before { content: "\f108"; }
+.flaticon-010-shopping-bag:before { content: "\f109"; }
+.flaticon-011-shopping-bag:before { content: "\f10a"; }
+.flaticon-012-shopping-bag:before { content: "\f10b"; }
+.flaticon-013-shopping-bag:before { content: "\f10c"; }
+.flaticon-014-shopping-cart:before { content: "\f10d"; }
+.flaticon-015-gift-card:before { content: "\f10e"; }
+.flaticon-016-location:before { content: "\f10f"; }
+.flaticon-017-cargo-truck:before { content: "\f110"; }
+.flaticon-018-cash:before { content: "\f111"; }
+.flaticon-019-chat:before { content: "\f112"; }
+.flaticon-020-chat:before { content: "\f113"; }
+.flaticon-021-cargo-truck:before { content: "\f114"; }
+.flaticon-022-truck:before { content: "\f115"; }
+.flaticon-023-delivery-truck:before { content: "\f116"; }
+.flaticon-024-delivery-truck:before { content: "\f117"; }
+.flaticon-025-delivery-truck:before { content: "\f118"; }
+.flaticon-026-discount:before { content: "\f119"; }
+.flaticon-027-discount:before { content: "\f11a"; }
+.flaticon-028-dollar-symbol:before { content: "\f11b"; }
+.flaticon-029-shopping-cart:before { content: "\f11c"; }
+.flaticon-030-gift-card:before { content: "\f11d"; }
+.flaticon-031-email:before { content: "\f11e"; }
+.flaticon-032-shopping-cart:before { content: "\f11f"; }
+.flaticon-033-trolley:before { content: "\f120"; }
+.flaticon-034-gift-card:before { content: "\f121"; }
+.flaticon-035-voucher:before { content: "\f122"; }
+.flaticon-036-gift-card:before { content: "\f123"; }
+.flaticon-037-gift-card:before { content: "\f124"; }
+.flaticon-038-location:before { content: "\f125"; }
+.flaticon-039-shopping-online:before { content: "\f126"; }
+.flaticon-040-location:before { content: "\f127"; }
+.flaticon-041-location:before { content: "\f128"; }
+.flaticon-042-logistic:before { content: "\f129"; }
+.flaticon-043-logistics-delivery:before { content: "\f12a"; }
+.flaticon-044-map:before { content: "\f12b"; }
+.flaticon-045-message:before { content: "\f12c"; }
+.flaticon-046-message:before { content: "\f12d"; }
+.flaticon-047-shopping-online:before { content: "\f12e"; }
+.flaticon-048-shopping-online:before { content: "\f12f"; }
+.flaticon-049-shopping-online:before { content: "\f130"; }
+.flaticon-050-rupee:before { content: "\f131"; }
+.flaticon-051-rupee:before { content: "\f132"; }
+.flaticon-052-letter:before { content: "\f133"; }
+.flaticon-053-shopping-online:before { content: "\f134"; }
+.flaticon-054-open:before { content: "\f135"; }
+.flaticon-055-package:before { content: "\f136"; }
+.flaticon-056-box:before { content: "\f137"; }
+.flaticon-057-package:before { content: "\f138"; }
+.flaticon-058-delivery-insurance:before { content: "\f139"; }
+.flaticon-059-unboxing:before { content: "\f13a"; }
+.flaticon-060-parcel:before { content: "\f13b"; }
+.flaticon-061-ecommerce:before { content: "\f13c"; }
+.flaticon-062-refresh:before { content: "\f13d"; }
+.flaticon-063-remove:before { content: "\f13e"; }
+.flaticon-064-remove:before { content: "\f13f"; }
+.flaticon-065-dollar-symbol:before { content: "\f140"; }
+.flaticon-066-gift-card:before { content: "\f141"; }
+.flaticon-067-remove:before { content: "\f142"; }
+.flaticon-068-rupees:before { content: "\f143"; }
+.flaticon-069-sale:before { content: "\f144"; }
+.flaticon-070-secure-shopping:before { content: "\f145"; }
+.flaticon-071-dollar-symbol:before { content: "\f146"; }
+.flaticon-072-rupee:before { content: "\f147"; }
+.flaticon-073-security:before { content: "\f148"; }
+.flaticon-074-delivery-insurance:before { content: "\f149"; }
+.flaticon-075-gift-card:before { content: "\f14a"; }
+.flaticon-076-delivery-truck:before { content: "\f14b"; }
+.flaticon-077-boat:before { content: "\f14c"; }
+.flaticon-078-shopping-bag:before { content: "\f14d"; }
+.flaticon-079-shopping-bag:before { content: "\f14e"; }
+.flaticon-080-shopping-bag:before { content: "\f14f"; }
+.flaticon-081-invoice:before { content: "\f150"; }
+.flaticon-082-shopping-cart:before { content: "\f151"; }
+.flaticon-083-shopping-cart:before { content: "\f152"; }
+.flaticon-084-shopping-mall:before { content: "\f153"; }
+.flaticon-085-shopping-bag:before { content: "\f154"; }
+.flaticon-086-ecommerce:before { content: "\f155"; }
+.flaticon-087-tag:before { content: "\f156"; }
+.flaticon-088-tag:before { content: "\f157"; }
+.flaticon-089-trolley:before { content: "\f158"; }
+.flaticon-090-delivery-truck:before { content: "\f159"; }
+.flaticon-091-truck:before { content: "\f15a"; }
+.flaticon-092-shopping-cart:before { content: "\f15b"; }
+.flaticon-093-gift-card:before { content: "\f15c"; }
+.flaticon-094-location:before { content: "\f15d"; }
+.flaticon-095-delivery-man:before { content: "\f15e"; }
+.flaticon-096-medal:before { content: "\f15f"; }
+.flaticon-097-mobile-shopping:before { content: "\f160"; }

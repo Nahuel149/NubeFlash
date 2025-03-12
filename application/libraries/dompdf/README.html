@@ -1,0 +1,117 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <p><a href="https://packagist.org/packages/dompdf/dompdf"><img src="https://poser.pugx.org/dompdf/dompdf/v/stable.png" alt="Latest Stable Version"></a> <a href="https://packagist.org/packages/dompdf/dompdf"><img src="https://poser.pugx.org/dompdf/dompdf/downloads.png" alt="Total Downloads"></a> <a href="https://packagist.org/packages/dompdf/dompdf"><img src="https://poser.pugx.org/dompdf/dompdf/v/unstable.png" alt="Latest Unstable Version"></a> <a href="https://packagist.org/packages/dompdf/dompdf"><img src="https://poser.pugx.org/dompdf/dompdf/license.png" alt="License"></a></p>
+<p><strong>dompdf is an HTML to PDF converter</strong>.
+At its heart, dompdf is (mostly) <a href="http://www.w3.org/TR/CSS2/">CSS 2.1</a> compliant
+HTML layout and rendering engine written in PHP. It is a style-driven renderer:
+it will download and read external stylesheets, inline style tags, and the style
+attributes of individual HTML elements. It also supports most presentational
+HTML attributes.</p>
+<hr>
+<p><strong>Check out the <a href="http://pxd.me/dompdf/www/examples.php">Demo</a> and ask any
+question on <a href="http://stackoverflow.com/questions/tagged/dompdf">StackOverflow</a> or
+on the <a href="http://groups.google.com/group/dompdf">Google Groups</a></strong></p>
+<hr>
+<p><a href="http://www.twitter.com/dompdf"><img src="http://twitter-badges.s3.amazonaws.com/twitter-a.png" alt="Follow us on Twitter"></a>
+<a href="https://plus.google.com/108710008521858993320?prsrc=3"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="Follow us on Google+"></a></p>
+<h1 id="features">Features</h1>
+<ul>
+<li>handles most CSS 2.1 and a few CSS3 properties, including @import, @media &amp;
+@page rules</li>
+<li>supports most presentational HTML 4.0 attributes</li>
+<li>supports external stylesheets, either local or through http/ftp (via
+fopen-wrappers)</li>
+<li>supports complex tables, including row &amp; column spans, separate &amp; collapsed
+border models, individual cell styling</li>
+<li>image support (gif, png (8, 24 and 32 bit with alpha channel), bmp &amp; jpeg)</li>
+<li>no dependencies on external PDF libraries, thanks to the R&amp;OS PDF class</li>
+<li>inline PHP support</li>
+</ul>
+<h1 id="requirements">Requirements</h1>
+<ul>
+<li>PHP 5.0+ (5.3+ recommended)</li>
+<li>DOM extension</li>
+<li>GD extension</li>
+</ul>
+<h1 id="recommendations">Recommendations</h1>
+<ul>
+<li>MBString extension: provides internationalization support. This extension is
+<em>not</em> enabled by default. dompdf has limited internationalization support
+when this extension is not enabled.</li>
+<li>opcache (OPcache, XCache, APC, etc.): improves performance</li>
+</ul>
+<h1 id="about-fonts-character-encoding">About Fonts &amp; Character Encoding</h1>
+<p>PDF documents internally support the following fonts: Helvetica, Times-Roman,
+Courier, Zapf-Dingbats, &amp; Symbol. These fonts only support Windows ANSI
+encoding. In order for a PDF to display characters that are not available in
+Windows ANSI you must supply an external font. dompdf will embed any referenced
+font in the PDF so long as it has been pre-loaded or is accessible to dompdf and
+reference in CSS @font-face rules. See the
+<a href="https://github.com/dompdf/dompdf/wiki/About-Fonts-and-Character-Encoding">font overview</a>
+for more information on how to use fonts.</p>
+<p>The <a href="http://dejavu-fonts.org">DejaVu TrueType fonts</a> have been pre-installed to
+give dompdf decent Unicode character coverage by default. To use the DejaVu
+fonts reference the font in your stylesheet, e.g. <code>body { font-family: DejaVu
+Sans; }</code> (for DejaVu Sans).</p>
+<h1 id="easy-installation">Easy Installation</h1>
+<h2 id="install-with-git">Install with git</h2>
+<p>From the command line switch to the directory where dompdf will reside and run
+the following commands:</p>
+<pre><code class="lang-sh">git clone https://github.com/dompdf/dompdf.git .
+git submodule init
+git submodule update
+</code></pre>
+<h2 id="install-with-composer">Install with composer</h2>
+<p>To install with Composer, simply add the requirement to your <code>composer.json</code>
+file:</p>
+<pre><code class="lang-json">{
+  &quot;require&quot; : {
+    &quot;dompdf/dompdf&quot; : &quot;0.6.*&quot;
+  }
+}
+</code></pre>
+<p>And run Composer to update your dependencies:</p>
+<pre><code class="lang-bash">$ curl -sS http://getcomposer.org/installer | php
+$ php composer.phar update
+</code></pre>
+<p>Before you can use the Composer installation of DOMPDF in your application you
+must disable dompdf&#39;s default auto-loader, include the Composer autoloader, and
+load the dompdf configuration file:</p>
+<pre><code class="lang-php">// somewhere early in your project&#39;s loading, require the Composer autoloader
+// see: http://getcomposer.org/doc/00-intro.md
+require &#39;vendor/autoload.php&#39;;
+
+// disable DOMPDF&#39;s internal autoloader if you are using Composer
+define(&#39;DOMPDF_ENABLE_AUTOLOAD&#39;, false);
+
+// include DOMPDF&#39;s default configuration
+require_once &#39;/path/to/vendor/dompdf/dompdf/dompdf_config.inc.php&#39;;
+</code></pre>
+<h2 id="download-and-install">Download and install</h2>
+<p>Download an archive of dompdf and extract it into the directory where dompdf
+will reside</p>
+<ul>
+<li>You can download stable copies of dompdf from
+<a href="https://github.com/dompdf/dompdf/tags">https://github.com/dompdf/dompdf/tags</a></li>
+<li>Or download a nightly (the latest, unreleased code) from
+<a href="http://eclecticgeek.com/dompdf">http://eclecticgeek.com/dompdf</a></li>
+</ul>
+<h1 id="limitations-known-issues-">Limitations (Known Issues)</h1>
+<ul>
+<li>not particularly tolerant to poorly-formed HTML input. To avoid any
+unexpected rendering issues you should either enable the built-in HTML5
+parser (via the <code>DOMPDF_ENABLE_HTML5PARSER</code> configuration constant) or run
+your HTML through a HTML validator/cleaner (such as Tidy).</li>
+<li>large files or large tables can take a while to render</li>
+<li>CSS float is not supported (but is in the works, enable it through the
+<code>DOMPDF_ENABLE_CSS_FLOAT</code> configuration constant).</li>
+</ul>
+<p>If you find this project useful, please consider making a donation.
+(Any funds donated will be used to help further development on this project.)<br><a href="http://goo.gl/DSvWf"><img src="https://www.paypal.com/en_US/i/btn/btn_donate_SM.gif" alt="Donate button"></a></p>
+
+      </body>
+    </html>
