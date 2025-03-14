@@ -15,7 +15,7 @@ NubeFlash is a web application for managing shipping logistics, customer data, a
 ## Requirements
 
 - PHP 7.2 or higher
-- MySQL/MariaDB
+- MySQL
 - Required PHP extensions: mysqli, curl, gd, mbstring, zip, xml, pdo, pdo_mysql
 
 ## Installation
