@@ -3,6 +3,71 @@
 ## Overview
 NubeFlash is a shipping management system that provides REST API endpoints for calculating shipping costs and managing orders. The system supports various package sizes and shipping methods, with pricing based on weight and volume.
 
+## Project Description
+
+NubeFlash is a comprehensive web application designed for managing shipping logistics, customer data, and order processing. It features a robust back-end API system and a user-friendly administrative interface.
+
+### Key Features
+- User management with role-based permissions
+- Customer database and management
+- Order processing and tracking (now with updated Spanish translations for "Orders" section)
+- Shipping rate calculations with flexible pricing models
+- Destination and province management
+- Audit logging and system activity monitoring
+- Reporting and data export capabilities
+- Pre-deployment testing framework with development/production modes
+
+### System Requirements
+- PHP 7.2 or higher (tested on PHP 7.3.33)
+- MySQL/MariaDB
+- Required PHP extensions: mysqli, curl, gd, mbstring, zip, xml, pdo, pdo_mysql
+
+## Getting Started
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Nahuel149/NubeFlash.git
+   ```
+
+2. Set up your database using the provided SQL file:
+   ```
+   mysql -u username -p database_name < create_database.sql
+   ```
+
+3. Configure your database connection in `application/config/database.php`
+
+4. Configure your base URL in `application/config/config.php`
+
+5. Make sure the following directories are writable:
+   - application/logs
+   - application/logs/backend
+   - application/cache
+   - uploads
+   - uploads/zip
+
+### Start Development Server
+```bash
+# Navigate to your project directory
+cd /c/Users/nahue/Desktop/NubeFlash
+
+# Start PHP's built-in web server
+php -S localhost:8000
+```
+
+### Default Access
+- Username: admin
+- Password: admin123
+
+### Pre-Deployment Testing
+Run the pre-deployment test script to ensure your environment is properly configured:
+```
+php pre_deployment_test.php
+```
+
+The pre-deployment script includes a development/production mode flag to simplify testing in different environments. Set `$is_development = false` before running in production.
+
 ## Shipping Cost System
 
 ### Overview

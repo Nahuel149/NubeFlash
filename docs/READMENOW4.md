@@ -8,6 +8,8 @@
 5. [Examples](#examples)
 6. [API Integration](#api-integration)
 7. [System Monitoring and Logs](#system-monitoring-and-logs)
+8. [Recent Updates](#recent-updates)
+9. [GitHub Repository](#github-repository)
 
 ## Overview
 
@@ -458,3 +460,52 @@ Permissions are managed through the admin interface under user groups.
 - Added menu entries under "Other Utilities"
 - Implemented proper permission checks
 - Added Excel export functionality using PHPSpreadsheet 
+
+## Recent Updates
+
+### Spanish Translations
+The UI translations have been updated to ensure consistent Spanish language across the application. Notable changes include:
+- Added translation for "Orders" to "Lista de Pedidos" in the URL segments module
+- Verified that order-related views properly display Spanish text
+- Ensured breadcrumb navigation maintains consistent Spanish terminology
+
+### Pre-Deployment Testing Improvements
+The pre-deployment testing framework has been enhanced with several improvements:
+- Added development/production environment toggle (`$is_development` flag)
+- Improved error handling for database queries, foreign key checks, and initial data verification
+- Enhanced base URL handling to accommodate both development and production environments
+- Added clear instructions for production deployment preparation
+- Streamlined PHPSpreadsheet library check based on environment
+
+To run the pre-deployment test:
+```bash
+php pre_deployment_test.php
+```
+
+For production deployment:
+1. Set `$is_development = false` in the pre-deployment test file
+2. Update the production URL in the configuration
+3. Run the test script on the production server
+4. Review the results and address any issues
+
+### Database Schema Alignment
+The pre-deployment test now verifies that the database schema matches the structure defined in `create_database.sql`. This ensures schema integrity before deployment.
+
+## GitHub Repository
+The NubeFlash project is now available on GitHub for easier version control, collaboration, and deployment:
+
+- **Repository URL**: https://github.com/Nahuel149/NubeFlash.git
+- **Clone Command**: `git clone https://github.com/Nahuel149/NubeFlash.git`
+
+### GitHub Repository Benefits
+- Complete version history and change tracking
+- Secure cloud backup of codebase
+- Simplified collaboration workflow
+- Streamlined deployment to production environments
+- Issue tracking and feature planning
+
+### Important Files
+- `.gitignore`: Configured to exclude logs, temporary files, vendor code, and sensitive configuration files
+- `README.md`: Main project documentation
+- `pre_deployment_test.php`: Deployment readiness testing script
+- `create_database.sql`: Database schema definition 

@@ -7,7 +7,7 @@
  */
 
 // IMPORTANT: Change this to FALSE before running tests in production
-$is_development = true;
+$is_development = false;
 
 // Turn on error reporting for the test script
 error_reporting(E_ALL);

@@ -43,6 +43,12 @@ NubeFlash is a web application for managing shipping logistics, customer data, a
 
 ## Usage
 
+Frontend user: (http://localhost:8000/index)
+
+- Username: contacto@empresaa.com
+- Password: password123
+
+Backend user: (http://localhost:8000/web_ctrl)
 Access the application at your configured URL. Default admin credentials:
 
 - Username: admin
@@ -57,5 +63,3 @@ php pre_deployment_test.php
 ```
 
 ## License
-
-[Specify license information here] 
