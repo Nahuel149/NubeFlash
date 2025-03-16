@@ -1,0 +1,768 @@
+{
+    "es":{
+        "name":"Español",
+        "abbreviation":"Es",
+        "menu":{
+            "item_works":"COMO FUNCIONA",
+            "item_plans":"PLANES",
+            "item_questions":"PREGUNTAS FRECUENTES",
+            "item_contact":"CONTACTO",
+            "button_create_store":"CREA TU STORE",
+            "button_free":"PRUEBA 30 DIAS GRATIS",
+            "button_enterokay":"INGRESAR"
+        },
+        "index_section":{
+            "title_1_h1":"POTENTE, INTUITIVO",
+            "title_2_h1":"Y VELOZ",
+            "content_1_h6":"Crea tu eCommerce en minutos",
+            "content_2_h6":"y vende online hoy mismo,",
+            "content_3_h6":"sin pagar comisiones",
+            "button_proof":"PRUEBA 30 DIAS GRATIS"
+        },
+        "simple_section":{
+            "title_h1":{
+                "span_1":"ES",
+                "span_2":"MUY SIMPLE"
+            },
+            "card_setting":{
+                "title_h5":"Configura tu eCommerce",
+                "content_1_p":"Completa el perfil",
+                "content_2_p":"agregando los datos principales de contacto,",
+                "content_3_p":"nombre de tu negocio, mail, dirección y teléfono"
+            },
+            "card_image":{
+                "title_h5":"La imagen vale mucho",
+                "content_1_p":"Elige una plantilla de diseño",
+                "content_2_p":"y dale a tu marca un estilo elegante y ganador,",
+                "content_3_p":"que transmita confianza y profesionalismo"
+            },
+            "card_brand":{
+                "title_h5":"Tu marca despega",
+                "content_1_p":"Sube todos tus productos.",
+                "content_2_p":"Configura los métodos de pago",
+                "content_3_p":"y medios de envío que aceptarás en tu sitio."
+            }
+        },
+        "works_section":{
+            "title_h1":{
+                "span_1":"CÓMO",
+                "span_2":"FUNCIONA"
+            },
+            "second_1":{
+                "title_h3":"Configura La Nube a la medida de tu negocio.",
+                "content_p":"Gestiona todos tus productos de manera ágil y simple."
+            },
+            "second_2":{
+                "title_h3":"Más que un eCommerce, tienes una poderosa plataforma.",
+                "content_p":"Controla Stock, aplica cambios masivos, monitorea tus ventas y tus estadísticas."
+            },
+            "second_3":{
+                "title_h3":"Abre el negocio al mundo, tu Store no cierra nunca.",
+                "content_p":"Integra medios prácticos de envío según el tamaño de tus productos."
+            }
+        },
+        "plans_section":{
+            "title_h1":{
+                "span_1":"ELIGE LA NUBE",
+                "span_2":"PARA VOLAR"
+            },
+            "title_h4":{
+                "title_1":"Puedes ir escalando de plan a medida que",
+                "title_2":"tu negocio vaya creciendo"
+            },
+            "option_plan_time":{
+                "quarterly_a":{
+                    "title":"TRIMESTRAL"
+                },
+                "biannual_a":{
+                    "title":"SEMESTRAL"
+                },
+                "annual_a":{
+                    "title":"ANUAL"
+                }
+            },
+            "month":"mes",
+            "quantity_month":"por 3 meses",
+            "option_plan":{
+                "entrepreneur":"EMPRENDEDOR",
+                "entrepreneur_text":"eCommerce Personalizado Catálogo hasta 50 productos Integración con tus redes Globo flotante de Whatsapp Cuentas de empleados 2",
+                "pymes":"PYMES",
+                "pymes_text":"eCommerce 100% Personalizado Catálogo hasta 300 productos Actualización masiva de precios Carga productos desde excel Cuentas de empleados 5",
+                "corporate":"CORPORATIVO",
+                "corporate_text":"eCommerce 100% Personalizado Catálogo ilimitado de productos Actualización masiva de precios Todas las futuras integraciones Cuentas de empleados 10"
+            },
+            "div_trimestre":{
+                "quantity_month":"por 6 meses"
+            },
+            "div_anual":{
+                "quantity_month":"por 12 meses"
+            },
+            "price_iva":"Los precios expresados son con IVA inc.",
+            "button_free":"PROBAR 30 DIAS GRATIS",
+            "button_all_means":"Ver todos los recursos",
+            "button_none_means":"Ocultar todos los recursos",
+            "table":{
+                "thead":{
+                    "tr":{
+                        "th_1": "EMPRENDEDOR",
+                        "th_2": "PYMES",
+                        "th_3": "CORPORATIVO"
+                    }
+                },
+                "tbody":[
+                    {
+                        "td_title":"Diseños personalizables",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Integración con medios de pago",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Integración con medios de envío",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Gestión de productos y manejo de stock",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de hasta 50 productos",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Ventas ilimitadas",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"SEO friendly",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Productos destacados",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Precios de oferta",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Link en la nube",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Acceso a tutoriales",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Cuentas administradoras",
+                        "td_1":"2",
+                        "td_2":"5",
+                        "td_3":"10"
+                    },
+                    {
+                        "td_title":"Tienda online con tecnologias escalables",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Globo flotante de whatsapp activado",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Administrador de características múltiples",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Herramientas de MKTG para vender más",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Soporte técnico via email",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Actualización masiva de precios",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de hasta 300 productos",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Importación de productos por excel",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Asesoramiento Chat Nube",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de productos sin límites",
+                        "td_1":"no",
+                        "td_2":"no",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Ejecutivo Nube",
+                        "td_1":"no",
+                        "td_2":"no",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Dominios propios",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    }
+                ]
+            }
+        },
+        "questions_section":{
+            "title_h1":"Listo para despegar?",
+            "tutle_h4":{
+                "title_1":"Se pronostican ventas fuertes. Registrate y",
+                "title_2":"comienza hoy mismo!"
+            },
+            "button_free":"Probar 30 dias gratis",
+            "title_1_h1":{
+                "title_1":"PREGUNTAS",
+                "title_2":"FRECUENTES"
+            },
+            "questions":[
+                {
+                    "question":"¿Cuántos usuarios colaboradores puedo tener en mi store?",
+                    "answer":"Dependiendo el tipo de plan que elijas podrás tener una cantidad específica de usuarios colaboradores a quienes le asignarás roles y permisos según las tareas que necesites delegar. Emprendedor: 2 Pymes: 5 Corporativo: 10"
+                },
+                {
+                    "question":"¿Cómo puedo mostrar mejor mis productos?",
+                    "answer":"Sin unas buenas imágenes que muestren tus productos con todos sus detalles, será difícil conseguir superar la barrera que supone para el potencial cliente el no tener el producto en sus manos. Así que trata de tener fotos profesionales y sobre todo mantener uniformidad en tus productos (que todas las fotos tengan el mismo fondo y tamaño)."
+                },
+                {
+                    "question":"¿Es obligatorio colocar Redes Sociales?",
+                    "answer":"Claro que no! Pero es de vital importancia para dar visibilidad y alcance a tu empresa online, conseguir nuevos clientes y crear branding. De todas maneras ten en cuenta que no tendrá funcionabilidad si no se mantienen con contenido actualizado y de manera activa."
+                },
+                {
+                    "question":"¿Qué significa que un producto sea destacado?",
+                    "answer":"Es aquel que tiene mayor visibilidad, tu producto estrella o en promoción, quién aparecerá en el inicio de tu store, siendo el primer producto que tus clientes vean al ingresar. Ten en cuenta de no recargar éste recurso para poder tener una mejor experiencia visual y mejor velocidad de navegación en la store."
+                },
+                {
+                    "question":"¿Es obligatorio crear categorías y subcategorias?",
+                    "answer":"Si bien no es obligatorio, es necesario para posicionar correctamente estas categorías en Internet y a nivel experiencia de usuario para que nuestros compradores encuentren los productos de la forma más sencilla y rápida posible."
+                },
+                {
+                    "question":"¿Si tengo dos tiendas físicas los clientes pueden elegir dónde retirar?",
+                    "answer":"Aquí el cliente final deberá elegir como método de envío 'Whatsapp Uru' para poder coordinar con el vendedor por donde pasar a retirar su pedido."
+                },
+                {
+                    "question":"¿Cuántas veces puedo editar mi store?",
+                    "answer":"Infinitas veces, no hay un límite de edición, puedes modificarla las veces que sea necesario para dar su mejor versión."
+                },
+                {
+                    "question":"¿Qué es el Favicon?",
+                    "answer":"Es el ícono de tu página. Una pequeña imagen que identifica tu sitio en el encabezado de la pestaña correspondiente. Siempre debe estar en formato png y en un tamaño de no más de 128 x 128 pixeles."
+                },
+                {
+                    "question":"¿La Nube cuenta con equipo de soporte?",
+                    "answer":"¡Si! Hay un equipo de nubecitas y Ejecutivos de cuentas que estarán disponible para ti los 365 días del año. Según el plan plan que contrates, puedes acceder a chat online o soporte vía mail."
+                },
+                {
+                    "question":"¿Cuáles son los métodos de envio?",
+                    "answer":"La nube trabaja con envíos locales e internacionales. Actualmente puedes integrar FedEX, UPS y DHL, como también coordinar directo con el cliente. En las próximas semanas verás más opciones para facilitarte el envío de otros productos."
+                },
+                {
+                    "question":"¿Cuáles son los métodos de pago?",
+                    "answer":"La pasarela de pago que te ofrece la nube es muy variada, puedes optar entre distintas tarjetas de crédito/debito, efectivo, trasferencias bancarias o redes de cobranza, según el país que te encuentres."
+                },
+                {
+                    "question":"¿Es necesario tener una empresa registrada/creada?",
+                    "answer":"No es necesario. Todas las personas tanto físicas o jurídicas pueden formar parte de la nube, aunque no cuenten con una empresa o sistema de facturación. Pero te recomendamos hacerlo para profesionalizar tu negocio y vender con mayor flexibilidad."
+                },
+                {
+                    "question":"¿Cómo le cambio el nombre a mi Dominio?",
+                    "answer":"Ingresando en tu usuario de La Nube, en la sección Perfil, encontrarás un botón 'Cambiar Link de tu store', deberás hacer click allí para modificarlo. Ten en cuenta que si el dominio ya se encuentra registrado te aparecerá un cartel avisándote."
+                },
+                {
+                    "question":"¿Es necesario tener un dominio?",
+                    "answer":"No es necesario. La nube te proporciona todas las herramientas funcionales para la creación de tu Store, incluido el dominio y hosting."
+                },
+                {
+                    "question":"¿Cuándo puedo cambiar de plan?",
+                    "answer":"¡Cuando lo desees! Sólo debes ingresar a tu usuario de La Nube en la sección 'Suscripción' y seleccionar el plan que más se adapte a tus nuevas necesidades"
+                },
+                {
+                    "question":"¿Cómo empiezo mi negocio en La Nube?",
+                    "answer":"Es muy fácil, dirígete al botón 'Crear Store'. Ingresa nombre de tu negocio, mail y contraseña. Una vez dada el alta, te llegará la confirmación a tu casilla. ¡Ya puedes comenzar a crear tu propio eCommerce! *Si han pasado unos minutos y no te llegó la confirmación, revisa el spam."
+                },
+                {
+                    "question":"¿Qué es La Nube?",
+                    "answer":"Es una plataforma que te brinda herramientas para crear y administrar tu propia web de ecommerce en tan solo minutos, sin necesidad de conocimientos previos. Una vez creada la Store podrás vender tus productos y promocionar tus servicios, aceptar medios de pago y seleccionar medios de envío. Diseña fácilmente hermosos diseños de manera ágil, sencilla e intuitiva."
+                }
+    
+            ],
+            "button_see_more":"Ver más",
+            "button_see_less":"Ver menos"
+        },
+        "contact_section":{
+            "title_h1":{
+                "title_1":"CONTÁCTATE",
+                "title_2":"CON NOSOTROS"
+            },
+            "form_contact":{
+                "input_name":"NOMBRE",
+                "input_company":"EMPRESA",
+                "input_email":"EMAIL",
+                "input_telephono":"TELEFONO",
+                "input_message":"MENSAJE",
+                "button_send":"ENVIAR"
+            }
+        },
+        "create_store":{
+            "info_bill":"Su cuenta permanecera inactiva hasta validar el pago.",
+            "paso_1":{
+                "title":"REGISTRA TU STORE",
+                "label_name_store":"Nombre de la Tienda ",
+                "label_email":"Email",
+                "info_email":"Los correos correspondientes podría llegar en la sección de SPAM de su correo electrónico.",
+                "label_password":"Contraseña",
+                "label_re_password":"Repetir contraseña",
+                "check_terms":"Términos y Condiciones"
+            },
+            "paso_2":{
+                "title":"ELEGI TU PLAN",
+                "button_select":"SELECCIONAR"
+            },
+            "paso_3":{
+                "title":"PAGAR SUSCRIPCIÓN",
+                "title_1":"URUGUAY",
+                "title_2":"RESTO DEL MUNDO",
+                "button_cash":"PAGO EFECTIVO",
+                "button_transaction":"PAGO TRANSFERENCIA"
+            },
+            "button_next":"CONTINUAR",
+            "button_back":"ANTERIOR",
+            "message_trans":{
+                "message_1":"La store estara habilitada una vez realizado el pago.",
+                "message_2":"Si el pago es en efectivo(Transferencia Bancaria) debes enviar tu comprobante a "
+            }
+        },
+        "register_view":{
+            "title":"REGISTRATE CON 30 DIAS DE PRUEBA",
+            "label_name_store":"Nombre de la Tienda ",
+            "label_email":"Email",
+            "info_email":"Los correos correspondientes podría llegar en la sección de SPAM de su correo electrónico.",
+            "label_password":"Contraseña",
+            "label_re_password":"Repetir contraseña",
+            "check_terms":"Términos y Condiciones",
+            "button_register":"REGISTRARSE"
+        },
+        "footer":{
+            "title_nube":"La Nube",
+            "title_politics":{
+                "title_1":"política de privacidad",
+                "title_2":"términos y condiciones"
+            }
+        },
+        "login":{
+            "label_user":"Usuario",
+            "input_user":"Usuario",
+            "label_password":"Contraseña",
+            "input_password":"Contraseña",
+            "button_login":"Acceder",
+            "recuva_password":"¿Olvidaste tu contraseña?"
+        },
+        "recuva_password":{
+            "title":"RESTABLECER CONTRASEÑA",
+            "ilabel_email":"Email",
+            "button_send":"ENVIAR"
+        }       
+        
+    },
+    "en":{
+        "name":"Ingles",
+        "abbreviation":"En",
+        "menu":{
+            "item_works":"COMO FUNCIONA_en",
+            "item_plans":"PLANES_en",
+            "item_questions":"PREGUNTAS FRECUENTES_en",
+            "item_contact":"CONTACTO_en",
+            "button_create_store":"CREA TU STORE_en",
+            "button_free":"PRUEBA 30 DIAS GRATIS_en",
+            "button_enterokay":"INGRESAR_en"
+        },
+        "index_section":{
+            "title_1_h1":"POTENTE, INTUITIVO_en",
+            "title_2_h1":"Y VELOZ_en",
+            "content_1_h6":"Crea tu eCommerce en minutos_en",
+            "content_2_h6":"y vende online hoy mismo,_en",
+            "content_3_h6":"sin pagar comisiones_en",
+            "button_proof":"PRUEBA 30 DIAS GRATIS_en"
+        },
+        "simple_section":{
+            "title_h1":{
+                "span_1":"ES_en",
+                "span_2":"MUY SIMPLE_en"
+            },
+            "card_setting":{
+                "title_h5":"Configura tu eCommerce_en",
+                "content_1_p":"Completa el perfil_en",
+                "content_2_p":"agregando los datos principales de contacto,_en",
+                "content_3_p":"nombre de tu negocio, mail, dirección y teléfono_en"
+            },
+            "card_image":{
+                "title_h5":"La imagen vale mucho_en",
+                "content_1_p":"Elige una plantilla de diseño_en",
+                "content_2_p":"y dale a tu marca un estilo elegante y ganador,_en",
+                "content_3_p":"que transmita confianza y profesionalismo_en"
+            },
+            "card_brand":{
+                "title_h5":"Tu marca despega_en",
+                "content_1_p":"Sube todos tus productos._en",
+                "content_2_p":"Configura los métodos de pago_en",
+                "content_3_p":"y medios de envío que aceptarás en tu sitio._en"
+            }
+        },
+        "works_section":{
+            "title_h1":{
+                "span_1":"CÓMO_en",
+                "span_2":"FUNCIONA_en"
+            },
+            "second_1":{
+                "title_h3":"Configura La Nube a la medida de tu negocio._en",
+                "content_p":"Gestiona todos tus productos de manera ágil y simple._en"
+            },
+            "second_2":{
+                "title_h3":"Más que un eCommerce, tienes una poderosa plataforma._en",
+                "content_p":"Controla Stock, aplica cambios masivos, monitorea tus ventas y tus estadísticas._en"
+            },
+            "second_3":{
+                "title_h3":"Abre el negocio al mundo, tu Store no cierra nunca._en",
+                "content_p":"Integra medios prácticos de envío según el tamaño de tus productos._en"
+            }
+        },
+        "plans_section":{
+            "title_h1":{
+                "span_1":"ELIGE LA NUBE_en",
+                "span_2":"PARA VOLAR_en"
+            },
+            "title_h4":{
+                "title_1":"Puedes ir escalando de plan a medida que_en",
+                "title_2":"tu negocio vaya creciendo_en"
+            },
+            "option_plan_time":{
+                "quarterly_a":{
+                    "title":"TRIMESTRAL_en"
+                },
+                "biannual_a":{
+                    "title":"SEMESTRAL_en"
+                },
+                "annual_a":{
+                    "title":"ANUAL_en"
+                }
+            },
+            "month":"mes_en",
+            "quantity_month":"por 3 meses_en",
+            "option_plan":{
+                "entrepreneur":"EMPRENDEDOR_en",
+                "entrepreneur_text":"eCommerce Personalizado Catálogo hasta 50 productos Integración con tus redes Globo flotante de Whatsapp Cuentas de empleados 2_en",
+                "pymes":"PYMES_en",
+                "pymes_text":"eCommerce 100% Personalizado Catálogo hasta 300 productos Actualización masiva de precios Carga productos desde excel Cuentas de empleados 5_en",
+                "corporate":"CORPORATIVO_en",
+                "corporate_text":"eCommerce 100% Personalizado Catálogo ilimitado de productos Actualización masiva de precios Todas las futuras integraciones Cuentas de empleados 10_en"
+            },
+            "div_trimestre":{
+                "quantity_month":"por 6 meses_en"
+            },
+            "div_anual":{
+                "quantity_month":"por 12 meses_en"
+            },
+            "price_iva":"Los precios expresados son con IVA inc._en",
+            "button_free":"PROBAR 30 DIAS GRATIS_en",
+            "button_all_means":"Ver todos los recursos_en",
+            "button_none_means":"Ocultar todos los recursos_en",
+            "table":{
+                "thead":{
+                    "tr":{
+                        "th_1": "EMPRENDEDOR_en",
+                        "th_2": "PYMES_en",
+                        "th_3": "CORPORATIVO_en"
+                    }
+                },
+                "tbody":[
+                    {
+                        "td_title":"Diseños personalizables_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Integración con medios de pago_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Integración con medios de envío_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Gestión de productos y manejo de stock_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de hasta 50 productos_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Ventas ilimitadas_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"SEO friendly_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Productos destacados_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Precios de oferta_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Link en la nube_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Acceso a tutoriales_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Cuentas administradoras_en",
+                        "td_1":"2",
+                        "td_2":"5",
+                        "td_3":"10"
+                    },
+                    {
+                        "td_title":"Tienda online con tecnologias escalables_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Globo flotante de whatsapp activado_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Administrador de características múltiples_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Herramientas de MKTG para vender más_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Soporte técnico via email_en",
+                        "td_1":"si",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Actualización masiva de precios_en",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de hasta 300 productos_en",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Importación de productos por excel_en",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Asesoramiento Chat Nube_en",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Catálogo de productos sin límites_en",
+                        "td_1":"no",
+                        "td_2":"no",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Ejecutivo Nube_en",
+                        "td_1":"no",
+                        "td_2":"no",
+                        "td_3":"si"
+                    },
+                    {
+                        "td_title":"Dominios propios_en",
+                        "td_1":"no",
+                        "td_2":"si",
+                        "td_3":"si"
+                    }
+                ]
+            }
+        },
+        "questions_section":{
+            "title_h1":"Listo para despegar?_en",
+            "tutle_h4":{
+                "title_1":"Se pronostican ventas fuertes. Registrate y_en",
+                "title_2":"comienza hoy mismo!_en"
+            },
+            "button_free":"Probar 30 dias gratis_en",
+            "title_1_h1":{
+                "title_1":"PREGUNTAS_en",
+                "title_2":"FRECUENTES_en"
+            },
+            "button_see_more":"Ver más_en",
+            "button_see_less":"Ver menos_en"
+        },
+        "contact_section":{
+            "title_h1":{
+                "title_1":"CONTÁCTATE_en",
+                "title_2":"CON NOSOTROS_en"
+            },
+            "form_contact":{
+                "input_name":"NOMBRE_en",
+                "input_company":"EMPRESA_en",
+                "input_email":"EMAIL_en",
+                "input_telephono":"TELEFONO_en",
+                "input_message":"MENSAJE_en",
+                "button_send":"ENVIAR_en"
+            }
+        },
+        "create_store":{
+            "info_bill":"Su cuenta permanecera inactiva hasta validar el pago._en",
+            "paso_1":{
+                "title":"REGISTRA TU STORE_en",
+                "label_name_store":"Nombre de la Tienda_en ",
+                "label_email":"Email_en",
+                "info_email":"Los correos correspondientes podría llegar en la sección de SPAM de su correo electrónico._en",
+                "label_password":"Contraseña_en",
+                "label_re_password":"Repetir contraseña_en",
+                "check_terms":"Términos y Condiciones_en"
+            },
+            "paso_2":{
+                "title":"ELEGI TU PLAN_en",
+                "button_select":"SELECCIONAR_en"
+            },
+            "paso_3":{
+                "title":"PAGAR SUSCRIPCIÓN_en",
+                "title_1":"URUGUAY_en",
+                "title_2":"RESTO DEL MUNDO_en",
+                "button_cash":"PAGO EFECTIVO_en",
+                "button_transaction":"PAGO TRANSFERENCIA_en"
+            },
+            "button_next":"CONTINUAR_en",
+            "button_back":"ANTERIOR_en",
+            "message_trans":{
+                "message_1":"La store estara habilitada una vez realizado el pago._en",
+                "message_2":"Si el pago es en efectivo(Transferencia Bancaria) debes enviar tu comprobante a _en"
+            }
+        },
+        "register_view":{
+            "title":"REGISTRATE CON 30 DIAS DE PRUEBA_en",
+            "label_name_store":"Nombre de la Tienda _en",
+            "label_email":"Email_en",
+            "info_email":"Los correos correspondientes podría llegar en la sección de SPAM de su correo electrónico._en",
+            "label_password":"Contraseña_en",
+            "label_re_password":"Repetir contraseña_en",
+            "check_terms":"Términos y Condiciones_en",
+            "button_register":"REGISTRARSE_en"
+        },
+        "footer":{
+            "title_nube":"La Nube_en",
+            "title_politics":{
+                "title_1":"política de privacidad_en",
+                "title_2":"términos y condiciones_en"
+            }
+        },
+        "login":{
+            "label_user":"Usuario_en",
+            "input_user":"Usuario_en",
+            "label_password":"Contraseña_en",
+            "input_password":"Contraseña_en",
+            "button_login":"Acceder_en",
+            "recuva_password":"¿Olvidaste tu contraseña?_en"
+        },
+        "recuva_password":{
+            "title":"RESTABLECER CONTRASEÑA_en",
+            "ilabel_email":"Email_en",
+            "button_send":"ENVIAR_en"
+        }
+    },
+    "pt":{
+    }
+}
