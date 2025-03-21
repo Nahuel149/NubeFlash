@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'developed';
+$active_group = 'production';
 $query_builder = TRUE;
 
 $db['developed'] = array(
@@ -113,7 +113,7 @@ $db['production'] = array(
 	'hostname' => 'localhost',
 	'username' => 'lanubeflash',
 	'password' => 'Y8Ixrqc3Yn38V6B',
-	'database' => 'lanubeflash',
+	'database' => 'lanube_api',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

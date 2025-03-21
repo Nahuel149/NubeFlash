@@ -200,7 +200,7 @@ $config['directory_trigger'] = 'd';
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 4;  // Set to maximum debugging level
+$config['log_threshold'] = 1;  // Set to appropriate level for production (1 = errors only)
 
 /*
 |--------------------------------------------------------------------------
