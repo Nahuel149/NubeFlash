@@ -1,52 +1,80 @@
 /* Fonts */
 @font-face{
-    font-family: "Raleway-Regular";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face{
-    font-family: "Raleway-Medium";
-    src: url("../fonts/raleway/Raleway-Medium.ttf");
+    font-family: "Montserrat-Medium";
+    src: url("../fonts/Montserrat/Montserrat-Medium.ttf");
 }
 @font-face{
-    font-family: "Raleway-Bold";
-    src: url("../fonts/raleway/Raleway-Bold.ttf");
+    font-family: "Montserrat-Bold";
+    src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
 }
 @font-face{
-    font-family: "Raleway-SemiBold";
-    src: url("../fonts/raleway/Raleway-SemiBold.ttf");
+    font-family: "Montserrat-SemiBold";
+    src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
 @font-face{
-    font-family: "Raleway-Regular";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face{
-    font-family: "Raleway-Light";
-    src: url("../fonts/raleway/Raleway-Light.ttf");
+    font-family: "Montserrat-Light";
+    src: url("../fonts/Montserrat/Montserrat-Light.ttf");
 }
 @font-face{
     font-family: "Montserrat-Bold";
     src: url("../fonts/Montserrat-Bold.ttf");
 }
 @font-face{
-    font-family: "Lato-Light";
-    src: url("../fonts/lato/Lato-Light.ttf");
+    font-family: "Montserrat-Light";
+    src: url("../fonts/Montserrat/Montserrat-Light.ttf");
 }
 @font-face{
-    font-family: "Lato-Regular";
-    src: url("../fonts/lato/Lato-Regular.ttf");
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face{
     font-family: "Montserrat-SemiBold";
-    src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
+    src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
 @font-face{
-    font-family: "Raleway-ExtraBold";
-    src: url("../fonts/raleway/Raleway-ExtraBold.ttf");
+    font-family: "Montserrat-ExtraBold";
+    src: url("../fonts/Montserrat/Montserrat-ExtraBold.ttf");
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
+    font-family: "Montserrat-Regular";
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-Medium.ttf");
+    font-family: "Montserrat-Medium";
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
+    font-family: "Montserrat-Bold";
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
+    font-family: "Montserrat-SemiBold";
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-Light.ttf");
+    font-family: "Montserrat-Light";
+}
+@font-face {
+    src: url("../fonts/Montserrat/Montserrat-ExtraBold.ttf");
+    font-family: "Montserrat-ExtraBold";
 }
 /*--------------------*/
 
+html {
+    font-family: "Montserrat-Regular";
+}
+
 body{
-    font-family: "Raleway-Regular";
+    font-family: "Montserrat-Regular";
     background-color: #f9f9f9;
     top: 0px !important;
 }
@@ -76,13 +104,13 @@ body{
     margin-left:60px;
 }
 .lista-izquierda li a{
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
     font-size: 12px;
     letter-spacing: 2px;
     color: #2f2f2f!important;
 }
 .prueba{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 1px;
     padding: 9px 28px;
@@ -92,7 +120,7 @@ body{
     border-color:#297ded;
 }
 .prueba_bold{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 4px;
     padding: 13px 36px;
@@ -100,11 +128,11 @@ body{
     border-color:#297ded;
 }
 .text-ecommerce{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     margin-bottom: -0.5rem;
 }
 .text-nivel{
-    font-family: "Raleway-Light";
+    font-family: "Montserrat-Light";
 }
 .lista-izquierda{
     margin-left: auto;
@@ -150,31 +178,31 @@ body{
     margin: 20px 0px;
 }
 #simple h5{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     letter-spacing: 4px;
     text-transform: uppercase;
     font-size:14px;
     color: #262626;
 }
 #simple p{
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
     color: #4e4e4e;
     font-size: 14px;
 }
 .simple-text{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 }
 .simple-text span{
     color: #4e7ce9;
 }
 .text-plan{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 }
 .text-plan span{
     color: #ffffff;
 }
 .text-plan-info{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     color: #ffffff;
     font-size: 20px;
     text-align: justify;
@@ -250,11 +278,11 @@ body{
     margin-bottom: 79px;
 }
 .text-media{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 18px;
 }
 .text-small{
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
     font-size: 12px;
 }
 .iphone-xs{
@@ -302,7 +330,7 @@ body{
     border-radius: 50px;
     color: #473c41;
     background-color: #fff;
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     box-shadow: none!important;
     font-size: 14px;
     text-align: center!important;
@@ -374,7 +402,7 @@ body{
 }
 #accordion a{
     color: #212529;
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
 }
 #accordion .list-group-item.list-group-item-action.active,#accordion .list-group-item.list-group-item-action:hover{
     color: #089df3;
@@ -506,7 +534,7 @@ body{
     content: url('../../../assets/public/dashboard/icons/blanco/confi.png');
 }
 #accordion h6 {
-    font-family: 'Raleway-Bold';
+    font-family: 'Montserrat-Bold';
 }
 .logo-lanube img{
     width: 220px!important;
@@ -528,7 +556,7 @@ body{
     color: #000000;
 }
 .container_main .container h3{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size:30px;
     color: #000000;
     letter-spacing: 2px;
@@ -830,12 +858,12 @@ section.section-registro{
 #accordionLanding .card-header,#accordionLandingMovil .card-header{
     background-color: #ffffff;
     border-bottom: 4px solid #dbdce0;
-    font-family: 'Raleway-Bold';
+    font-family: 'Montserrat-Bold';
 }
 #accordionLanding .card-body,#accordionLandingMovil .card-body{
     background-color: #fcfcfc;
     color:#666666;
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 16px;
     letter-spacing: 2px;
 }
@@ -912,7 +940,7 @@ footer a{
     text-decoration: none!important;
 }
 footer a p{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 11px;
     text-transform: uppercase;
     color: #ffffff;
@@ -925,7 +953,7 @@ footer a i:hover{
     color: #7bd7f3;
 }
 footer span{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 10px;
     color: #ffffff;
 }
@@ -986,15 +1014,15 @@ div.nube-background-aqua{
     margin-bottom: 30px;
 }
 .text-title{
-    font-family: 'Lato-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 16px;
 }
 .text-subtitle{
-    font-family: 'Lato-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 13px;
 }
 section.container_main label,section.container_main input{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 14px;
 }
 section.container_main input,section.container_main select{
@@ -1005,14 +1033,14 @@ section.container_main label{
     color: #000000;
 }
 .btn-padding-private{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 12px;
     background-color: #297ded;
     color: #ffffff;
     padding: 11px 74px;
 }
 .btn-private{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 12px;
     padding: 11px 21px;
     background-color: #297ded;
@@ -1022,11 +1050,11 @@ section.container_main label{
     text-decoration: none!important;
 }
 section.container_main h4{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 20px;
 }
 section.container_main h6{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 14px;
     color: #686868;
 }
@@ -1034,7 +1062,7 @@ section.container_main .input-group-text{
     line-height: 0.5;
 }
 .text-p-card{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     font-size: 13px;
     color: #686868;
 }
@@ -1045,7 +1073,7 @@ section.container_main .input-group-text{
     color: #297ded;
 }
 .card-works span{
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
     color: #3a3a3a;
     margin: 0px;
     font-size: 11px;
@@ -1056,7 +1084,7 @@ section.container_main .input-group-text{
     letter-spacing: 2px;
 }
 .btn-plan-actuality{
-    font-family: 'Raleway-Bold'!important;
+    font-family: 'Montserrat-Bold'!important;
     font-size: 13px!important;
     letter-spacing: 2px!important;
     color: #ffffff!important;
@@ -1065,7 +1093,7 @@ section.container_main .input-group-text{
     background-color:#297ded ;
 }
 #my-plan .btn-plan-actuality{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     letter-spacing: 1px!important;
     color: #ffffff!important;
     text-transform: uppercase;
@@ -1078,13 +1106,13 @@ section.container_main .input-group-text{
 }
 
 .text-day-plan{
-    font-family: 'Raleway-Bold';
+    font-family: 'Montserrat-Bold';
     color: #ffc40b;
     font-size: 16px;
     letter-spacing: 2px;
 }
 .card-informative h6{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     color: #3a3a3a!important;
     font-size: 15px!important;
     letter-spacing: 3px!important;
@@ -1096,13 +1124,13 @@ section.container_main .input-group-text{
     font-size: 11px;
 }
 .text-price-plan{
-    font-family: 'Raleway-Light';
+    font-family: 'Montserrat-Light';
     color: #1b1b1b;
     font-size: 90px;
 
 }
 .text-price-plan span{
-    font-family: 'Raleway-Regular';
+    font-family: 'Montserrat-Regular';
     color: #a5abaf;
     font-size: 17px;
 }
@@ -1114,24 +1142,24 @@ section.container_main .input-group-text{
     color: #1b1b1b!important;
 }
 h3.text-plan-card{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 28px!important;
     color: #2a2a2a!important;
     letter-spacing: 1px!important;
     border-bottom: 0!important;
 }
 h3.text-plan-card span{
-    font-family: 'Raleway-ExtraBold'!important;
+    font-family: 'Montserrat-ExtraBold'!important;
     font-size: 28px!important;
 }
 .text-content-plan-card{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 13px!important;
     color: #454545;
     min-height: 155px;
 }
 .text-plan-selection{
-    font-family: 'Raleway-Bold'!important;
+    font-family: 'Montserrat-Bold'!important;
     font-size: 18px!important;
     letter-spacing: 4px!important;
     text-transform: uppercase!important;
@@ -1145,7 +1173,7 @@ h3.text-plan-card span{
     color: #297ded!important;
 }
 .text-plan-renova{
-    font-family: 'Raleway-Medium'!important;
+    font-family: 'Montserrat-Medium'!important;
     font-size: 11px!important;
     letter-spacing: 3px!important;
     text-transform: uppercase!important;
@@ -1156,31 +1184,31 @@ h3.text-plan-card span{
     margin: 0;
 }
 .text-zone-pay{
-    font-family: 'Raleway-Medium'!important;
+    font-family: 'Montserrat-Medium'!important;
     font-size: 16px!important;
     letter-spacing: 2px!important;
 }
 .container_main .card-works h5{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 16px!important;
     letter-spacing: 2px!important;
     text-transform: uppercase!important;
     color: #3a3a3a!important;
 }
 .text-card-zone-pay{
-    font-size: 'Raleway-Light';
+    font-size: 'Montserrat-Light';
     color: #297ded;
     font-size: 12px;
     letter-spacing: 1px;
 }
 button.prueba_bold.activar{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 12px!important;
     letter-spacing: 2px!important;
     padding: 12px 50px;
 }
 button.prueba_bold.desactivar{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 12px!important;
     background-color: #919191;
     border-color: #919191;
@@ -1188,7 +1216,7 @@ button.prueba_bold.desactivar{
     padding: 12px 50px;
 }
 .text-methods-subtitle{
-    font-family: 'Raleway-Medium'!important;
+    font-family: 'Montserrat-Medium'!important;
     font-size: 14px!important;
     letter-spacing: 2px!important;
     color: #3a3a3a!important;
@@ -1199,13 +1227,13 @@ button.prueba_bold.desactivar{
     border-color: #e6e6e6!important;
 }
 .label-search{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 14px!important;
     color: #292929!important;
 }
 .table thead th{
     border-bottom:0px solid transparent;
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 14px!important;
     color: #3b3b3b!important;
     border-top:0px;
@@ -1214,7 +1242,7 @@ button.prueba_bold.desactivar{
 .table td{
     border-bottom:1px solid #dee2e6;
     border-top:0px;
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 14px!important;
     color: #3b3b3b!important;
 }
@@ -1222,12 +1250,12 @@ button.prueba_bold.desactivar{
     color: #3b3b3b!important;
 }
 .btn-private-danger{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 12px;
     padding: 8px 17px;
 }
 .btn-private-selecction{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 12px;
     background-color: #297ded;
     color: #ffffff;
@@ -1243,7 +1271,7 @@ button.prueba_bold.desactivar{
     width: 100%;
 }
 .text-template{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 14px;
     color: #515151;
     text-transform: uppercase;
@@ -1255,27 +1283,27 @@ button.prueba_bold.desactivar{
     font-size: 12px!important;
 }
 .text-template-model{
-    font-family: 'Raleway-Medium'!important;
+    font-family: 'Montserrat-Medium'!important;
     font-size: 18px!important;
     color: #292929;
 }
 .select-template{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 14px!important;
     color: #292929;
 }
 .visit-store{
-    font-family: 'Lato-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 16px!important;
     text-decoration: none!important;
 }
 .text-url{
-    font-family: 'Lato-Light'!important;
+    font-family: 'Montserrat-Light'!important;
     font-size: 16px!important;
     color: #c6dcfa!important;
 }
 .text-session{
-    font-family: 'Lato-Light'!important;
+    font-family: 'Montserrat-Light'!important;
     font-size: 14px!important;
     /* color: #c6dcfa!important; */
 }
@@ -1345,7 +1373,7 @@ button.prueba_bold.desactivar{
 .text-plan-selection-name{
     position: relative;
     z-index: 9999;
-    font-family: 'Raleway-Bold';
+    font-family: 'Montserrat-Bold';
     text-transform: uppercase;
     color: #000;
     font-size: 21px!important;
@@ -1362,13 +1390,13 @@ button.prueba_bold.desactivar{
     margin-top: 20px;
 }
 .text-content-plan-card-home{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 13px!important;
     color: #454545;
     min-height: 154px;
 }
 .text-content-plan-card-home-flex{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 13px!important;
     color: #454545;
     min-height: 125px;
@@ -1437,7 +1465,7 @@ button.prueba_bold.desactivar{
     background-image: url('../../public/nubes/nubetop.png');
 }
 .btn-prueba-outline{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 12px;
     letter-spacing: 2px;
     padding: 9px 28px;
@@ -1562,7 +1590,7 @@ div.card.aft-subSubcategory::after
     height: 19px;
     color: white;
     text-align: center;
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
     font-size: 12px;
     letter-spacing: 2px;
     padding: 2px;
@@ -1577,7 +1605,7 @@ div.card.aft-subSubcategory::after
     height: 19px;
     color: white;
     text-align: center;
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
     font-size: 12px;
     letter-spacing: 2px;
     padding: 2px;
@@ -1589,11 +1617,11 @@ div.card.aft-subSubcategory::after
 }
 .matriz-excel{
     font-size: 13px;
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     color: #666666;
 }
 .variations{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 14px;
 }
 .nav-item:hover,.nav-item.active{
@@ -1812,7 +1840,7 @@ img.tam-icon{
 }
 
 #section_planes .table thead th{
-    font-family: 'Raleway-SemiBold'!important;
+    font-family: 'Montserrat-SemiBold'!important;
     font-size: 14px!important;
     color: #fff!important;
     border-top:0px;
@@ -1824,12 +1852,12 @@ img.tam-icon{
 #section_planes .table td{
     border-bottom:1px solid #fff;
     border-top:0px;
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 14px!important;
     color: #fff!important;
 }
 .btn-detail-plan,.btn-plan-list{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 1px;
     padding: 9px 28px;
@@ -2001,7 +2029,7 @@ color: #c1b8b8;
 }
 
 .price-igv{
-    font-family: 'Raleway-Regular'!important;
+    font-family: 'Montserrat-Regular'!important;
     font-size: 13px!important;
     color: #454545;
 }
@@ -2059,19 +2087,19 @@ section.section-registrado{
 }
 /* fonts template*/
 @font-face{
-    font-family: "Indie Flower";
+    font-family: "Montserrat";
     src: url("../fonts_templates/IndieFlower-Regular.ttf");
-}
-@font-face{
-    font-family: "Lato";
-    src: url("../fonts_templates/Lato-Regular.ttf");
 }
 @font-face{
     font-family: "Montserrat";
     src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face{
-    font-family: "Open Sans";
+    font-family: "Montserrat";
+    src: url("../fonts_templates/Montserrat-Regular.ttf");
+}
+@font-face{
+    font-family: "Montserrat";
     src: url("../fonts_templates/OpenSans-Regular.ttf");
 }
 @font-face{
@@ -2083,12 +2111,12 @@ section.section-registrado{
     src: url("../fonts_templates/PottaOne-Regular.ttf");
 }
 @font-face{
-    font-family: "Raleway";
-    src: url("../fonts_templates/Raleway-Regular.ttf");
+    font-family: "Montserrat";
+    src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face{
-    font-family: "Roboto";
-    src: url("../fonts_templates/Roboto-Regular.ttf");
+    font-family: "Montserrat";
+    src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face{
     font-family: "Shadows Into Light";
@@ -2241,7 +2269,7 @@ input[type="color"]{
     box-shadow: -1px 2px 3px #929292;
 }
 #template{
-    font-family: 'Lato-Regular';
+    font-family: 'Montserrat-Regular';
 }
 #template footer{
     background-color: #151515;
@@ -2590,10 +2618,10 @@ a.goog-te-menu-value span{
 }
 a.goog-te-menu-value span:hover, a.goog-te-menu-value{
     text-decoration: none !important;
-    /* font-family: "Raleway-Regular"; */
+    /* font-family: "Montserrat-Regular"; */
 }
 span.language-select{
-    font-family: "Raleway-Regular";
+    font-family: "Montserrat-Regular";
 }
 a.goog-te-menu-value{
     font-size: 15px;
@@ -2834,7 +2862,7 @@ a.close-video-home:active{
 }
 .time-read-tutorial{
     font-size: 14px;
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     margin-bottom: 10px;
     color: #3e3e3e;
 }

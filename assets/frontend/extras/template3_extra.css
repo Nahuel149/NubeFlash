@@ -1,19 +1,19 @@
 /* Fonts */
 @font-face {
   font-family: "Montserrat-Regular";
-  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: "Montserrat-Medium";
-  src: url("../fonts/montserrat/Montserrat-Medium.ttf");
+  src: url("../fonts/Montserrat/Montserrat-Medium.ttf");
 }
 @font-face {
   font-family: "Montserrat-Light";
-  src: url("../fonts/montserrat/Montserrat-Light.ttf");
+  src: url("../fonts/Montserrat/Montserrat-Light.ttf");
 }
 @font-face {
   font-family: "Montserrat-SemiBold";
-  src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
+  src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
 @font-face {
   font-family: "MyriadPro-Regular";
@@ -22,19 +22,19 @@
 /*--------------------*/
 /* fonts template*/
 @font-face {
-  font-family: "Indie Flower";
+  font-family: "Montserrat";
   src: url("../fonts_templates/IndieFlower-Regular.ttf");
 }
 @font-face {
-  font-family: "Lato";
-  src: url("../fonts_templates/Lato-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Montserrat";
   src: url("../fonts_templates/OpenSans-Regular.ttf");
 }
 @font-face {
@@ -46,12 +46,12 @@
   src: url("../fonts_templates/PottaOne-Regular.ttf");
 }
 @font-face {
-  font-family: "Raleway";
-  src: url("../fonts_templates/Raleway-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts_templates/Roboto-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: "Shadows Into Light";
@@ -98,40 +98,40 @@ body {
 }
 
 .lista-izquierda li a {
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 12px;
   letter-spacing: 2px;
   color: #2f2f2f !important;
 }
 
 .prueba {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 12px;
   letter-spacing: 1px;
   padding: 9px 28px;
 }
 
 .btn-categoria {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 12px;
   letter-spacing: 1px;
   padding: 13px 36px;
 }
 
 .prueba_bold {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 12px;
   letter-spacing: 4px;
   padding: 13px 36px;
 }
 
 .text-ecommerce {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   margin-bottom: -0.5rem;
 }
 
 .text-nivel {
-  font-family: "Raleway-Light";
+  font-family: "Montserrat-Light";
 }
 
 .lista-izquierda {
@@ -180,7 +180,7 @@ body {
 }
 
 #simple h5 {
-  font-family: "Raleway-SemiBold";
+  font-family: "Montserrat-SemiBold";
   letter-spacing: 4px;
   text-transform: uppercase;
   font-size: 14px;
@@ -188,13 +188,13 @@ body {
 }
 
 #simple p {
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
   color: #4e4e4e;
   font-size: 14px;
 }
 
 .simple-text {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
 }
 
 .simple-text span {
@@ -202,7 +202,7 @@ body {
 }
 
 .text-plan {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
 }
 
 .text-plan span {
@@ -302,12 +302,12 @@ body {
 }
 
 .text-media {
-  font-family: "Raleway-SemiBold";
+  font-family: "Montserrat-SemiBold";
   font-size: 18px;
 }
 
 .text-small {
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 12px;
 }
 
@@ -364,7 +364,7 @@ body {
   border-radius: 50px;
   color: #473c41;
   background-color: #fff;
-  font-family: "Raleway-SemiBold";
+  font-family: "Montserrat-SemiBold";
   box-shadow: none !important;
 }
 
@@ -381,7 +381,7 @@ body {
 
 #accordion a {
   color: #212529;
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
 }
 
 #accordion .list-group-item.list-group-item-action.active,
@@ -439,7 +439,7 @@ body {
 }
 
 .container_main .container h3 {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 25px;
   color: #4e4e4e;
 }

@@ -22,19 +22,19 @@
 /*--------------------*/
 /* fonts template*/
 @font-face {
-  font-family: "Indie Flower";
+  font-family: "Montserrat";
   src: url("../fonts_templates/IndieFlower-Regular.ttf");
 }
 @font-face {
-  font-family: "Lato";
-  src: url("../fonts_templates/Lato-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Montserrat";
   src: url("../fonts_templates/OpenSans-Regular.ttf");
 }
 @font-face {
@@ -46,12 +46,12 @@
   src: url("../fonts_templates/PottaOne-Regular.ttf");
 }
 @font-face {
-  font-family: "Raleway";
-  src: url("../fonts_templates/Raleway-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
-  font-family: "Roboto";
-  src: url("../fonts_templates/Roboto-Regular.ttf");
+  font-family: "Montserrat";
+  src: url("../fonts_templates/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: "Shadows Into Light";
@@ -144,12 +144,12 @@ body {
 }
 
 .text-media {
-  font-family: "Raleway-SemiBold";
+  font-family: "Montserrat-SemiBold";
   font-size: 18px;
 }
 
 .text-small {
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 12px;
 }
 
@@ -206,7 +206,7 @@ body {
   border-radius: 50px;
   color: #473c41;
   background-color: #fff;
-  font-family: "Raleway-SemiBold";
+  font-family: "Montserrat-SemiBold";
   box-shadow: none !important;
 }
 
@@ -223,7 +223,7 @@ body {
 
 #accordion a {
   color: #212529;
-  font-family: "Raleway-Medium";
+  font-family: "Montserrat-Medium";
 }
 
 #accordion .list-group-item.list-group-item-action.active,
@@ -281,7 +281,7 @@ body {
 }
 
 .container_main .container h3 {
-  font-family: "Raleway-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 25px;
   color: #4e4e4e;
 }

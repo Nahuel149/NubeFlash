@@ -1,50 +1,50 @@
 /* Fonts */
 @font-face{
-    font-family: "Raleway-Regular";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
 }
 @font-face{
-    font-family: "Raleway-Medium";
-    src: url("../fonts/raleway/Raleway-Medium.ttf");
-}
-@font-face{
-    font-family: "Raleway-Bold";
-    src: url("../fonts/raleway/Raleway-Bold.ttf");
-}
-@font-face{
-    font-family: "Raleway-SemiBold";
-    src: url("../fonts/raleway/Raleway-SemiBold.ttf");
-}
-@font-face{
-    font-family: "Raleway-Regular";
-    src: url("../fonts/raleway/Raleway-Regular.ttf");
-}
-@font-face{
-    font-family: "Raleway-Light";
-    src: url("../fonts/raleway/Raleway-Light.ttf");
+    font-family: "Montserrat-Medium";
+    src: url("../fonts/Montserrat/Montserrat-Medium.ttf");
 }
 @font-face{
     font-family: "Montserrat-Bold";
-    src: url("../fonts/Montserrat-Bold.ttf");
-}
-@font-face{
-    font-family: "Lato-Light";
-    src: url("../fonts/lato/Lato-Light.ttf");
-}
-@font-face{
-    font-family: "Lato-Regular";
-    src: url("../fonts/lato/Lato-Regular.ttf");
+    src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
 }
 @font-face{
     font-family: "Montserrat-SemiBold";
-    src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
+    src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
 }
 @font-face{
-    font-family: "Raleway-ExtraBold";
-    src: url("../fonts/raleway/Raleway-ExtraBold.ttf");
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
+}
+@font-face{
+    font-family: "Montserrat-Light";
+    src: url("../fonts/Montserrat/Montserrat-Light.ttf");
+}
+@font-face{
+    font-family: "Montserrat-Bold";
+    src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
+}
+@font-face{
+    font-family: "Montserrat-Light";
+    src: url("../fonts/Montserrat/Montserrat-Light.ttf");
+}
+@font-face{
+    font-family: "Montserrat-Regular";
+    src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
+}
+@font-face{
+    font-family: "Montserrat-SemiBold";
+    src: url("../fonts/Montserrat/Montserrat-SemiBold.ttf");
+}
+@font-face{
+    font-family: "Montserrat-ExtraBold";
+    src: url("../fonts/Montserrat/Montserrat-ExtraBold.ttf");
 }
 body{
-    font-family: "Raleway-Regular";
+    font-family: "Montserrat-Regular";
 }
 /*--------------------*/
 section.login,section.register,section.dashboard{
@@ -75,14 +75,14 @@ section.login,section.register,section.dashboard{
     padding-right: 5px;
 }
 .list-left li a {
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
     font-size: 12px;
     letter-spacing: 2px;
     color: #2f2f2f!important;
     text-transform: uppercase;
 }
 .btn-login{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 2px;
     padding: 9px 28px;
@@ -112,7 +112,7 @@ footer a {
     text-decoration: none!important;
 }
 footer a p {
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -120,7 +120,7 @@ footer a p {
     margin: 0;
 }
 footer span {
-    font-family: 'Raleway-Medium';
+    font-family: 'Montserrat-Medium';
     font-size: 12px;
     letter-spacing: 1px;
     color: #4572dd;
@@ -136,7 +136,7 @@ footer a i:hover {
 /* --------------------------------------------- */
 /* section contact */
 .simple-text {
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 }
 .complement_contactos {
     background-color: #4e7de9;
@@ -203,7 +203,7 @@ footer a i:hover {
 #accordionLanding .card-header, #accordionLandingMovil .card-header {
     background-color: #ffffff;
     border-bottom: 4px solid #dbdce0;
-    font-family: 'Raleway-Bold';
+    font-family: 'Montserrat-Bold';
 }
 #accordionLanding .card-header.active button, #accordionLandingMovil .card-header.active button, #accordionLanding .card-header button.btn-link:hover, #accordionLandingMovil .card-header button.btn-link:hover {
     color: #4e7ce9;
@@ -232,7 +232,7 @@ footer a i:hover {
 #accordionLanding .card-body, #accordionLandingMovil .card-body {
     background-color: #fcfcfc;
     color: #666666;
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
     font-size: 16px;
     letter-spacing: 2px;
 }
@@ -279,7 +279,7 @@ footer a i:hover {
     padding-bottom: 120px;
 }
 .btn-boton{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 3px;
     padding: 9px 34px;
@@ -295,14 +295,14 @@ footer a i:hover {
 }
 #section_price .simple-text span{
     color: #ffffff;
-    font-family: "Raleway-Regular";
+    font-family: "Montserrat-Regular";
 }
 #section_price h2,#section_price h4{
     letter-spacing: 4px;
 }
 #section_price p{
     letter-spacing: 1px;
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 12px;
 }
 /* --------------------------------------------- */
@@ -315,7 +315,7 @@ footer a i:hover {
 #section_service .simple-text{
     color: #4f7aed;
     letter-spacing: 3px;
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 }
 #section_service .card{
     border-radius: 7%;
@@ -327,13 +327,13 @@ footer a i:hover {
 }
 #section_service .card-title{
     color: #ffffff;
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     letter-spacing: 6px;
     font-size: 28px;
 }
 #section_service .card p{
     color: #ffffff;
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
     font-size: 14px;
     letter-spacing: 1px;
 }
@@ -350,7 +350,7 @@ footer a i:hover {
     margin-bottom: 1.5rem;
 }
 #section_aboutus p{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 14px;
     line-height: 1.8;
     margin-bottom: 1.5rem;
@@ -395,14 +395,14 @@ footer a i:hover {
     padding: 60px 0;
 }
 .section_aboutus_second .text-bold-nube{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 22px;
     letter-spacing: 4px;
     color: #333;
     margin-bottom: 1.5rem;
 }
 .section_aboutus_second .text-semibold-nube{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 18px;
     line-height: 1.6;
     color: #444;
@@ -413,54 +413,124 @@ footer a i:hover {
 /* section price */
 #section_home{
     background-color: #ffffff;
-    padding-top: 150px;
-    padding-bottom: 150px;
-    overflow: visible;
+    padding: 80px 0;
     position: relative;
+    overflow: hidden;
 }
 .text-weight-100{
-    font-family: "Raleway-Regular"!important;
+    font-family: "Montserrat-Regular"!important;
     letter-spacing: 1px;
 }
 #section_home h4{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 32px;
 }
 /* --------------------------------------------- */
-.superman-lanube-fondo{
-    background-image:url('../../public/fondo_nube.png');
-    background-size: contain;
-    height: 450px;
+/* Enhanced Hero Section */
+
+.hero-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    position: absolute;
-    right: 0;
-    top: -85px;
-    background-repeat: no-repeat;
-    z-index: 1;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 5%;
 }
-.superman-lanube{
-    background-image:url('../../public/SUPER FLASH.png');
-    background-size: contain;
-    height: 400px;
-    width: 100%;
+
+.hero-image {
+    max-width: 438px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.flying-text {
     position: absolute;
-    right: 0;
-    top: -35px;
-    background-repeat: no-repeat;
+    top: -83px;
+    right: -70px;
+    max-width: 313px;
     z-index: 2;
 }
-.superman-lanube-text{
-    background-image:url('../../public/tus-envios-vuelan.png');
-    background-size: contain;
-    height: 95px;
-    width: 320px;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: -150px;
-    left: 247px;
-    z-index: 3;
+
+.hero-image:hover {
+    transform: translateY(-5px);
 }
-.card-title::before{
+
+@media (max-width: 767px) {
+    .hero-image-container {
+        margin: 0 auto;
+        margin-top: 5%;
+        justify-content: center;
+    }
+    
+    .hero-image {
+        max-width: 350px;
+    }
+    
+    .flying-text {
+        max-width: 250px;
+        top: -62px;
+        right: -70px;
+    }
+    
+    #section_home .col-md-6 {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero-image-container {
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    
+    .hero-image {
+        max-width: 400px;
+    }
+    
+    .flying-text {
+        max-width: 275px;
+        top: -66px;
+        right: -70px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hero-image-container {
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    
+    .hero-image {
+        max-width: 420px;
+    }
+    
+    .flying-text {
+        max-width: 288px;
+        top: -75px;
+        right: -70px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hero-image-container {
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    
+    .hero-image {
+        max-width: 438px;
+    }
+    
+    .flying-text {
+        max-width: 313px;
+        top: -83px;
+        right: -70px;
+    }
+}
+
+/* Other Styles */
+.card-title::before {
     content: " ";
     background-image: url("../../public/rayo_color.png");
     height: 132px;
@@ -489,17 +559,17 @@ footer a i:hover {
 }
 .delivery_time .text-bold-nube{
     font-size: 21px;
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 }
 .delivery_time .text-bold-nube-second{
     font-size: 10px;
     text-transform: uppercase;
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
 
 }
 .delivery_time .text-medium-nube{
     font-size: 18px;
-    font-family: "Raleway-Medium";
+    font-family: "Montserrat-Medium";
 }
 #section_price table{
     border: 1px solid #ffffff;
@@ -508,7 +578,7 @@ footer a i:hover {
     border:none;
 }
 #section_price .table thead th{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 17px;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -526,12 +596,12 @@ footer a i:hover {
     text-align: center;
 }
 #section_price .table tbody td:first-child{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 14px;
     letter-spacing: 1px;
 }
 #section_price .table tbody td{
-    font-family: "Raleway-SemiBold";
+    font-family: "Montserrat-SemiBold";
     font-size: 17px;
     letter-spacing: 1px;
 }
@@ -542,51 +612,15 @@ footer a i:hover {
     background-color: #5b85e9;
 }
 @media (min-width:1200px) and (max-width:1410px){
-    .superman-lanube-fondo{
-        height: 450px;
-        width: 100%;
-        right: 100px;
-        top: -115px;
-    }
-    .superman-lanube{
-        height: 380px;
-        width: 100%;
-        right: 100px;
-        top: -55px;
-    }
-    .superman-lanube-text{
-        height: 95px;
-        width: 320px;
-        top: -168px;
-        left: 269px;
-    }
     #section_home{
-        padding-top: 200px!important;
-        padding-bottom: 170px!important;
+        padding-top: 80px!important;
+        padding-bottom: 80px!important;
     }
 }
 @media (max-width:991px){
     #section_home{
-        padding-top: 3rem!important;
-        padding-bottom: 4rem!important;
-    }
-    .superman-lanube-fondo{
-        height: 250px;
-        width: 300px;
-        top: -4px;
-        right: 100px;
-    }
-    .superman-lanube{
-        height: 250px;
-        width: 280px;
-        top: 30px;
-        right: 124px;
-    }
-    .superman-lanube-text{
-        height: 60px;
-        width: 200px;
-        top: -30px;
-        left: 142px;
+        padding-top: 60px!important;
+        padding-bottom: 60px!important;
     }
     #accordionLanding .card-header button, #accordionLandingMovil .card-header button{
         font-size: 12px;
@@ -596,28 +630,6 @@ footer a i:hover {
     }
 }
 @media (min-width:992px) and (max-width:1199px){
-    .superman-lanube-fondo{
-        height: 350px;
-        width: 428px;
-        top: -25px;
-        right: 100px;
-    }
-    .superman-lanube{
-        height: 310px;
-        width: 400px;
-        top: 37px;
-        right: 128px;
-    }
-    .superman-lanube-text{
-        height: 70px;
-        width: 261px;
-        top: -70px;
-        left: 220px;
-    }
-    #section_home{
-        padding-top: 100px!important;
-        padding-bottom: 170px!important;
-    }
     #accordionLanding .card-header button, #accordionLandingMovil .card-header button{
         font-size: 15px;
     }
@@ -638,12 +650,6 @@ footer a i:hover {
     }
 }
 
-@media (min-width: 1200px) {
-    .card-title::before{
-        left: 0;
-    }
-}
-
 @media (max-width:1440px){
     .servicie-person{
         transform: translate(122px,23%);
@@ -661,7 +667,7 @@ section.documentacion{
     padding-top: 100px;
 }
 .btn.prueba{
-    font-family: "Raleway-Bold";
+    font-family: "Montserrat-Bold";
     font-size: 12px;
     letter-spacing: 1px;
     padding: 9px 28px;
@@ -704,7 +710,7 @@ section.register h3{
     margin-bottom: 25px;
 }
 .text-secondary-size{
-    font-family: "Raleway-SemiBold"!important;
+    font-family: "Montserrat-SemiBold"!important;
     font-size: 14px!important;
     text-transform: uppercase!important;
     letter-spacing: 4px!important;
@@ -724,7 +730,7 @@ section.register h3{
     }
 }
 #section_location h5,#section_location p{
-    font-family: 'Raleway-SemiBold';
+    font-family: 'Montserrat-SemiBold';
 }
 #section_location p{
     margin-bottom: 2.7rem;
@@ -762,5 +768,76 @@ section.register h3{
     
     .section_aboutus_second .text-semibold-nube {
         font-size: 16px;
+    }
+}
+@media (max-width: 767px) {
+    #section_home .col-md-6 {
+        text-align: center;
+    }
+    
+    #section_home .col-md-6.text-right {
+        justify-content: center;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Hero section styles */
+    #section_home {
+        padding: 60px 0;
+    }
+    
+    .hero-image {
+        max-width: 320px;
+    }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Hero section styles */
+    #section_home {
+        padding: 80px 0;
+    }
+    
+    .hero-image {
+        max-width: 330px;
+    }
+}
+
+/* Mobile font optimizations */
+@media only screen and (max-width: 768px) {
+    body {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .simple-text {
+        letter-spacing: -0.02em;
+        word-spacing: 0.05em;
+    }
+    
+    /* Improve text rendering in King Size text */
+    h1, h2, h3, h4, h5, h6, .simple-text {
+        text-shadow: 0 0 1px rgba(0,0,0,0.01);
+    }
+}
+
+/* Small mobile screens */
+@media only screen and (max-width: 380px) {
+    html {
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Ensure text doesn't get too small */
+    body, p, div, span {
+        font-size: 14px;
+    }
+    
+    /* Improve clarity for titles */
+    .simple-text, .text-plan {
+        font-weight: 600 !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-title::before{
+        left: 0;
     }
 }

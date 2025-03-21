@@ -1,11 +1,12 @@
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <!-- Core CSS -->
 <link href="<?php echo base_url() ?>assets/backend/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/frontend/style.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/frontend/extras/dashboard.css?v=<?php echo uniqid() ?>" rel="stylesheet">
+<link href="<?php echo base_url() ?>assets/frontend/extras/montserrat.css?v=<?php echo uniqid() ?>" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/backend/css/backend.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/frontend/extras/Linearicons-Free/Web Font/style.css" rel="stylesheet">

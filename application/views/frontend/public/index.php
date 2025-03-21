@@ -3,35 +3,22 @@
         .navbar .logo-img {
             max-width: 195px;
         }
-
-        .superman-lanube {
-            height: 190px;
-            width: 215px;
-            top: 0;
-            right: 0;
-            left: 0;
-            margin: 0 auto 10px;
+        
+        /* Give better spacing to the hero section */
+        #section_home {
+            padding: 20px 0;
+            overflow: hidden;
         }
-
-        .superman-lanube-fondo {
-            height: 200px;
-            width: 190px;
-            top: 0px;
-            right: 0;
-            left: 0;
-            margin: auto;
+        
+        /* Center content on mobile */
+        #section_home .col-md-6 {
+            text-align: center;
         }
     }
 </style>
 <section id="section_home">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 position-relative d-block d-md-none d-sm-block d-lg-none">
-                <div class="superman-lanube-fondo position-relative"></div>
-                <div class="superman-lanube wow bounceInLeft"></div>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-md-6">
                 <h4 class="simple-text text-weight-100 mb-0">Envía desde una pulsera</h4>
                 <h4 class="simple-text mb-0">hasta una cama</h4>
@@ -39,17 +26,17 @@
                 <br />
                 <a class="btn btn-primary rounded-pill btn-boton" href="<?php echo base_url('registro') ?>">EMPIEZA HOY</a>
             </div>
-            <div class="col-md-6 position-relative">
-                <div class="superman-lanube-text d-none d-md-block d-sm-none d-lg-block"></div>
-                <div class="superman-lanube-fondo d-none d-md-block d-sm-none d-lg-block"></div>
-                <div class="superman-lanube d-none d-md-block d-sm-none d-lg-block wow bounceInLeft"></div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <div class="hero-image-container">
+                    <img src="<?php echo base_url('assets/public/tus-envios-vuelan.png') ?>" class="img-fluid flying-text" alt="Tus envíos vuelan">
+                    <img src="<?php echo base_url('assets/public/SUPER FLASH.png') ?>" class="img-fluid hero-image" alt="Delivery superhero">
+                </div>
             </div>
         </div>
     </div>
 </section>
 <section id="section_aboutus">
     <div class="container pb-5">
-        <h2 class="simple-text pt-4">NUBE FLASH</h2>
         <div class="row">
             <div class="col-md-6 pt-5 wow bounceInUp">
                 <div class="row">
@@ -73,23 +60,9 @@
                         <img src="<?php echo base_url('assets/public/rayos.png') ?>" height="43px">
                     </div>
                     <div class="col-lg-11 col-md-11 col-sm-11 col-11">
-                        <p>En el polo logístico contamos con 12 bodegas de 50 m2 en una superficie total de 600 m2.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                        <img src="<?php echo base_url('assets/public/rayos.png') ?>" height="43px">
-                    </div>
-                    <div class="col-lg-11 col-md-11 col-sm-11 col-11">
                         <p>Aquí es donde se ejecutan todos los procesos de recepción de mercancías provenientes de los fabricantes hasta el domicilio del consumidor final.</p>
                     </div>
                 </div>
-                <!-- <ul class="list-unstyled">
-                    <li class="mb-3">Ofrecemos herramientas integradas de eCommerce. Desde su creación para la venta en línea, hasta el proceso de entrega de cualquier producto.</li>
-                    <li class="mb-3">Nuesto centro de distribución funciona también como nave de conexión entre importador, vendedor y comprador. Aquí es donde se desarrollan todas las actividades logísticas desde el Online al Offline.</li>
-                    <li class="mb-3">En el polo logístico contamos con 12 bodegas de 50 m2 en una superficie total de 600 m2.</li>
-                    <li class="mb-3">Aquí es donde se ejecutan todos los procesos de recepción de mercancías provenientes de los fabricantes hasta el domicilio del consumidor final.</li>
-                </ul> -->
             </div>
             <div class="col-md-6 align-self-center text-center wow bounceInUp">
                 <img class="img-fluid" src="<?php echo base_url('assets/public/enterprice.png') ?>" alt="">
@@ -97,43 +70,57 @@
         </div>
         <br />
     </div>
-    <div class="section_aboutus_second">
-        <div class="container wow bounceInUp">
-            <h6 class="text-bold-nube text-center">NUESTRA MISIÓN</h6>
-            <br>
-            <h6 class="text-semibold-nube text-center">Ser la empresa de logística de eCommerce y distribución de paquetes más efeciente de los últimos tiempos.</h6>
+</section>
+<section id="section_mision" style="background-color: #f2d046; padding: 80px 0 100px 0; margin: 0; display: flex; align-items: center;">
+    <div class="container wow bounceInUp">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-2 col-lg-2 d-flex justify-content-end align-items-center">
+                <img src="<?php echo base_url('assets/public/flash_amarillo.png') ?>" class="img-fluid" style="max-height: 120px;">
+            </div>
+            <div class="col-md-10 col-lg-10">
+                <h6 class="text-bold-nube text-center" style="font-size: 120%; letter-spacing: 5px;">NUESTRA MISIÓN</h6>
+                <br>
+                <h6 class="text-semibold-nube text-center" style="font-size: 120%; max-width: 90%; margin: 0 auto;">Ser la empresa de logística de eCommerce y distribución de paquetes, más eficiente de los últimos tiempos.</h6>
+            </div>
         </div>
     </div>
 </section>
-<section id="section_service">
+<section id="section_service" style="margin-top: -1px; position: relative; padding-bottom: 220px;">
     <div class="container">
-        <h2 class="simple-text text-center mb-5 wow bounceInUp">SERVICIOS</h2>
+        <h2 class="simple-text text-center mb-5 wow bounceInUp" style="color: #4e7de9;">SERVICIOS</h2>
         <br />
-        <div class="row">
-            <div class="col-lg-5 offset-lg-1 pb-4 wow bounceInUp">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title position-relative text-center mt-3">ENVÍOS</h4>
-                        <br />
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-5 mb-4 wow bounceInUp">
+                <div class="card h-100" style="background-color: #4e7de9; border-radius: 15px; border: none; position: relative; overflow: visible;">
+                    <div style="position: absolute; top: 20px; left: 30px; z-index: 5;">
+                        <img src="<?php echo base_url('assets/public/flash_naranja.png') ?>" style="width: 80px; height: auto; transform: rotate(-5deg);">
+                    </div>
+                    <div class="card-body" style="padding: 60px 30px 30px 30px;">
+                        <h4 class="card-title text-center" style="color: white; letter-spacing: 3px; font-weight: 600; margin-bottom: 20px;">ENVÍOS</h4>
                         <p class="text-white">Entrega de paquetes a domicilio dentro de Montevideo</p>
-                        <p class="text-white">Una visita, con entrega bajo firma, presentado cédula de identidad de la persona responsable (mayor de edad). Si no pudiera entregarse, se advertirá al receptor mediante un aviso de visita informando que dispone de 5 dias corridos para recoger el envío en el centro logístico</p>
+                        <p class="text-white">Una visita, con entrega bajo firma, presentando cédula de identidad de la persona responsable (mayor de edad).</p>
+                        <p class="text-white">Si no pudiera entregarse, se advertirá al receptor mediante un aviso de visita informando que dispone de 5 días corridos para recoger el envío en el centro logístico.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 wow bounceInUp position-relative">
-                <div class="servicie-person d-lg-block d-md-none d-none d-sm-none"></div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title position-relative text-center mt-3">BOXES</h4>
-                        <br />
-                        <p class="text-white">Bodegas para acopio de mercaderia con la posibilidad de alquilar desde 10 m2</p>
+            <div class="col-lg-5 col-md-5 mb-4 wow bounceInUp position-relative">
+                <div class="card h-100" style="background-color: #4e7de9; border-radius: 15px; border: none; position: relative; overflow: visible;">
+                    <div style="position: absolute; top: 20px; left: 30px; z-index: 5;">
+                        <img src="<?php echo base_url('assets/public/flash_naranja.png') ?>" style="width: 80px; height: auto; transform: rotate(-5deg);">
+                    </div>
+                    <div class="card-body" style="padding: 60px 30px 30px 30px;">
+                        <h4 class="card-title text-center" style="color: white; letter-spacing: 3px; font-weight: 600; margin-bottom: 20px;">BOXES</h4>
+                        <p class="text-white">Bodegas para acopio de mercadería con la posibilidad de alquilar desde 10 m2</p>
                         <p class="text-white">Control de stock</p>
                         <p class="text-white">Con vigilancia 24hs. servicio interno de video vigilancia</p>
-                        <p class="text-white">Responsabilidad sobre mercaderia</p>
+                        <p class="text-white">Responsabilidad sobre mercadería</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div style="position: absolute; bottom: -30px; right: 4%; z-index: 10;">
+        <img src="<?php echo base_url('assets/public/ENTREGA_CAMION.png') ?>" style="max-width: 700px; height: auto;">
     </div>
 </section>
 <section id="section_price">
@@ -223,9 +210,9 @@
                     <h2 class="simple-text">DONDE ESTAMOS</h2>
                     <br />
                     <h5>CENTRO LOGÍSTICO</h5>
-                    <p>Centro de distribución ubicado en el centro geográfico de Montevideo (Damaso Antonio Larrañaga 3581 esq. Rep. De Corea), será el lugar de entrada y salida de los vehículos, centro tecnológico de atención a clientes y lugar de acopio.</p>
+                    <p style="font-size: 16px;">Centro de distribución ubicado en el centro geográfico de Montevideo (Damaso Antonio Larrañaga 3581 esq. Rep. De Corea), será el lugar de entrada y salida de los vehículos, centro tecnológico de atención a clientes y lugar de acopio.</p>
                     <h5>NAVES</h5>
-                    <p>Espacios de 50 m2 para acopio de pedidos y posibilidad alquiler de espacio. Con vigilancia 24hs, servicio interno de video vigilancia.</p>
+                    <p style="font-size: 16px;">Espacios de 50 m2 para acopio de pedidos y posibilidad alquiler de espacio. Con vigilancia 24hs, servicio interno de video vigilancia.</p>
                 </div>
                 <div class="col-md-6 align-self-center text-center wow bounceInRight">
                     <img class="img-fluid" src="<?php echo base_url('assets/public/location.png') ?>" alt="">

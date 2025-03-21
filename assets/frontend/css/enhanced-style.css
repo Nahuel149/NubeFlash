@@ -11,7 +11,7 @@
     --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-medium: 0 8px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
-    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-primary: 'Montserrat', sans-serif;
 }
 
 /* Base Typography */

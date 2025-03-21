@@ -1,0 +1,48 @@
+/* Responsive styles for NubeFlash */
+
+/* Home page specific styles */
+@media only screen and (max-width: 768px) {
+    /* Reduce font size for the hero section */
+    .simple-text {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 5px !important;
+    }
+    
+    /* King Size text */
+    .simple-text:last-child {
+        font-size: 28px !important;
+        font-weight: 700 !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    /* Further reduce text size */
+    .simple-text {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* King Size text */
+    .simple-text:last-child {
+        font-size: 26px !important;
+    }
+    
+    /* Login/Register button */
+    .btn {
+        padding: 10px 15px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    /* Very small screens */
+    .simple-text {
+        font-size: 18px !important;
+    }
+    
+    /* King Size text */
+    .simple-text:last-child {
+        font-size: 24px !important;
+    }
+}

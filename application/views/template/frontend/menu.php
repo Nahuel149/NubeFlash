@@ -34,6 +34,19 @@
           <li <?php if($this->uri->segment(1) == '#' || $this->uri->segment(1) == '#') echo 'class="active"'; ?>>
             <a class="nav-link" href="<?php echo base_url('apis-documentacion') ?>">APIDocs</a>
           </li>
+          <!-- Login/Register button for mobile -->
+          <li class="d-block d-lg-none mt-2">
+          <?php if($this->session->userdata('customer_id')){ ?>
+            <div class="d-flex flex-column">
+              <a href="<?php echo base_url('dashboard'); ?>" class="btn btn-primary rounded-pill mb-2"><?php echo $this->session->userdata('name'); ?></a>
+              <a href="<?php echo base_url('logout'); ?>" class="btn btn-danger rounded-pill">Log out</a>
+            </div>
+          <?php }else{ ?>
+            <div class="">
+              <button data-target="#modalLogin" data-toggle="modal" class="btn btn-primary btn-login rounded-pill">LOGIN&nbsp;/&nbsp;REGISTRATE</button>
+            </div>
+          <?php } ?>
+          </li>
         </ul>
       </div>
       <div class="autentication d-none d-lg-flex align-items-center mr-2">
@@ -53,18 +66,4 @@
     </div>
    
   </nav>
-  <div class="autentication d-flex d-lg-none align-items-center" style="place-content:center">
-    <?php if($this->session->userdata('customer_id')){ ?>
-      <div class="">
-        <a href="<?php echo base_url('dashboard'); ?>" class="btn btn-primary rounded-pill"><?php echo $this->session->userdata('name'); ?></a>
-      </div>
-      <div class="pl-2">
-        <a href="<?php echo base_url('logout'); ?>" class="btn btn-danger rounded-pill">Log out</a>
-      </div>
-    <?php }else{ ?>
-      <div class="">
-        <button data-target="#modalLogin" data-toggle="modal" class="btn btn-primary btn-login rounded-pill">LOGIN / REGISTRATE</button>
-      </div>
-    <?php } ?>
-  </div>
 

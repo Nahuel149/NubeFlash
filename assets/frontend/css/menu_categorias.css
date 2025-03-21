@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,200);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,200);
 #cssmenu_categorias,
 #cssmenu_categorias ul,
 #cssmenu_categorias ul li,
@@ -16,7 +16,7 @@
 }
 #cssmenu_categorias {
   width: 100%;
-  font-family: Raleway, sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #ffffff;
   margin-top: 20px;
   margin-right: 0px;
