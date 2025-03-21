@@ -3,6 +3,36 @@
 ## Overview
 NubeFlash is a shipping management system that provides REST API endpoints for calculating shipping costs and managing orders. The system supports various package sizes and shipping methods, with pricing based on weight and volume.
 
+## UI Enhancements (May 2024)
+
+### Hero Section Improvements
+The website has undergone significant visual enhancements to improve user experience and create a more appealing design:
+
+#### Flying Character Image
+- Centered the flying character image to align with the "About Us" section below
+- Adjusted size and position for better visual hierarchy
+- Implemented responsive sizing for different screen widths
+- Added subtle hover animation with transform: translateY(-5px)
+
+#### "Tus Envíos Vuelan" Text Image
+- Positioned the text image to complement the flying character
+- Fine-tuned placement coordinates for optimal viewing
+- Implemented responsive positioning across all breakpoints
+
+#### Responsive Design Optimization
+- Created dedicated media queries for different screen sizes (767px, 768-991px, 992-1199px, 1200px+)
+- Adjusted column structures for better alignment (col-md-6)
+- Enhanced mobile experience with centered content
+- Ensured consistent spacing and margins across all device sizes
+
+#### CSS Structure Improvements
+- Consolidated duplicate CSS rules
+- Organized hero section styles under `.hero-image-container` namespace
+- Created consistent responsive breakpoints
+- Improved overall code maintainability
+
+These UI enhancements create a more cohesive visual experience while maintaining the site's functionality and performance.
+
 ## Project Description
 
 NubeFlash is a comprehensive web application designed for managing shipping logistics, customer data, and order processing. It features a robust back-end API system and a user-friendly administrative interface.
