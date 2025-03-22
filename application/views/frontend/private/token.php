@@ -33,7 +33,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <small class="text-muted">Creado: <?php echo date('d/m/Y H:i', strtotime($token->created_at)) ?></small>
+                                <small class="text-muted">Creado: <?php 
+                                    // Create a DateTime object with UTC timezone (assumption for database time)
+                                    $date = new DateTime($token->created_at, new DateTimeZone('UTC'));
+                                    // Convert to the application's timezone
+                                    $date->setTimezone(new DateTimeZone('America/Buenos_Aires'));
+                                    // Format and display
+                                    echo $date->format('d/m/Y H:i');
+                                ?></small>
                             </div>
                         <?php endforeach; ?>
                     </div>

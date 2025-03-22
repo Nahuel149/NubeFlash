@@ -16,7 +16,7 @@
   <div style="flex-grow:1">
     <div class="d-flex align-items-center w-100">
         <div class="d-flex">
-            <a style="font-size: 25px;padding:0px;" data-action="collapse" class="navbar-brand text-white d-none d-sm-none d-md-none d-lg-block" href="#"><img src="<?php echo base_url('assets/public/dashboard/menu_nube.png') ?>" width="40"></a>
+            <a style="font-size: 25px;padding:0px;" data-action="collapse" class="navbar-brand text-white d-none d-sm-none d-md-none d-lg-block" href="#"><img src="<?php echo base_url('assets/public/dashboard/menu_nube.png') ?>" width="80"></a>
         </div>
         <div class="d-flex flex-column w-75">
             <span class="text-title text-white"><?php if (isset($image_header) && $image_header) {?>
@@ -44,11 +44,11 @@
 </nav>
 <div class="collapse navbar-collapse d-lg-none" id="navbarNav" style="background-color:#297ded;">
 	<ul class="navbar-nav">
-		<!-- <li class="nav-item <?php echo($this->uri->segment(1) == 'dashboard' ? 'active':''); ?>">
+		<li class="nav-item <?php echo($this->uri->segment(1) == 'dashboard' ? 'active':''); ?>">
 			<a class="nav-link" href="<?php echo(base_url('dashboard')); ?>">
-				<img src="<?php echo(base_url('assets/public/dashboard/icons/blanco/174-star.png')); ?>" class="tam-icon icon-plan" id="icon_perfil"/>&nbsp;&nbsp; Dashboard
+				<img src="<?php echo(base_url('assets/public/dashboard/icons/blanco/174-star.png')); ?>" class="tam-icon icon-plan"/>&nbsp;&nbsp; Dashboard
 			</a>
-		</li> -->
+		</li>
 		<li class="nav-item <?php echo($this->uri->segment(1) == 'mi-perfil' ? 'active':''); ?>">
 			<a class="nav-link" href="<?php echo(base_url('mi-perfil')); ?>">
 				<img src="<?php echo(base_url('assets/public/dashboard/icons/blanco/099-medal.png')); ?>" class="tam-icon icon-pago"/>&nbsp;&nbsp; Perfil

@@ -1,6 +1,6 @@
 <section class="container_main">
     <div class="container">
-        <h3>Bienvenido a LaNube <?php echo $this->session->userdata('name'); ?></h3>
+        <h3>Bienvenido a Nube Flash <?php echo $this->session->userdata('name'); ?></h3>
         <p class="text-muted">Accedé rápidamente a todas las funciones de tu cuenta</p>
         <br>
         <div class="row">
@@ -9,7 +9,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="<?php echo base_url('assets/public/dashboard/icons/color/099-medal.png'); ?>" class="tam-icon icon-pago mr-2" alt="Perfil"/>
+                            <img src="<?php echo base_url('assets/public/flash_naranja.png'); ?>" class="tam-icon mr-2" alt="Perfil"/>
                             <h5 class="card-title mb-0">Mi Perfil</h5>
                         </div>
                         <p class="card-text">Gestiona tu información personal y datos de contacto.</p>
@@ -23,7 +23,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="<?php echo base_url('assets/public/dashboard/icons/color/073-dollar-symbol-2.png'); ?>" class="tam-icon icon-venta mr-2" alt="Pedidos"/>
+                            <img src="<?php echo base_url('assets/public/flash_naranja.png'); ?>" class="tam-icon mr-2" alt="Pedidos"/>
                             <h5 class="card-title mb-0">Mis Pedidos</h5>
                         </div>
                         <p class="card-text">Revisa y gestiona todos tus pedidos en un solo lugar.</p>
@@ -37,7 +37,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <img src="<?php echo base_url('assets/public/dashboard/icons/color/confi.png'); ?>" class="tam-icon icon-config mr-2" alt="Token"/>
+                            <img src="<?php echo base_url('assets/public/flash_naranja.png'); ?>" class="tam-icon mr-2" alt="Token"/>
                             <h5 class="card-title mb-0">Tokens de API</h5>
                         </div>
                         <p class="card-text">Administra tus tokens de integración para la API.</p>
