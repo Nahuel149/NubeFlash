@@ -1045,6 +1045,9 @@ class Ion_auth_model extends CI_Model
 		if ($this->config->item('track_login_attempts', 'ion_auth')) {
 			$ip_address = $this->_prepare_ip($this->input->ip_address());
 
+			// Use query builder's set_charset method to ensure consistent collation
+			$this->db->query("SET NAMES utf8mb4 COLLATE utf8mb4_general_ci");
+			
 			$this->db->where(array('ip_address' => $ip_address, 'login' => $identity));
 			// Purge obsolete login attempts
 			$this->db->or_where('time <', time() - $expire_period, FALSE);
