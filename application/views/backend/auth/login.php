@@ -179,7 +179,7 @@
             </a>
 
             <div class="text-muted">
-                &copy; <?php echo date('Y'); ?> NubeFlash
+                &copy; 2021 NubeFlash
             </div>
         <?php echo form_close(); ?>
     </div>
