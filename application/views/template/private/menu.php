@@ -9,13 +9,13 @@
     </div>
     <p></p>
   </div>
-  <!-- <div class="card">
+  <div class="card">
     <div class="card-header <?php echo($this->uri->segment(1) == 'dashboard' ? 'active':''); ?>">
       <a class="card-link text-menu" href="<?php echo(base_url('dashboard')); ?>">
         <img src="<?php echo(base_url('assets/public/dashboard/icons/color/174-star.png')); ?>" class="tam-icon icon-plan"/>&nbsp;&nbsp; Dashboard
       </a>
     </div>
-  </div> -->
+  </div>
   <div class="card">
     <div class="card-header <?php echo($this->uri->segment(1) == 'mi-perfil' ? 'active':''); ?>">
       <a class="card-link text-menu" href="<?php echo(base_url('mi-perfil')); ?>">

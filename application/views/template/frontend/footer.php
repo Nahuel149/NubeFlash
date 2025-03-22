@@ -1,92 +1,107 @@
-<a href="#" id="back-to-top" class="btn btn-warning btn-lg btn-back-top"><i class="fa fa-angle-up"></i></a>
-<footer>
-	<div class="container pl-5 pr-5 pl-lg-2 pr-lg-2">
-		<div class="row align-items-center">
-			<div class="col-lg-4 d-none d-sm-none d-lg-block d-md-none">
-				<div class="col-md-12">
-					<img height="50" src="<?php echo base_url('assets/public/logo_nube.png') ?>">
+<!-- Back to top button -->
+<a href="#" id="back-to-top" class="btn btn-primary rounded-circle shadow-sm" aria-label="Back to top"><i class="fa fa-angle-up"></i></a>
+
+<!-- Footer -->
+<footer class="footer-section py-5">
+	<div class="container">
+		<!-- Main Footer Content -->
+		<div class="row mb-4">
+			<!-- Logo and About Column -->
+			<div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+				<div class="footer-logo mb-3">
+					<img height="60" src="<?php echo base_url('assets/public/logo_nube.png') ?>" alt="NubeFlash Logo">
 				</div>
-			</div>
-			<div class="col-md-12 d-block d-sm-block d-lg-none d-md-block">
-				<div class="col-md-12 text-center">
-					<img height="50" src="<?php echo base_url('assets/public/logo_nube.png') ?>">
-				</div>
-			</div>
-			<div class="col-lg-4 d-none d-sm-none d-lg-block d-md-none mt-1">
-				<div class="row">
-					<div class="col-md-6">
-						<a href="<?php echo base_url('politicas-pdf') ?>" target="_blank"><p>política de privacidad</p></a>
-					</div>
-					<div class="col-md-6">
-						<a href="<?php echo base_url('terminos-pdf') ?>" target="_blank"><p>términos y condiciones</p></a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 text-center d-block d-sm-block d-lg-none d-md-block mt-2">
-				<div class="col-md-12 mt-2">
-					<a href="<?php echo base_url('politicas-pdf') ?>" target="_blank"><p>política de privacidad</p></a>
-				</div>
-				<div class="col-md-12">
-					<a href="<?php echo base_url('terminos-pdf') ?>" target="_blank"><p>términos y condiciones</p></a>
-				</div>
-			</div>
-			<div class="col-lg-3 text-center d-none d-sm-none d-lg-block d-md-none align-self-center">
-				<ul class="list-inline m-0">
+				<p class="text-secondary mb-3">Ofrecemos herramientas integradas de eCommerce y servicios de entrega rápida. Desde su creación para la venta en línea, hasta el proceso de entrega de cualquier producto.</p>
+				<!-- Social Media Links -->
+				<ul class="list-inline social-links mb-0">
 					<?php if (!empty($configuracion['facebook'])): ?>
-						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['facebook'] ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
+						<li class="list-inline-item me-3">
+							<a href="<?php echo $configuracion['facebook'] ?>" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
 						</li>
 					<?php endif ?>
 					<?php if (!empty($configuracion['instagram'])): ?>
-						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['instagram'] ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+						<li class="list-inline-item me-3">
+							<a href="<?php echo $configuracion['instagram'] ?>" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
 						</li>
 					<?php endif ?>
 					<?php if (!empty($configuracion['youtube'])): ?>
 						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['youtube'] ?>" target="_blank"><i class="fab fa-youtube"></i></a>
+							<a href="<?php echo $configuracion['youtube'] ?>" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
 						</li>
 					<?php endif ?>
 				</ul>
 			</div>
-			<div class="col-md-12 text-center d-block d-sm-block d-lg-none d-md-block mt-2">
-				<ul class="list-inline m-0">
-					<?php if (!empty($configuracion['facebook'])): ?>
-						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['facebook'] ?>" target="_blank"><i class="fab fa-facebook-f ml-0"></i></a>
-						</li>
-					<?php endif ?>
-					<?php if (!empty($configuracion['instagram'])): ?>
-						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['instagram'] ?>" target="_blank"><i class="fab fa-instagram"></i></a>
-						</li>
-					<?php endif ?>
-					<?php if (!empty($configuracion['youtube'])): ?>
-						<li class="list-inline-item">
-							<a href="<?php echo $configuracion['youtube'] ?>" target="_blank"><i class="fab fa-youtube"></i></a>
-						</li>
-					<?php endif ?>
+			
+			<!-- Quick Links Column -->
+			<div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-dark mb-4 footer-title">Enlaces rápidos</h5>
+				<ul class="list-unstyled footer-links">
+					<li class="mb-2"><a href="<?php echo base_url('index#section_aboutus') ?>">Sobre nosotros</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_service') ?>">Servicios</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_price') ?>">Precios</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_faqs') ?>">FAQs</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_contacto') ?>">Contacto</a></li>
 				</ul>
 			</div>
-			<div class="col-lg-1 col-md-12 p-0 text-center">
-				<span>&copy;<?php echo date('Y') ?> NubeFlash</span>
+			
+			<!-- Services Column -->
+			<div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+				<h5 class="text-dark mb-4 footer-title">Nuestros servicios</h5>
+				<ul class="list-unstyled footer-links">
+					<li class="mb-2"><a href="<?php echo base_url('index#section_service') ?>">Envíos</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_service') ?>">Boxes</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_location') ?>">Donde estamos</a></li>
+					<li class="mb-2"><a href="<?php echo base_url('index#section_delivery_time') ?>">Tiempos de entrega</a></li>
+				</ul>
+			</div>
+			
+			<!-- Contact Info Column -->
+			<div class="col-lg-3 col-md-6">
+				<h5 class="text-dark mb-4 footer-title">Información de contacto</h5>
+				<ul class="list-unstyled footer-links">
+					<li class="mb-2 d-flex align-items-start">
+						<i class="fas fa-map-marker-alt mt-1 me-2 text-primary"></i>
+						<span>Damaso Antonio Larrañaga 3581 esq. Rep. De Corea, Montevideo</span>
+					</li>
+					<li class="mb-2 d-flex align-items-center">
+						<i class="fas fa-phone-alt me-2 text-primary"></i>
+						<span>+598 XX XX XX XX</span>
+					</li>
+					<li class="mb-2 d-flex align-items-center">
+						<i class="fas fa-envelope me-2 text-primary"></i>
+						<span>info@nubeflash.com</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<!-- Legal Links -->
+		<div class="row footer-bottom pt-4 mt-4 border-top">
+			<div class="col-md-6 mb-2 mb-md-0">
+				<p class="mb-0 text-secondary">&copy; 2021 NUBE FLASH. All rights reserved.</p>
+			</div>
+			<div class="col-md-6 text-md-end">
+				<a href="<?php echo base_url('politicas-pdf') ?>" class="text-secondary me-3" target="_blank">Política de privacidad</a>
+				<a href="<?php echo base_url('terminos-pdf') ?>" class="text-secondary" target="_blank">Términos y condiciones</a>
 			</div>
 		</div>
 	</div>
 </footer>
+
+<!-- Login Modal -->
 <div id="modalLogin" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form method="post" action="#" onsubmit="submitLogin(event, this);">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-                    <input type="hidden" name="enviar_form" value="1" />
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form method="post" action="#" onsubmit="submitLogin(event, this);">
+				<div class="modal-header">
+					<h5 class="modal-title">Login</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+					<input type="hidden" name="enviar_form" value="1" />
 					<div class="form-group">
 						<label for="login-email">Usuario</label>
 						<input type="text" name="email" id="login-email" class="form-control" autocomplete="username" />
@@ -95,17 +110,122 @@
 						<label for="login-password">Contraseña</label>
 						<input type="password" name="password" id="login-password" class="form-control" autocomplete="current-password" />
 					</div>
-                    <div id="modalLoginMessage"></div>
+					<div id="modalLoginMessage"></div>
 					<div class="text-center">
 						<a href="<?php echo base_url('registro'); ?>">Registrarse</a>
 					</div>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <div class="col-md-12">
+				</div>
+				<div class="modal-footer justify-content-center">
+					<div class="col-md-12">
 						<button type="submit" class="btn btn-primary rounded-pill btn-block">Ingresar</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
+
+<style>
+/* Footer styling */
+.footer-section {
+	background-color: #ffffff;
+	color: #333;
+	font-family: var(--font-customize);
+	box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+}
+
+/* Back to top button */
+#back-to-top {
+	position: fixed;
+	right: 20px;
+	bottom: 30px;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 99;
+	background: var(--color-primary, #4e7de9);
+	border: none;
+}
+
+#back-to-top:hover {
+	background: #f2d046;
+}
+
+/* Footer elements styling */
+.footer-title {
+	position: relative;
+	padding-bottom: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 1.1rem;
+	color: #333;
+}
+
+.footer-title:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 40px;
+	height: 2px;
+	background-color: #4e7de9;
+}
+
+.footer-links li a {
+	color: #666;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	display: inline-block;
+}
+
+.footer-links li a:hover {
+	color: #4e7de9;
+	transform: translateX(5px);
+}
+
+.social-links li a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background-color: rgba(78, 125, 233, 0.1);
+	color: #4e7de9;
+	transition: all 0.3s ease;
+}
+
+.social-links li a:hover {
+	background-color: #4e7de9;
+	color: #fff;
+	transform: translateY(-3px);
+}
+
+.footer-bottom {
+	border-color: #e9ecef !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+	.footer-title {
+		margin-top: 1.5rem;
+	}
+	
+	.social-links {
+		margin-bottom: 1.5rem;
+	}
+	
+	.footer-bottom {
+		text-align: center;
+	}
+	
+	.col-md-6.text-md-end {
+		text-align: center !important;
+		margin-top: 1rem;
+	}
+}
+</style>

@@ -1,0 +1,5 @@
+---
+description: Code Globals guidelines
+globs: .tsx, .py, .php, .css, .html, .md, .ts, .env, .svg, .png
+---
+[rules.mdc](mdc:.cursor/rules/rules.mdc)

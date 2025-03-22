@@ -27,10 +27,50 @@ INSERT INTO `provinces` (`name`, `country_id`, `population`, `area`, `capital`, 
 ('Santiago', 3, 8125072, 15403, 'Santiago', 'Santiago', 'STG', 1),
 ('Valparaíso', 3, 1960170, 16396, 'Valparaíso', 'Valparaíso', 'VAL', 1),
 ('Concepción', 3, 2037414, 12145, 'Concepción', 'Concepción', 'CON', 1),
--- Uruguay
+-- Uruguay - Complete list of all 19 departments
 ('Montevideo', 4, 1381228, 530, 'Montevideo', 'Montevideo', 'MVD', 1),
 ('Canelones', 4, 520187, 4536, 'Canelones', 'Canelones', 'CAN', 1),
-('Maldonado', 4, 164300, 4793, 'Maldonado', 'Maldonado', 'MAL', 1);
+('Maldonado', 4, 164300, 4793, 'Maldonado', 'Maldonado', 'MAL', 1),
+('Artigas', 4, 73378, 11928, 'Artigas', 'Artigas', 'ART', 1),
+('Cerro Largo', 4, 84698, 13648, 'Melo', 'Melo', 'CL', 1),
+('Colonia', 4, 123203, 6106, 'Colonia del Sacramento', 'Colonia del Sacramento', 'COL', 1),
+('Durazno', 4, 57088, 11643, 'Durazno', 'Durazno', 'DUR', 1),
+('Flores', 4, 25050, 5144, 'Trinidad', 'Trinidad', 'FLO', 1),
+('Florida', 4, 67048, 10417, 'Florida', 'Florida', 'FLA', 1),
+('Lavalleja', 4, 58815, 10016, 'Minas', 'Minas', 'LAV', 1),
+('Paysandú', 4, 113124, 13922, 'Paysandú', 'Paysandú', 'PAY', 1),
+('Río Negro', 4, 54765, 9282, 'Fray Bentos', 'Fray Bentos', 'RN', 1),
+('Rivera', 4, 103493, 9370, 'Rivera', 'Rivera', 'RIV', 1),
+('Rocha', 4, 68088, 10551, 'Rocha', 'Rocha', 'ROC', 1),
+('Salto', 4, 124878, 14163, 'Salto', 'Salto', 'SAL', 1),
+('San José', 4, 108309, 4992, 'San José de Mayo', 'San José de Mayo', 'SJ', 1),
+('Soriano', 4, 82595, 9008, 'Mercedes', 'Mercedes', 'SOR', 1),
+('Tacuarembó', 4, 90053, 15438, 'Tacuarembó', 'Tacuarembó', 'TAC', 1),
+('Treinta y Tres', 4, 48134, 9529, 'Treinta y Tres', 'Treinta y Tres', 'TT', 1),
+-- Paraguay
+('Asunción', 5, 520737, 117, 'Asunción', 'Asunción', 'ASU', 1),
+('Central', 5, 1929834, 2465, 'Areguá', 'Areguá', 'CEN', 1),
+('Alto Paraná', 5, 736092, 14895, 'Ciudad del Este', 'Ciudad del Este', 'ALT', 1),
+-- Perú
+('Lima', 6, 9485405, 34802, 'Lima', 'Lima', 'LIM', 1),
+('Arequipa', 6, 1382730, 63345, 'Arequipa', 'Arequipa', 'ARE', 1),
+('Cusco', 6, 1205527, 71987, 'Cusco', 'Cusco', 'CUS', 1),
+-- Colombia
+('Cundinamarca', 7, 2792877, 24210, 'Bogotá', 'Bogotá', 'CUN', 1),
+('Antioquia', 7, 6407102, 63612, 'Medellín', 'Medellín', 'ANT', 1),
+('Valle del Cauca', 7, 4475886, 22140, 'Cali', 'Cali', 'VDC', 1),
+-- Ecuador
+('Pichincha', 8, 2576287, 9612, 'Quito', 'Quito', 'PIC', 1),
+('Guayas', 8, 3645483, 16741, 'Guayaquil', 'Guayaquil', 'GUA', 1),
+('Azuay', 8, 712127, 8639, 'Cuenca', 'Cuenca', 'AZU', 1),
+-- Bolivia
+('La Paz', 9, 2756989, 133985, 'La Paz', 'La Paz', 'LPZ', 1),
+('Santa Cruz', 9, 3224662, 370621, 'Santa Cruz de la Sierra', 'Santa Cruz de la Sierra', 'SCZ', 1),
+('Cochabamba', 9, 1758143, 55631, 'Cochabamba', 'Cochabamba', 'CBB', 1),
+-- Venezuela
+('Distrito Capital', 10, 1943901, 433, 'Caracas', 'Caracas', 'DC', 1),
+('Miranda', 10, 3194390, 7950, 'Los Teques', 'Los Teques', 'MIR', 1),
+('Zulia', 10, 3704404, 63100, 'Maracaibo', 'Maracaibo', 'ZUL', 1);
 
 -- Insert destinations with expanded coverage
 INSERT INTO `destinations` (`name`, `province_id`, `postal_code`, `active`) VALUES

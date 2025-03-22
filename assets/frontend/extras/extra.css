@@ -350,11 +350,11 @@ footer a i:hover {
     margin-bottom: 1.5rem;
 }
 #section_aboutus p{
-    font-family: "Montserrat-SemiBold";
-    font-size: 14px;
-    line-height: 1.8;
+    font-family: "Montserrat-Bold";
+    font-size: 16px;
+    line-height: 1.6;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: #333;
 }
 #section_aboutus .col-md-6.align-self-center img {
     max-width: 100%;
@@ -554,22 +554,28 @@ footer a i:hover {
     transform: translate(240px,23%);
     z-index: 5;
 }
-.text-second{
-    font-size: 12px;
+.text-second {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
 }
-.delivery_time .text-bold-nube{
+.delivery_time .text-bold-nube {
     font-size: 21px;
     font-family: "Montserrat-Bold";
+    margin-bottom: 5px;
 }
-.delivery_time .text-bold-nube-second{
-    font-size: 10px;
+.delivery_time .text-bold-nube-second {
+    font-size: 16px;
     text-transform: uppercase;
     font-family: "Montserrat-Bold";
-
+    line-height: 1.4;
+    margin-bottom: 10px;
 }
-.delivery_time .text-medium-nube{
-    font-size: 18px;
-    font-family: "Montserrat-Medium";
+.delivery_time .text-medium-nube {
+    font-size: 16px;
+    font-family: "Montserrat-Bold";
+    line-height: 1.5;
+    margin-bottom: 5px;
 }
 #section_price table{
     border: 1px solid #ffffff;

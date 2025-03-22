@@ -2,6 +2,8 @@
 application/cache/*
 application/logs/*
 !application/logs/index.html
+application/sessions/*
+!application/sessions/index.html
 
 
 # Configuration files with potential sensitive information
@@ -17,6 +19,7 @@ application/config/production/*
 .vscode/
 *.sublime-project
 *.sublime-workspace
+.pem
 
 # User uploaded content
 uploads/*
@@ -34,3 +37,11 @@ database.php
 *.tmp
 *.bak
 *.swp 
+
+# Cursor IDE specific files
+.cursorignore
+.cursorindexingignore
+reset-cursor-index.sh
+
+# Project documentation (internal only)
+rules.md 

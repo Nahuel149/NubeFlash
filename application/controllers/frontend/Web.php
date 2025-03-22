@@ -145,6 +145,9 @@ class Web extends CI_Controller {
 					if ($this->input->post('re-password') == $this->input->post('password')) {
 						$exists_email = $this->codegen_model->row('customers','*','email="'.$this->input->post('email').'" AND active="'.ACTIVE.'"');
 						if (!$exists_email) {
+							// Use the location field to store the manually entered destination
+							$location_text = $this->input->post('destination_text');
+							
 							$data = array(
 								'social_reason' => $this->input->post('social_reason'),
 								'fiscal_identifier' => $this->input->post('fiscal_identifier'),
@@ -154,7 +157,8 @@ class Web extends CI_Controller {
 								'password' => sha1($this->input->post('password')),
 								'country_id' => $this->input->post('country'),
 								'province_id' => $this->input->post('province'),
-								'destination_id' => $this->input->post('destination'),
+								'destination_id' => null, // Set to NULL since we're using a text field
+								'location' => $location_text // Use existing location field to store text input
 							);
 							
 							$customer = $this->customer->insert($data);
@@ -245,6 +249,23 @@ class Web extends CI_Controller {
 	public function contacto() {
 		// Verificar si es metodo post
 		if ($this->input->post()) {
+			// Validación del lado del servidor
+			$this->load->library('form_validation');
+			
+			// Configurar reglas de validación
+			$this->form_validation->set_rules('name', 'Nombre', 'trim|required|max_length[50]');
+			$this->form_validation->set_rules('enterprise', 'Empresa', 'trim|required|max_length[50]');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+			$this->form_validation->set_rules('telephone', 'Teléfono', 'trim|required|callback_validate_phone');
+			$this->form_validation->set_rules('message', 'Mensaje', 'trim|required|max_length[1000]');
+			
+			// Si la validación falla
+			if ($this->form_validation->run() == FALSE) {
+				$this->session->set_flashdata('error', validation_errors());
+				redirect(base_url('index#section_contacto'), 'refresh');
+				return;
+			}
+		
 			// Verificamos la validación del captcha
 			if ($this->input->post('g-recaptcha-response')) {
 				// Verificar captcha
@@ -488,5 +509,15 @@ class Web extends CI_Controller {
 		header('Cache-Control: public, max-age=86400');
 		readfile($file_path);
 		exit;
+	}
+
+	// Función de validación personalizada para el teléfono
+	public function validate_phone($phone) {
+		// El teléfono solo puede contener números y un + al inicio
+		if (!preg_match('/^\+?[0-9]+$/', $phone)) {
+			$this->form_validation->set_message('validate_phone', 'El campo {field} solo puede contener números y un signo + al inicio.');
+			return FALSE;
+		}
+		return TRUE;
 	}
 }

@@ -147,7 +147,7 @@ body{
     background-repeat: no-repeat;
     height: 361px;
     width: 28%;
-    background-size: contain;
+    background-size: 44%;
     top: 0;
     right: 0;
     transform: translate(0px, 116px);
@@ -269,7 +269,7 @@ body{
     background: url("../../public/Arrow.png");
     height: 10px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 44%;
 }
 .second{
     padding: 2.25rem;
@@ -371,7 +371,7 @@ body{
     background-position: center;
     /* height: 480px; */
     background-color: transparent;
-    background-size: contain;
+    background-size: 44%;
     border: transparent;
 }
 .nube-bg-left{
@@ -380,7 +380,7 @@ body{
     background-position: center;
     /* height: 430px; */
     background-color: transparent;
-    background-size: contain;
+    background-size: 44%;
     border: transparent;
 }
 .nube-bg-right{
@@ -389,7 +389,7 @@ body{
     background-position: center;
     /* height: 430px; */
     background-color: transparent;
-    background-size: contain;
+    background-size: 44%;
     border: transparent;
 }
 .btn-plan:hover,.btn-plan:active{
@@ -506,10 +506,18 @@ body{
 }
 #accordion .card-header.active a img.icon-plan{
     content: url('../../../assets/public/dashboard/icons/blanco/174-star.png');
+    width: auto;
+    height: auto;
+    max-width: 24px;
+    max-height: 24px;
 }
 #accordion .card-header:hover a img.icon-plan
 {
     content: url('../../../assets/public/dashboard/icons/blanco/174-star.png');
+    width: auto;
+    height: auto;
+    max-width: 24px;
+    max-height: 24px;
 }
 #accordion .card-header:hover a img.icon-escool,
 #accordion .card-header.active a img.icon-escool
@@ -788,7 +796,7 @@ section.section-registro{
 /* .nave{
     position: absolute;
     background-image: url('../../public/animate/cohete.png');
-    background-size: contain;
+    background-size: 44%;
     background-repeat: no-repeat;
     height: 100%;
     width: 196px;
@@ -799,7 +807,7 @@ section.section-registro{
 .nave-relative{
     position: relative;
     background-image: url('../../public/animate/cohete.png');
-    background-size: contain;
+    background-size: 44%;
     background-repeat: no-repeat;
     height: 300px;
     background-position: center;
@@ -810,7 +818,7 @@ section.section-registro{
     background-image: url('../../public/nubes/bg-dots.png');
     /* min-height: 250px; */
     /* top: -51px; */
-    background-size: contain;
+    background-size: 44%;
     padding-bottom: 20px;
 }
 #section_contactos{
@@ -818,7 +826,7 @@ section.section-registro{
     /* background-image: url('../../public/nubes/bg_nube.png'); */
     /* min-height: 450px; */
     /* background-color: #ffffff;
-    background-size: contain;
+    background-size: 44%;
     background-repeat: no-repeat; */
     /* top: -51px; */
 }
@@ -963,7 +971,7 @@ footer span{
     height: 104px;
     width: 163px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 44%;
     left: 0;
     /* bottom: 0; */
     transform: translateY(-125px);
@@ -988,7 +996,7 @@ footer span{
 #section_funcion{
     background-image: url('../../public/nubes/bg-dots.png');
     background-color: #ffffff;
-    background-size: contain;
+    background-size: 44%;
     padding-bottom: 100px;
 }
 div#footer-private{
@@ -1006,11 +1014,11 @@ div#footer-private{
 div.nube-background-aqua{
     background-image: url('../../public/SUPER FLASH.png');
     width: 100%;
-    background-size: contain;
+    background-size: 44%;
     background-repeat: no-repeat;
     height: 300px;
     opacity: 0.3;
-    background-position: right;
+    background-position: center;
     margin-bottom: 30px;
 }
 .text-title{
@@ -2403,7 +2411,7 @@ input[type="color"]{
 .fondoLogin{
     background: url('../../public/Login/RESPONSIVE.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 44%;
     background-position: center;
     margin-bottom: 135px;
     z-index: 500;
@@ -2865,4 +2873,20 @@ a.close-video-home:active{
     font-family: "Montserrat-Bold";
     margin-bottom: 10px;
     color: #3e3e3e;
+}
+
+/* Apply consistent sizing to all menu icons */
+#accordion img.tam-icon {
+    width: auto;
+    height: auto;
+    max-width: 24px;
+    max-height: 24px;
+}
+
+/* Fix mobile menu icon sizing as well */
+#navbarNav img.tam-icon {
+    width: auto;
+    height: auto;
+    max-width: 24px;
+    max-height: 24px;
 }

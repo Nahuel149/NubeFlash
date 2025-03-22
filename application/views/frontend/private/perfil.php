@@ -1,6 +1,6 @@
 <section class="container_main">
     <div class="container">
-        <h3>Información de usuario <span data-toggle="tooltip" data-placement="bottom" title="Puedes actualizar tu información." class="text-warning far fa-question-circle"></span></h3>
+        <h3>Información de usuario</h3>
         <br>
         <div class="card mb-5">
             <div class="card-body">

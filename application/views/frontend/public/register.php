@@ -72,9 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label for="register-destination">Localidad <span class="required">*</span></label>
-                            <select id="register-destination" disabled required name="destination" class="form-control" autocomplete="address-level2">
-                                <option value="">Seleccione una Localidad</option>
-                            </select>
+                            <input id="register-destination" required type="text" name="destination_text" class="form-control" placeholder="Ingrese su localidad o barrio" autocomplete="address-level2" />
                         </div>
                         <div class="form-group">
                             <label for="register-contact">Persona de Contacto <span class="required">*</span></label>
@@ -91,6 +89,9 @@
                         <div class="form-group">
                             <label for="register-password">Contraseña <span class="required">*</span></label>
                             <input id="register-password" required type="password" name="password" class="form-control" placeholder="contraseña" autocomplete="new-password" />
+                            <small class="form-text text-muted">
+                                La contraseña debe tener al menos 8 caracteres, 1 letra mayúscula y 1 símbolo (por ejemplo, !@#$%^&*).
+                            </small>
                         </div>
                         <div class="form-group">
                             <label for="register-password-confirm">Repetir contraseña <span class="required">*</span></label>
@@ -161,35 +162,6 @@
 
     $("#register-province").change(function (e) { 
         e.preventDefault();
-        var province_id = $(this).val();
-        $.ajax({
-            type: "POST",
-            url: base_url + 'frontend/ajax/getDestination',
-            data: {
-                province_id: province_id,
-                '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
-            },
-            dataType: "JSON",
-            beforeSend: function () {
-                $("#register-destination").attr('disabled','');
-                $("#register-destination").html('<option value="">Seleccione una Localidad</option>');
-                $("#postal_code").val('');
-            },
-        }).done(function (data) {
-            var htm = "<option value=''>Seleccione una Localidad</option>";
-            if(data.success)
-            {
-                $.each(data.destinations, function (index, value) { 
-                     htm += "<option value='"+value.destination_id+"' data-code='"+value.postal_code+"'>"+value.name+"</option>";
-                });
-                $("#register-destination").html(htm);
-                $("#register-destination").removeAttr('disabled');
-            }
-            console.log("success")
-        }).fail(function () {
-            console.log("error")
-        }).always(function () {
-            console.log("complete")
-        });
+        $("#register-destination").removeAttr('disabled');
     });
 </script>

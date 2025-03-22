@@ -246,20 +246,20 @@
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-11">
                             <h5 class="mb-0 text-bold-nube">Franjas horarias optativas para clientes</h5>
-                            <p class="mb-0 text-medium-nube">De lunes a viernes 9 a 12hs / 13 a 17hs / 18 a 21hs Sábados 9 a 12hs</p>
-                            <p class="mb-0 text-second">El cliente puede optar por una entrega en 24hs a un costo mayor</p>
+                            <p class="text-medium-nube">De lunes a viernes 9 a 12hs / 13 a 17hs / 18 a 21hs</p>
+                            <p class="text-medium-nube">Sábados 9 a 12hs</p>
+                            <p class="text-second">El cliente puede optar por una entrega en 24hs a un costo mayor</p>
                         </div>
                     </div>
-                    <br />
                     <div class="row">
                         <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                             <img src="<?php echo base_url('assets/public/rayos.png') ?>" height="43px">
                         </div>
                         <div class="col-lg-11 col-md-11 col-sm-11 col-11">
-                            <p class="text-bold-nube-second">En cualquiera de los casos, si el retiro no se efectúa en el plazo de los 5 días corridos, el paquete es devuelto al remitente</p>
+                            <p class="text-bold-nube-second">EN CUALQUIERA DE LOS CASOS, SI EL RETIRO NO SE EFECTÚA EN EL PLAZO DE LOS 5 DÍAS CORRIDOS, EL PAQUETE ES DEVUELTO AL REMITENTE</p>
                         </div>
                     </div>
-                    <div class="col-md-6 d-lg-none d-md-none d-sm-blocl d-block align-self-center text-center">
+                    <div class="col-md-6 d-lg-none d-md-none d-sm-block d-block align-self-center text-center">
                         <img class="img-fluid" src="<?php echo base_url('assets/public/delivery.png') ?>">
                     </div>
                     <br />
@@ -285,73 +285,246 @@
         </div>
     </div>   
 </section> -->
-<section id="section_faqs">
-    <div class="container wow bounceInUp">
-        <h2 class="text-center simple-text d-lg-block d-none d-sm-none d-md-block question-toggle" style="cursor:pointer"><span>FAQS</span></h2>
-        <h2 class="text-center simple-text d-lg-none d-block d-sm-block d-md-none question-toggle" style="cursor:pointer"><span>FAQS</span></h2>
-        <div class="accordion pt-0 pb-5 pl-5 pr-5  d-lg-block d-none d-sm-none d-md-block">
-            <div class="accordion pt-5 pb-5 pl-5 pr-5 question-toggle-content" id="accordionLanding">
-                <?php foreach ($preguntas_frecuentes as $key => $pregunta) { ?>
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse<?php echo $pregunta->id_faq ?>" aria-expanded="true" aria-controls="collapse<?php echo $pregunta->id_faq ?>">
-                                    <span class="number_question"><?php echo $key + 1 ?></span><span class="ml-4"><?php echo $pregunta->question ?></span>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapse<?php echo $pregunta->id_faq ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionLanding">
-                            <div class="card-body">
-                                <div class="col-md-12 answer-padding"><?php echo ($pregunta->answer) ?></div>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+<section id="section_faqs" class="faq-section py-5">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="simple-text mb-4">PREGUNTAS FRECUENTES</h2>
+                <p class="text-muted">Encuentra respuestas a las dudas más comunes sobre nuestros servicios de envío y almacenamiento.</p>
             </div>
         </div>
-        <div class="d-lg-none d-block d-sm-block d-md-none">
-            <div class="accordion pt-5 pb-5 pl-5 pr-5 question-toggle-content" id="accordionLandingMovil">
-                <?php foreach ($preguntas_frecuentes as $key => $pregunta) { ?>
-                    <?php if ($key < 7) { ?>
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse<?php echo $pregunta->id_faq ?>" aria-expanded="true" aria-controls="collapse<?php echo $pregunta->id_faq ?>">
-                                        <span class="number_question"><?php echo $key + 1 ?></span><span class="ml-4"><?php echo $pregunta->question ?></span>
-                                    </button>
-                                </h2>
+        
+        <!-- Desktop/Tablet FAQ Accordion -->
+        <div class="row justify-content-center d-none d-md-flex">
+            <div class="col-lg-10">
+                <div class="accordion faq-accordion" id="accordionLanding">
+                    <?php foreach ($preguntas_frecuentes as $key => $pregunta) { ?>
+                        <div class="faq-item">
+                            <div class="faq-header" id="heading<?php echo $pregunta->id_faq ?>">
+                                <button class="faq-button collapsed" type="button" data-toggle="collapse" data-target="#collapse<?php echo $pregunta->id_faq ?>" aria-expanded="false" aria-controls="collapse<?php echo $pregunta->id_faq ?>">
+                                    <div class="faq-number"><?php echo $key + 1 ?></div>
+                                    <span class="faq-question"><?php echo $pregunta->question ?></span>
+                                    <i class="fas fa-chevron-down faq-icon"></i>
+                                </button>
                             </div>
-                            <div id="collapse<?php echo $pregunta->id_faq ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionLandingMovil">
-                                <div class="card-body">
-                                    <div class="col-md-12 answer-padding"><?php echo ($pregunta->answer) ?></div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } else { ?>
-                        <?php if ($key == 7) { ?>
-                            <div class="text-center mt-2 more"><button id="more" type="button" class="btn btn-primary prueba rounded-pill">Ver más <i class="fas fa-chevron-down"></i></button></div>
-                        <?php } ?>
-                        <div class="card question-mobile" style="display:none!important">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link text-left" type="button" data-toggle="collapse" data-target="#collapse<?php echo $pregunta->id_faq ?>" aria-expanded="true" aria-controls="collapse<?php echo $pregunta->id_faq ?>">
-                                        <span class="number_question"><?php echo $key + 1 ?></span><span class="ml-4"><?php echo $pregunta->question ?></span>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapse<?php echo $pregunta->id_faq ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionLandingMovil">
-                                <div class="card-body">
-                                    <div class="col-md-12 answer-padding"><?php echo ($pregunta->answer) ?></div>
+                            <div id="collapse<?php echo $pregunta->id_faq ?>" class="collapse faq-collapse" aria-labelledby="heading<?php echo $pregunta->id_faq ?>" data-parent="#accordionLanding">
+                                <div class="faq-body">
+                                    <?php echo $pregunta->answer ?>
                                 </div>
                             </div>
                         </div>
                     <?php } ?>
-                <?php } ?>
-                <div class="text-center mt-2 no-more" style="display:none"><button id="minus" type="button" class="btn btn-primary prueba rounded-pill">Ver menos <i class="fas fa-chevron-up"></i></button></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile FAQ Accordion -->
+        <div class="row justify-content-center d-md-none">
+            <div class="col-12">
+                <div class="accordion faq-accordion" id="accordionLandingMovil">
+                    <?php 
+                    $visible_count = 5; // Show first 5 FAQs on mobile
+                    foreach ($preguntas_frecuentes as $key => $pregunta) { 
+                        $hidden = ($key >= $visible_count) ? 'faq-hidden' : '';
+                    ?>
+                        <div class="faq-item <?php echo $hidden; ?>">
+                            <div class="faq-header" id="headingMobile<?php echo $pregunta->id_faq ?>">
+                                <button class="faq-button collapsed" type="button" data-toggle="collapse" data-target="#collapseMobile<?php echo $pregunta->id_faq ?>" aria-expanded="false" aria-controls="collapseMobile<?php echo $pregunta->id_faq ?>">
+                                    <div class="faq-number"><?php echo $key + 1 ?></div>
+                                    <span class="faq-question"><?php echo $pregunta->question ?></span>
+                                    <i class="fas fa-chevron-down faq-icon"></i>
+                                </button>
+                            </div>
+                            <div id="collapseMobile<?php echo $pregunta->id_faq ?>" class="collapse faq-collapse" aria-labelledby="headingMobile<?php echo $pregunta->id_faq ?>" data-parent="#accordionLandingMovil">
+                                <div class="faq-body">
+                                    <?php echo $pregunta->answer ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    
+                    <?php if (count($preguntas_frecuentes) > $visible_count): ?>
+                        <div class="text-center mt-4">
+                            <button id="faq-show-more" class="btn btn-outline-primary rounded-pill">
+                                <span class="show-text">Ver más preguntas <i class="fas fa-chevron-down ml-2"></i></span>
+                                <span class="hide-text d-none">Ver menos preguntas <i class="fas fa-chevron-up ml-2"></i></span>
+                            </button>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+/* FAQ Section Styling */
+.faq-section {
+    background-color: #f8f9fa;
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(78, 125, 233, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.faq-section::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(242, 208, 70, 0.1);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.faq-accordion {
+    position: relative;
+    z-index: 1;
+}
+
+.faq-item {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.faq-header {
+    position: relative;
+}
+
+.faq-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.faq-button:hover {
+    background-color: #f8f9fa;
+}
+
+.faq-button:focus {
+    outline: none;
+}
+
+.faq-button.collapsed .faq-icon {
+    transform: rotate(0deg);
+}
+
+.faq-button:not(.collapsed) {
+    background-color: #f8f9fa;
+}
+
+.faq-button:not(.collapsed) .faq-icon {
+    transform: rotate(180deg);
+    color: #4e7de9;
+}
+
+.faq-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #4e7de9;
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.faq-question {
+    color: #333;
+    font-size: 16px;
+    padding-right: 30px;
+}
+
+.faq-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    color: #adb5bd;
+}
+
+.faq-body {
+    padding: 0 20px 20px 65px;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.faq-hidden {
+    display: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .faq-button {
+        padding: 15px;
+    }
+    
+    .faq-number {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+    
+    .faq-question {
+        font-size: 14px;
+    }
+    
+    .faq-body {
+        padding: 0 15px 15px 50px;
+    }
+}
+</style>
+
+<script>
+$(document).ready(function() {
+    // Toggle show more/less FAQs on mobile
+    $('#faq-show-more').on('click', function() {
+        $('.faq-hidden').toggle();
+        $('.show-text, .hide-text').toggleClass('d-none');
+        
+        if ($('.faq-hidden').is(':visible')) {
+            // Scroll to the first hidden item that's now visible
+            $('html, body').animate({
+                scrollTop: $('.faq-hidden:first').offset().top - 100
+            }, 500);
+        }
+    });
+});
+</script>
+
 <section id="section_contacto">
     <div class="header-nube"></div>
     <div class="complement_contactos">
@@ -382,27 +555,27 @@
                     <?php } ?>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="name" id="contact-name" placeholder="NOMBRE " class="form-control input-contact" required autocomplete="name">
+                            <input type="text" name="name" id="contact-name" placeholder="NOMBRE " class="form-control input-contact" required autocomplete="name" maxlength="50">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="enterprise" id="contact-enterprise" placeholder="EMPRESA " class="form-control input-contact" required autocomplete="organization">
+                            <input type="text" name="enterprise" id="contact-enterprise" placeholder="EMPRESA " class="form-control input-contact" required autocomplete="organization" maxlength="50">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="email" name="email" id="contact-email" placeholder="EMAIL" class="form-control input-contact" required autocomplete="email">
+                            <input type="email" name="email" id="contact-email" placeholder="EMAIL" class="form-control input-contact" required autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Por favor ingrese un email válido que contenga @ y un dominio (.com, .org, etc.)">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="tel" name="telephone" id="contact-telephone" placeholder="TELÉFONO" class="form-control input-contact" required autocomplete="tel">
+                            <input type="tel" name="telephone" id="contact-telephone" placeholder="TELÉFONO" class="form-control input-contact" required autocomplete="tel" pattern="^\+?[0-9]+$" title="Por favor ingrese un número de teléfono válido (puede comenzar con + seguido de números)" maxlength="25">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <textarea rows="3" name="message" id="contact-message" placeholder="MENSAJE" class="form-control input-contact" required></textarea>
+                            <textarea rows="3" name="message" id="contact-message" placeholder="MENSAJE" class="form-control input-contact" required maxlength="1000"></textarea>
                         </div>
                     </div>
                 </div>
@@ -421,6 +594,50 @@
     function recaptcha_callback() {  
 		$('#enviar').prop("disabled", false);
     }
+
+    // Validación de los campos del formulario
+    $(document).ready(function() {
+        // Contador de caracteres para el mensaje
+        $('#contact-message').on('input', function() {
+            var maxLength = 1000;
+            var currentLength = $(this).val().length;
+            
+            if (currentLength > maxLength) {
+                $(this).val($(this).val().substring(0, maxLength));
+            }
+        });
+        
+        // Validación del teléfono (solo + al inicio y números)
+        $('#contact-telephone').on('input', function() {
+            var input = $(this).val();
+            // Si hay algún carácter que no sea número o + al inicio, lo eliminamos
+            if (input.length > 0) {
+                // Permitir + solo al inicio
+                if (input.charAt(0) === '+') {
+                    // Comprobar el resto de caracteres (solo números)
+                    var restOfInput = input.substring(1);
+                    if (!/^\d*$/.test(restOfInput)) {
+                        $(this).val('+' + restOfInput.replace(/[^\d]/g, ''));
+                    }
+                } else {
+                    // Si no empieza con +, solo permitir números
+                    $(this).val(input.replace(/[^\d]/g, ''));
+                }
+            }
+        });
+        
+        // Validación de email
+        $('#contact-email').on('input', function() {
+            var email = $(this).val();
+            var validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+            
+            if (email.length > 0 && !validEmail) {
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
+            }
+        });
+    });
 
     $("#button_enterprise").click(function(e) {
         // e.preventDefault();

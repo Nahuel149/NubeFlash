@@ -18,8 +18,10 @@
                             <p>Para obtener el token debe crearse su cuenta a través de esta plataforma, llenando los campos necesarios en los registros.</p>
                             <p>Luego de registrarse, le brindaremos dos token que se utilizara para integrar las APIs  de la nube.</p>
                         </div>
-                        <div class="col-md-6 offset-md-6">
-                            <img class="img-fluid" src="<?php echo base_url('assets/public/DELIVERY_NF.png') ?>" alt="">
+                        <div class="text-center mt-4 mb-4">
+                            <a href="<?php echo base_url('registro') ?>" title="Regístrate ahora">
+                                <img class="img-fluid delivery-img" src="<?php echo base_url('assets/public/DELIVERY_NF.png') ?>" alt="Delivery Illustration" style="max-width: 75%; /* This makes it 1.5x bigger than 50% */">
+                            </a>
                         </div> 
                     </div>
                     <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
