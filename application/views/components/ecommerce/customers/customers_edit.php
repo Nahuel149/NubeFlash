@@ -59,12 +59,12 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="social_reason">Razón Social<span class="required">*</span></label>
-			<input id="social_reason" required type="text" name="social_reason" value="<?php echo $result->social_reason ?>" class="form-control" placeholder="Razón Social" />
+			<label for="social_reason">Razón Social</label>
+			<input id="social_reason" type="text" name="social_reason" value="<?php echo $result->social_reason ?>" class="form-control" placeholder="Razón Social" />
 		</div>
 		<div class="form-group">
-			<label for="fiscal_identifier">Identificador Fiscal<span class="required">*</span></label>
-			<input id="fiscal_identifier" required type="text" name="fiscal_identifier" value="<?php echo $result->fiscal_identifier ?>" class="form-control" placeholder="Identificador fiscal" />
+			<label for="fiscal_identifier">Identificador Fiscal</label>
+			<input id="fiscal_identifier" type="text" name="fiscal_identifier" value="<?php echo $result->fiscal_identifier ?>" class="form-control" placeholder="Identificador fiscal" />
 		</div>
 		<div class="form-group">
 			<label for="Pais">País <span class="required">*</span></label>
@@ -80,12 +80,14 @@
 			<select id="province" disabled required name="province" class="form-control">
 				<option value="">Seleccione una Provincia</option>
 			</select>
+			<input type="text" id="province_manual" class="form-control mt-2" placeholder="Ingrese Provincia Manualmente" style="display: none;" value="<?php echo $result->province_name_manual ?? ''; ?>">
 		</div>
 		<div class="form-group">
 			<label for="destination">Localidad <span class="required">*</span></label>
 			<select id="destination" disabled required name="destination" class="form-control">
 				<option value="">Seleccione una Localidad</option>
 			</select>
+			<input type="text" id="destination_manual" class="form-control mt-2" placeholder="Ingrese Localidad Manualmente" style="display: none;" value="<?php echo $result->destination_name_manual ?? ''; ?>">
 		</div>
 		<div class="form-group">
 			<label for="address">Dirección</label>
@@ -132,6 +134,10 @@
 			$("#country").val(country).trigger('change');
 		}
 
+		// Initialize variables for manual field handling
+		var hasManualProvince = <?php echo (!empty($result->province_name_manual)) ? "true" : "false" ?>;
+		var hasManualDestination = <?php echo (!empty($result->destination_name_manual)) ? "true" : "false" ?>;
+		
 		// Setup CSRF token for all AJAX requests
 		var csrfTokenName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 		var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
@@ -144,6 +150,13 @@
 				}
 			}
 		});
+		
+		// Apply manual fields after AJAX loads (similar to tariff implementation)
+		setTimeout(function() {
+			if (hasManualProvince) {
+				$("#province").val('other').trigger('change');
+			}
+		}, 1500);
 
 		// Password validation function
 		function validatePassword(password) {
@@ -191,6 +204,22 @@
 			
 			// Get the form data and add CSRF token
 			var formData = $(this).serializeArray();
+			
+			// Debug: Log form data being sent
+			console.log('Form data being sent:', formData);
+			
+			// Check if manual fields are included when "Other" is selected
+			if ($('#province').val() === 'other') {
+				console.log('Manual province is visible:', $('#province_manual').is(':visible'));
+				console.log('Manual province has name attribute:', $('#province_manual').attr('name') === 'province_manual');
+				console.log('Manual province value:', $('#province_manual').val());
+			}
+			
+			if ($('#destination').val() === 'other') {
+				console.log('Manual destination is visible:', $('#destination_manual').is(':visible'));
+				console.log('Manual destination has name attribute:', $('#destination_manual').attr('name') === 'destination_manual');
+				console.log('Manual destination value:', $('#destination_manual').val());
+			}
 			
 			// Submit form via AJAX
 			$.ajax({
@@ -242,6 +271,14 @@
 					$("#destination").attr('disabled', '');
 					$("#province").html('<option value="">Seleccione una Provincia</option>');
 					$("#destination").html('<option value="">Seleccione una Localidad</option>');
+					
+					// Hide manual inputs when country changes
+					$("#province_manual").hide().removeAttr('required').removeAttr('name');
+					$("#destination_manual").hide().removeAttr('required').removeAttr('name');
+					
+					// Ensure select elements have required and name attributes
+					$("#province").prop('required', true).attr('name', 'province');
+					$("#destination").prop('required', true).attr('name', 'destination');
 				}
 			}).done(function(data) {
 				// Update CSRF hash if provided
@@ -256,9 +293,15 @@
 					$.each(data.provinces, function(index, value) {
 						htm += "<option " + (province == value.province_id ? 'selected' : '') + " value='" + value.province_id + "'>" + value.name + "</option>";
 					});
+					// Add "Other" option
+					htm += "<option value='other'>-- Otro --</option>";
 					$("#province").html(htm);
 					$("#province").removeAttr('disabled');
-					if (province > 0) {
+					
+					if (hasManualProvince) {
+						// Set 'Other' option and show the manual field
+						$("#province").val('other').trigger('change');
+					} else if (province > 0) {
 						$("#province").val(province).trigger('change');
 					}
 				}
@@ -276,6 +319,41 @@
 		$("#province").change(function(e) {
 			e.preventDefault();
 			var province_id = $(this).val();
+			
+			// Handle "Other" option
+			if (province_id === 'other') {
+				// Show manual input, hide dropdown functionality
+				$("#province_manual").show().attr('required', true).attr('name', 'province_manual');
+				$(this).removeAttr('required').removeAttr('name');
+				
+				// Log that we've changed to manual province mode
+				console.log('Changed to manual province mode, input name:', $('#province_manual').attr('name'));
+				
+				// Clear destination and enable manual destination
+				$("#destination").html('<option value="">Seleccione una Localidad</option>');
+				$("#destination").attr('disabled', 'disabled').removeAttr('name').removeAttr('required');
+				
+				// Enable destination manual field by default
+				$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+				
+				// Log that we've also changed to manual destination mode
+				console.log('Also changed to manual destination mode, input name:', $('#destination_manual').attr('name'));
+				
+				return;
+			} else {
+				// Hide manual input, restore dropdown functionality
+				$("#province_manual").hide().removeAttr('required').removeAttr('name');
+				$(this).attr('required', true).attr('name', 'province');
+				
+				// Hide destination manual if not selected
+				if (!hasManualDestination) {
+					$("#destination_manual").hide().removeAttr('required').removeAttr('name');
+					$("#destination").attr('required', true).attr('name', 'destination');
+				}
+				
+				// Log that we've changed to dropdown province mode
+				console.log('Changed to dropdown province mode, select name:', $(this).attr('name'));
+			}
 			
 			$.ajax({
 				type: "POST",
@@ -302,9 +380,15 @@
 					$.each(data.destinations, function(index, value) {
 						htm += "<option " + (destination == value.destination_id ? 'selected' : '') + " value='" + value.destination_id + "' data-code='" + value.postal_code + "'>" + value.name + "</option>";
 					});
+					// Add "Other" option
+					htm += "<option value='other'>-- Otro --</option>";
 					$("#destination").html(htm);
 					$("#destination").removeAttr('disabled');
-					if (destination > 0) {
+					
+					if(hasManualDestination) {
+						// Set 'Other' option and show the manual field
+						$("#destination").val('other').trigger('change');
+					} else if(destination > 0) {
 						$("#destination").val(destination).trigger('change');
 					}
 				}
@@ -316,6 +400,30 @@
 			}).always(function() {
 				console.log("complete");
 			});
+		});
+
+		// Destination change handler
+		$("#destination").change(function(e) {
+			e.preventDefault();
+			var destination_id = $(this).val();
+			
+			// Handle "Other" option for destination
+			if (destination_id === 'other') {
+				// Show manual input, hide dropdown functionality
+				$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+				$(this).removeAttr('required').removeAttr('name');
+				
+				// Log that we've changed to manual destination mode
+				console.log('Changed to manual destination mode, input name:', $('#destination_manual').attr('name'));
+				return;
+			} else {
+				// Hide manual input, restore dropdown functionality
+				$("#destination_manual").hide().removeAttr('required').removeAttr('name');
+				$(this).attr('required', true).attr('name', 'destination');
+				
+				// Log that we've changed to dropdown destination mode
+				console.log('Changed to dropdown destination mode, select name:', $(this).attr('name'));
+			}
 		});
 	});
 </script>

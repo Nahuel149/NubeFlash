@@ -58,17 +58,17 @@
 			<!-- Contact Info Column -->
 			<div class="col-lg-3 col-md-6">
 				<h5 class="text-dark mb-4 footer-title">Información de contacto</h5>
-				<ul class="list-unstyled footer-links">
-					<li class="mb-2 d-flex align-items-start">
-						<i class="fas fa-map-marker-alt mt-1 me-2 text-primary"></i>
+				<ul class="list-unstyled footer-links contact-info">
+					<li class="mb-3 d-flex align-items-start">
+						<i class="fas fa-map-marker-alt me-3 text-primary" style="margin-top: 5px;"></i>
 						<span>Damaso Antonio Larrañaga 3581 esq. Rep. De Corea, Montevideo</span>
 					</li>
-					<li class="mb-2 d-flex align-items-center">
-						<i class="fas fa-phone-alt me-2 text-primary"></i>
+					<li class="mb-3 d-flex align-items-center">
+						<i class="fas fa-phone-alt me-3 text-primary"></i>
 						<span>+598 XX XX XX XX</span>
 					</li>
-					<li class="mb-2 d-flex align-items-center">
-						<i class="fas fa-envelope me-2 text-primary"></i>
+					<li class="mb-3 d-flex align-items-center">
+						<i class="fas fa-envelope me-3 text-primary"></i>
 						<span>info@nubeflash.com</span>
 					</li>
 				</ul>
@@ -227,5 +227,19 @@
 		text-align: center !important;
 		margin-top: 1rem;
 	}
+}
+
+/* Contact info styling */
+.contact-info li {
+	line-height: 1.4;
+}
+
+.contact-info li i {
+	font-size: 1.1rem;
+	min-width: 20px;
+}
+
+.contact-info li span {
+	color: #666;
 }
 </style>

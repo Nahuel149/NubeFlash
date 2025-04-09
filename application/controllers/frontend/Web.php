@@ -148,6 +148,27 @@ class Web extends CI_Controller {
 							// Use the location field to store the manually entered destination
 							$location_text = $this->input->post('destination_text');
 							
+							// Handle manual province input
+							$province_id = null;
+							$province_name_manual = null;
+
+							if (!empty($this->input->post('province_manual'))) {
+								// Manual province input was used
+								$province_name_manual = trim($this->input->post('province_manual'));
+								// Keep province_id as null
+							} elseif (!empty($this->input->post('province'))) {
+								// Dropdown selection was used
+								$province_input = $this->input->post('province');
+								// Check if it's a numeric ID or the 'other' value
+								if (is_numeric($province_input)) {
+									$province_id = (int)$province_input;
+								} else {
+									// Handle case where 'other' might be submitted unexpectedly
+									$province_id = null;
+								}
+								// Keep province_name_manual as null
+							}
+							
 							$data = array(
 								'social_reason' => $this->input->post('social_reason'),
 								'fiscal_identifier' => $this->input->post('fiscal_identifier'),
@@ -156,7 +177,8 @@ class Web extends CI_Controller {
 								'email' => $this->input->post('email'),
 								'password' => sha1($this->input->post('password')),
 								'country_id' => $this->input->post('country'),
-								'province_id' => $this->input->post('province'),
+								'province_id' => $province_id,
+								'province_name_manual' => $province_name_manual,
 								'destination_id' => null, // Set to NULL since we're using a text field
 								'location' => $location_text // Use existing location field to store text input
 							);

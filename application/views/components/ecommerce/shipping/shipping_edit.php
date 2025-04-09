@@ -65,8 +65,8 @@
             </div>
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label for="weight">Peso (kg)</label>
-                    <input class="form-control" id="weight" name="weight" placeholder="Peso en kg" type="number" step="0.01" value="<?php echo $result->weight ?>" required>
+                    <label for="weight">Peso (g)</label>
+                    <input class="form-control" id="weight" name="weight" placeholder="Peso en gramos" type="number" step="0.01" value="<?php echo $result->weight ?>" required>
                 </div>
                 <div class="col-sm-4">
                     <label for="volume">Volumen (cm³)</label>

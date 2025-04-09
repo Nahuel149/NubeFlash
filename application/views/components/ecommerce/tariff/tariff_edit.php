@@ -36,19 +36,21 @@
 	            <select id="province" disabled required name="province" class="form-control">
 					<option value="">Seleccione una Provincia</option>
 				</select>
+                <input type="text" id="province_manual" class="form-control mt-2" placeholder="Ingrese Provincia Manualmente" style="display: none;" value="<?php echo $result->province_name_manual ?>">
 	        </div>
 			<div class="form-group">
 	            <label for="destination">Localidad <span class="required">*</span></label>
 	            <select id="destination" disabled required name="destination" class="form-control">
 					<option value="">Seleccione una Localidad</option>
 				</select>
+                <input type="text" id="destination_manual" class="form-control mt-2" placeholder="Ingrese Localidad Manualmente" style="display: none;" value="<?php echo $result->destination_name_manual ?>">
 	        </div>
 			<div class="form-group">
 	            <label for="postal_code">Codigo Postal</label>
-	            <input id="postal_code" readonly type="text" name="postal_code" value="" class="form-control" />
+	            <input id="postal_code" type="text" name="postal_code_manual" value="<?php echo $result->postal_code_manual ?>" class="form-control" />
 	        </div>
 			<div class="form-group">
-	            <label for="weight">Peso en kilogramos <span class="required">*</span></label>
+	            <label for="weight">Peso en gramos <span class="required">*</span></label>
 	            <input id="weight" required type="number"  step=".01" name="weight" value="<?php echo $result->weight ?>" class="form-control" />
 	        </div>
 			<div class="form-group">
@@ -67,12 +69,23 @@
 var csrfTokenName = '<?php echo $this->security->get_csrf_token_name(); ?>';
 var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
 
+// Check if we have manual province or destination entries
+var hasManualProvince = <?php echo (!empty($result->province_name_manual)) ? "true" : "false" ?>;
+var hasManualDestination = <?php echo (!empty($result->destination_name_manual)) ? "true" : "false" ?>;
+
 $(document).ready(function () {
 	var country = '<?php echo $result->country_id ?>';
-	if(country > 0)
-	{
+	if(country > 0) {
 		$("#country").val(country).trigger('change');
 	}
+    
+    // If we have manual values, show the appropriate fields after ajax completes
+    setTimeout(function() {
+        if (hasManualProvince) {
+            $("#province").val('other').trigger('change');
+            $("#province_manual").val('<?php echo $result->province_name_manual ?>');
+        }
+    }, 1000);
 });
 
 $("#country").change(function (e) { 
@@ -90,7 +103,11 @@ $("#country").change(function (e) {
 			$("#province").attr('disabled','');
 			$("#province").html('<option value="">Seleccione una Provincia</option>');
 			$("#destination").html('<option value="">Seleccione una Localidad</option>');
-			$("#postal_code").val('');
+			// Remove postal code clearing to preserve manual value
+            $("#province_manual").hide().removeAttr('required').removeAttr('name').val('<?php echo $result->province_name_manual ?>');
+            $("#province").prop('required', true).attr('name', 'province');
+            $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('<?php echo $result->destination_name_manual ?>');
+            $("#destination").prop('required', true).attr('name', 'destination');
 		},
 	}).done(function (data) {
 		// Update CSRF hash if provided
@@ -106,12 +123,16 @@ $("#country").change(function (e) {
 			$.each(data.provinces, function (index, value) { 
 				 htm += "<option "+(province == value.province_id ? 'selected':'')+" value='"+value.province_id+"'>"+value.name+"</option>";
 			});
+            htm += "<option value='other'>-- Otro --</option>";
 			$("#province").html(htm);
 			$("#province").removeAttr('disabled');
-			if(province > 0)
-			{
-				$("#province").val(province).trigger('change');
-			}
+			
+            if(hasManualProvince) {
+                // Set 'Other' option and show the manual field
+                $("#province").val('other').trigger('change');
+            } else if(province > 0) {
+                $("#province").val(province).trigger('change');
+            }
 		}
 		console.log("success")
 	}).fail(function (xhr, status, error) {
@@ -126,6 +147,35 @@ $("#country").change(function (e) {
 $("#province").change(function (e) { 
 	e.preventDefault();
 	var province_id = $(this).val();
+    
+    // Handle "Other" option
+    if (province_id === 'other') {
+        // Show manual input, hide dropdown functionality
+        $("#province_manual").show().attr('required', true).attr('name', 'province_manual');
+        $(this).removeAttr('required').removeAttr('name');
+        
+        // Clear destination and enable manual destination
+        $("#destination").html('<option value="">Seleccione una Localidad</option>');
+        $("#destination").attr('disabled', 'disabled');
+        
+        // Enable destination manual field by default
+        $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+        $("#destination").removeAttr('required').removeAttr('name');
+        
+        // Keep the existing postal code value
+        return;
+    } else {
+        // Hide manual input, restore dropdown functionality
+        $("#province_manual").hide().removeAttr('required').removeAttr('name').val('');
+        $(this).attr('required', true).attr('name', 'province');
+        
+        // Hide destination manual if not selected
+        if (!hasManualDestination) {
+            $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
+            $("#destination").attr('required', true).attr('name', 'destination');
+        }
+    }
+    
 	$.ajax({
 		type: "POST",
 		url: base_url + 'ecommerce/tariff/getDestination',
@@ -137,7 +187,7 @@ $("#province").change(function (e) {
 		beforeSend: function () {
 			$("#destination").attr('disabled','');
 			$("#destination").html('<option value="">Seleccione una Localidad</option>');
-			$("#postal_code").val('');
+			// Keep existing postal code value instead of overwriting
 		},
 	}).done(function (data) {
 		// Update CSRF hash if provided
@@ -153,12 +203,16 @@ $("#province").change(function (e) {
 			$.each(data.destinations, function (index, value) { 
 				 htm += "<option "+(destination == value.destination_id ? 'selected':'')+" value='"+value.destination_id+"' data-code='"+value.postal_code+"'>"+value.name+"</option>";
 			});
+            htm += "<option value='other'>-- Otro --</option>";
 			$("#destination").html(htm);
 			$("#destination").removeAttr('disabled');
-			if(destination > 0)
-			{
-				$("#destination").val(destination).trigger('change');
-			}
+			
+            if(hasManualDestination) {
+                // Set 'Other' option and show the manual field
+                $("#destination").val('other').trigger('change');
+            } else if(destination > 0) {
+                $("#destination").val(destination).trigger('change');
+            }
 		}
 		console.log("success")
 	}).fail(function (xhr, status, error) {
@@ -173,12 +227,26 @@ $("#province").change(function (e) {
 $("#destination").change(function (e) { 
 	e.preventDefault();
 	var destination_id = $(this).val();
+    
+    // Handle "Other" option for destination
+    if (destination_id === 'other') {
+        // Show manual input, hide dropdown functionality
+        $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+        $(this).removeAttr('required').removeAttr('name');
+        
+        // Keep postal code as is - user can edit manually
+        return;
+    } else {
+        // Hide manual input, restore dropdown functionality
+        $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
+        $(this).attr('required', true).attr('name', 'destination');
+    }
+    
 	var postal_code = $("#destination option[value='"+destination_id+"']").data("code");
-	if(postal_code)
+	// Only update postal code if a new one is available from the destination
+	if(postal_code && postal_code !== $("#postal_code").val())
 	{
 		$("#postal_code").val(postal_code);
-	}else{
-		$("#postal_code").val('');
 	}
 });
 </script>

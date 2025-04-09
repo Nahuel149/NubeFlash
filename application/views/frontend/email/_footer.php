@@ -30,7 +30,7 @@
                                   <td valign="top" bgcolor="#c3d4b5" width="100%" style="background: rgb(247,190,13); background-position: center center; background-size: cover;">
 
                                     <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#ffffff;text-align:center;line-height:120%;">
-                                      <div>Copyright &#169; <?php echo date('Y') ?>. <a href="<?php echo base_url() ?>" target="_blank" style="text-decoration:none;color:#ffffff;"><span style="color:#ffffff;">NUBE FLASH</span></a>. All&nbsp;rights&nbsp;reserved.</div>
+                                      <div>Copyright &#169; 2021. <a href="https://www.nubeflash.com" target="_blank" style="text-decoration:none;color:#ffffff;"><span style="color:#ffffff;">NUBE FLASH</span></a>. All&nbsp;rights&nbsp;reserved.</div>
                                       <div>&nbsp;</div>
                                     </div>
 

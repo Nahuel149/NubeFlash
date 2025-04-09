@@ -234,7 +234,7 @@
               Its width can be set to 100% for a color band
               that spans the width of the page.
             -->
-            <table bgcolor="#FFFFFF"  border="0" cellpadding="0" cellspacing="0" width="500" id="emailBody" style="padding-bottom: 100px;background-image:url('<?php echo $img ?>');background-size: cover;background-position: center 50px;background-repeat: no-repeat;">
+            <table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="500" id="emailBody" style="padding-bottom: 50px;background-image:url('https://i.ibb.co/sdChCfkJ/REGISTRONUBEFLASH-cleanup.jpg');background-size: 80% auto;background-position: center 50%;background-repeat: no-repeat;">
 
               <!-- MODULE ROW // -->
               <!--

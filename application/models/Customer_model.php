@@ -49,8 +49,20 @@ class Customer_model extends CI_Model {
     {
         try {
             $this->db->where($this->id, $id);
+            
+            // Log the data being passed to update
+            log_message('debug', 'Customer_model::edit data: ' . json_encode($data));
+            log_message('debug', 'Customer_model::edit id: ' . $id);
+            
             $this->db->update($this->table, $data);
-            return $this->db->affected_rows() > 0;
+            
+            // Log the last query executed
+            log_message('debug', 'Customer_model::edit SQL: ' . $this->db->last_query());
+            
+            $affected = $this->db->affected_rows();
+            log_message('debug', 'Customer_model::edit affected rows: ' . $affected);
+            
+            return $affected > 0;
         } catch (Exception $e) {
             log_message('error', 'Database error in Customer_model::edit: ' . $e->getMessage());
             throw $e;

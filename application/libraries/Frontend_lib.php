@@ -96,7 +96,7 @@ class frontend_lib{
 	public function enviarEmail($data, $vista, $titulo, $email_destino, $email_origen, $remitente){
 		// Inicializar libreria
 		$this->load->library('email');
-	
+
 		$datos['dato'] = $data;
 		// Cargar mensaje
 		$mensaje = $this->load->view($vista, $datos, true);
@@ -106,11 +106,12 @@ class frontend_lib{
 		$this->email->from($email_origen, $remitente);
 		$this->email->subject($titulo);
 		$this->email->message($mensaje);
-		
+
 		// Enviar email y verificar si hubo error
-		if (!$this->email->send()) {
+		if (!$this->email->send(FALSE)) { // Pass FALSE to prevent clearing attachments on failure
 			$message = "ERROR EMAIL => Email: $vista, \n  Título: $titulo \n Destino: $email_destino \n Origen: $email_origen \n Remitente: $remitente \n Datos: " . json_encode($data);
 			log_message('error', $message);
+            log_message('error', 'Email Debugging Info: ' . $this->email->print_debugger());
 		}
 	}
 

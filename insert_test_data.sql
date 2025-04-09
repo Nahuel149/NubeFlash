@@ -110,51 +110,56 @@ INSERT INTO `destinations` (`name`, `province_id`, `postal_code`, `active`) VALU
 INSERT INTO `customers` (
     `name`, `social_reason`, `fiscal_identifier`, `person_contact`,
     `email`, `password`, `telephone`, `country_id`, `province_id`, 
-    `destination_id`, `address`, `business_hours`, `type_user_id`, `active`
+    `province_name_manual`, `destination_name_manual`, `destination_id`, `address`, `business_hours`, `type_user_id`, `active`
 ) VALUES
 -- Argentina customers
 ('Empresa A', 'Empresa A S.A.', '30123456789', 'Juan Pérez',
  'contacto@empresaa.com', SHA1('password123'), '+54911111111', 1, 1,
- 1, 'Av. Corrientes 1234', 'Lun-Vie 9-18hs', 2, 1),
+ NULL, NULL, 1, 'Av. Corrientes 1234', 'Lun-Vie 9-18hs', 2, 1),
 
 ('Comercial BA', 'Comercial Buenos Aires SRL', '30987654321', 'Pedro Gomez',
  'ventas@comercialba.com', SHA1('password123'), '+54911222222', 1, 1,
- 2, 'Av. Santa Fe 4321', 'Lun-Vie 8-20hs, Sab 9-13hs', 2, 1),
+ NULL, NULL, 2, 'Av. Santa Fe 4321', 'Lun-Vie 8-20hs, Sab 9-13hs', 2, 1),
 
 ('Distribuidora Córdoba', 'Distribuidora Córdoba SA', '30456789012', 'Ana Martinez',
  'ventas@distcordoba.com', SHA1('password123'), '+54351333333', 1, 2,
- 5, 'Av. Colón 1234', 'Lun-Vie 8:30-18hs', 3, 1),
+ NULL, NULL, 5, 'Av. Colón 1234', 'Lun-Vie 8:30-18hs', 3, 1),
 
 -- Brasil customers
 ('Comercial B', 'Comercial B Ltda.', '15789456320', 'Maria Silva',
  'ventas@comercialb.com', SHA1('password123'), '+55922222222', 2, 5,
- 12, 'Rua Augusta 567', 'Lun-Sab 8-20hs', 2, 1),
+ NULL, NULL, 12, 'Rua Augusta 567', 'Lun-Sab 8-20hs', 2, 1),
 
 ('Importadora SP', 'Importadora São Paulo Ltda.', '14725836901', 'João Santos',
  'contato@importadorasp.com', SHA1('password123'), '+55911444444', 2, 5,
- 13, 'Av. Paulista 1000', 'Seg-Sex 9-18hs', 2, 1),
+ NULL, NULL, 13, 'Av. Paulista 1000', 'Seg-Sex 9-18hs', 2, 1),
 
 ('Distribuidora Rio', 'Distribuidora Rio de Janeiro Ltda.', '12369874510', 'Roberto Oliveira',
  'vendas@distrio.com', SHA1('password123'), '+55921555555', 2, 6,
- 15, 'Av. Atlântica 500', 'Seg-Sab 8-19hs', 3, 1),
+ NULL, NULL, 15, 'Av. Atlântica 500', 'Seg-Sab 8-19hs', 3, 1),
 
 -- Chile customers
 ('Distribuidora C', 'Distribuidora C SpA', '76951357852', 'Carlos González',
  'pedidos@distribuidorac.com', SHA1('password123'), '+56933333333', 3, 9,
- 19, 'Av. Providencia 789', 'Lun-Vie 8:30-17:30hs', 3, 1),
+ NULL, NULL, 19, 'Av. Providencia 789', 'Lun-Vie 8:30-17:30hs', 3, 1),
 
 ('Comercial Santiago', 'Comercial Santiago SpA', '76147258369', 'Patricia Muñoz',
  'ventas@comercialsantiago.com', SHA1('password123'), '+56944444444', 3, 9,
- 20, 'Av. Las Condes 1234', 'Lun-Vie 9-18:30hs', 2, 1),
+ NULL, NULL, 20, 'Av. Las Condes 1234', 'Lun-Vie 9-18:30hs', 2, 1),
 
 -- Uruguay customers
 ('Importadora D', 'Importadora D E.I.R.L', '20147258369', 'Ana Torres',
  'compras@importadorad.com', SHA1('password123'), '+59844444444', 4, 12,
- 21, 'Av. 18 de Julio 456', 'Lun-Vie 9-19hs, Sab 9-13hs', 2, 1),
+ NULL, NULL, 21, 'Av. 18 de Julio 456', 'Lun-Vie 9-19hs, Sab 9-13hs', 2, 1),
 
 ('Distribuidora MVD', 'Distribuidora Montevideo S.A.', '21987654321', 'Diego Rodriguez',
  'ventas@distmvd.com', SHA1('password123'), '+59855555555', 4, 12,
- 22, 'Av. Brasil 789', 'Lun-Vie 9-18hs', 3, 1);
+ NULL, NULL, 22, 'Av. Brasil 789', 'Lun-Vie 9-18hs', 3, 1),
+
+-- Customer with manual province
+('Empresa Internacional', 'Empresa Internacional LLC', '12345678901', 'Maria Garcia',
+ 'contacto@empresaint.com', SHA1('password123'), '+1234567890', 4, NULL,
+ 'Región Especial', 'Localidad Manual', NULL, 'Calle Principal 123', 'Lun-Vie 8-17hs', 2, 1);
 
 -- Insert tokens for each customer with both prod and dev tokens
 INSERT INTO `token_customers` (`customer_id`, `token`, `token_dev`, `active`) VALUES
@@ -235,27 +240,27 @@ INSERT INTO `tariff` (
 ) VALUES
 -- Standard Package Prices (Uruguayan Pesos)
 -- Hasta 2Kg / 40 x 20 x 20 cm
-(1, 1, 1, 130.00, 2.00, 0.016, 1),    -- Normal delivery
-(1, 1, 1, 160.00, 2.00, 0.016, 1),    -- 24h delivery
+(1, 1, 1, 130.00, 2000.00, 16000.00, 1),    -- Normal delivery
+(1, 1, 1, 160.00, 2000.00, 16000.00, 1),    -- 24h delivery
 
 -- De 2 a 5 Kg / 40 x 30 x 30 cm
-(1, 1, 1, 155.00, 5.00, 0.036, 1),    -- Normal delivery
-(1, 1, 1, 185.00, 5.00, 0.036, 1),    -- 24h delivery
+(1, 1, 1, 155.00, 5000.00, 36000.00, 1),    -- Normal delivery
+(1, 1, 1, 185.00, 5000.00, 36000.00, 1),    -- 24h delivery
 
 -- De 5 a 20 Kg / 100 x 60 x 60 cm
-(1, 1, 1, 200.00, 20.00, 0.360, 1),   -- Normal delivery
-(1, 1, 1, 230.00, 20.00, 0.360, 1),   -- 24h delivery
+(1, 1, 1, 200.00, 20000.00, 360000.00, 1),   -- Normal delivery
+(1, 1, 1, 230.00, 20000.00, 360000.00, 1),   -- 24h delivery
 
 -- De 20 a 30 Kg / 100 x 60 x 60 cm
-(1, 1, 1, 360.00, 30.00, 0.360, 1),   -- Normal delivery
-(1, 1, 1, 390.00, 30.00, 0.360, 1),   -- 24h delivery
+(1, 1, 1, 360.00, 30000.00, 360000.00, 1),   -- Normal delivery
+(1, 1, 1, 390.00, 30000.00, 360000.00, 1),   -- 24h delivery
 
 -- Paquetes de gran tamaño
-(1, 1, 1, 750.00, 40.00, 0.500, 1),   -- Normal delivery
-(1, 1, 1, 980.00, 40.00, 0.500, 1),   -- 24h delivery
+(1, 1, 1, 750.00, 40000.00, 500000.00, 1),   -- Normal delivery
+(1, 1, 1, 980.00, 40000.00, 500000.00, 1),   -- 24h delivery
 
 -- Retiro de Mercadería
-(1, 1, 1, 80.00, 0.00, 0.000, 1);     -- Fixed price
+(1, 1, 1, 80.00, 0.00, 0.00, 1);     -- Fixed price
 
 -- Insert test orders
 INSERT INTO `orders` (
@@ -268,25 +273,25 @@ INSERT INTO `orders` (
  '{"items":[{"name":"Product 1","quantity":1}]}',
  'Empresa A', 'Pedido 1',
  '{"address":"Av. Corrientes 1234","city":"Buenos Aires"}',
- '1000', 2.00, 0.016, 1),
+ '1000', 2000.00, 16000.00, 1),
 
 (2, 3, 2, 'ORD-2024-002', 155.00, 'TRK002',
  '{"items":[{"name":"Product 2","quantity":2}]}',
  'Comercial B', 'Pedido 2',
  '{"address":"Rua Augusta 567","city":"São Paulo"}',
- '01000', 5.00, 0.036, 1),
+ '01000', 5000.00, 36000.00, 1),
 
 (3, 5, 3, 'ORD-2024-003', 200.00, 'TRK003',
  '{"items":[{"name":"Product 3","quantity":1}]}',
  'Distribuidora C', 'Pedido 3',
  '{"address":"Av. Providencia 789","city":"Santiago"}',
- '8320000', 15.00, 0.360, 1),
+ '8320000', 15000.00, 360000.00, 1),
 
 (4, 7, 4, 'ORD-2024-004', 360.00, 'TRK004',
  '{"items":[{"name":"Product 4","quantity":3}]}',
  'Importadora D', 'Pedido 4',
  '{"address":"Av. 18 de Julio 456","city":"Montevideo"}',
- '11000', 25.00, 0.360, 1);
+ '11000', 25000.00, 360000.00, 1);
 
 -- Insert order items
 INSERT INTO `order_items` (
@@ -656,12 +661,17 @@ ON DUPLICATE KEY UPDATE
     `active` = 1;
 
 -- Ensure proper user-group association
-INSERT IGNORE INTO `users_groups` (`id_user`, `id_group`, `active`)
+INSERT INTO `users_groups` (`id_user`, `id_group`, `active`)
 SELECT u.id_user, g.id_group, 1
 FROM `users` u
 CROSS JOIN `groups` g
 WHERE u.username = 'admin'
-AND g.name = 'admin';
+AND g.name = 'admin'
+AND NOT EXISTS (
+    SELECT 1 FROM `users_groups` ug 
+    WHERE ug.id_user = u.id_user 
+    AND ug.id_group = g.id_group
+);
 
 -- Reset and setup proper permissions
 TRUNCATE TABLE `permissions`;
@@ -719,14 +729,21 @@ ON DUPLICATE KEY UPDATE
     `active` = 1;
 
 -- Reset user-group associations for admin
-DELETE FROM `users_groups` WHERE id_user IN (SELECT id_user FROM users WHERE username = 'admin');
+DELETE FROM `users_groups` WHERE id_user IN (
+    SELECT id_user FROM users WHERE username = 'admin'
+);
 
 -- Recreate admin user-group association
-INSERT INTO `users_groups` (`id_user`, `id_group`)
-SELECT u.id_user, g.id_group
-FROM `users` u, `groups` g 
-WHERE u.username = 'admin' 
-AND g.name = 'admin';
+INSERT INTO `users_groups` (`id_user`, `id_group`, `active`)
+SELECT DISTINCT u.id_user, g.id_group, 1
+FROM `users` u
+JOIN `groups` g ON g.name = 'admin'
+WHERE u.username = 'admin'
+AND NOT EXISTS (
+    SELECT 1 FROM `users_groups` ug 
+    WHERE ug.id_user = u.id_user 
+    AND ug.id_group = g.id_group
+);
 
 -- Update admin user status
 UPDATE `users` SET active = 1 WHERE username = 'admin';

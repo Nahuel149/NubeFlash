@@ -1,6 +1,6 @@
 <section class="container_main">
     <div class="container">
-        <h3>Token <span data-toggle="tooltip" data-placement="bottom" title="Tendrás 2 tokens de integración, uno para producción y el otro para testing." class="text-warning far fa-question-circle"></span></h3>
+        <h3>Token <span data-toggle="tooltip" data-placement="bottom" title="Tendrás 2 tokens de integración, uno para producción y el otro para testing." class="text-warning far fa-exclamation-circle" style="font-size: 0.8em; cursor: pointer;"></span></h3>
         <!-- <h6 class="mt-4"></h6> -->
         <br>
         <div class="card mb-5">
@@ -45,8 +45,8 @@
                         <?php endforeach; ?>
                     </div>
                 <?php else: ?>
-                    <div class="alert alert-warning mt-3" role="alert">
-                        No tienes ningún token activo en este momento. Por favor, contacta con el administrador para obtener un nuevo token.
+                    <div class="text-center mt-3">
+                        <span class="far fa-exclamation-circle text-warning" style="font-size: 24px;" data-toggle="tooltip" title="No tienes ningún token activo en este momento. Por favor, contacta con el administrador para obtener un nuevo token."></span>
                     </div>
                 <?php endif; ?>
             </div>
@@ -76,6 +76,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.setAttribute('title', originalTitle);
             }, 1500);
         });
+    });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover'
     });
 });
 </script>

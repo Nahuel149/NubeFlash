@@ -14,12 +14,12 @@
                             </div>
                             <div class="form-group">
                                 <strong>Identificador Fiscal:</strong>
-                                <input type="text" name="id_fiscal" id="id_fiscal" value="<?php echo $customer->fiscal_identifier ?>" class="form-control" pattern=".{5,25}" title="Debe contener entre 5 y 25 caracteres" required>
+                                <input type="text" name="id_fiscal" id="id_fiscal" value="<?php echo $customer->fiscal_identifier ?>" class="form-control">
                                 <small class="form-text text-muted">Entre 5 y 25 caracteres (números y símbolos permitidos)</small>
                             </div>
                             <div class="form-group">
                                 <strong>Razón Social:</strong>
-                                <input type="text" name="social_reason" id="social_reason" value="<?php echo $customer->social_reason ?>" class="form-control" required minlength="3" maxlength="100">
+                                <input type="text" name="social_reason" id="social_reason" value="<?php echo $customer->social_reason ?>" class="form-control">
                                 <small class="form-text text-muted">Entre 3 y 100 caracteres</small>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <strong>Teléfono:</strong>
                                 <input type="tel" name="telephone" id="telephone" value="<?php echo $customer->telephone ?>" class="form-control" pattern="[+]?[0-9]{10,15}" title="Formato: +XXXXXXXXXX (10-15 dígitos, puede incluir + al inicio)" required>
-                                <small class="form-text text-muted">Ejemplo: +54911XXXXXXXX</small>
+                                <small class="form-text text-muted">Ejemplo: +598XXXXXXXXXX</small>
                             </div>
                             <div class="form-group">
                                 <strong>Dirección:</strong>
@@ -128,14 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
             value = value.slice(0, 16);
         }
         e.target.value = value;
-    });
-
-    // Input masking for fiscal identifier
-    const fiscalInput = document.getElementById('id_fiscal');
-    fiscalInput.addEventListener('input', function(e) {
-        if (e.target.value.length > 25) {
-            e.target.value = e.target.value.slice(0, 25);
-        }
     });
 
     // Business hours formatting helper

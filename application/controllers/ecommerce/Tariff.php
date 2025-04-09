@@ -29,10 +29,38 @@ class Tariff extends CI_Controller {
 
 	function add(){
 		if ($this->input->post('enviar_form')){
+			// Determine province_id and province_name_manual based on form submission
+            $province_id = null;
+            $province_name_manual = null;
+            if ($this->input->post('province_manual')) {
+                // Manual province was entered
+                $province_name_manual = trim($this->input->post('province_manual'));
+            } elseif ($this->input->post('province') && $this->input->post('province') !== 'other') {
+                // Valid province ID was selected
+                $province_id = $this->input->post('province');
+            }
+            
+            // Determine destination_id and destination_name_manual based on form submission
+            $destination_id = null;
+            $destination_name_manual = null;
+            if ($this->input->post('destination_manual')) {
+                // Manual destination was entered
+                $destination_name_manual = trim($this->input->post('destination_manual'));
+            } elseif ($this->input->post('destination') && $this->input->post('destination') !== 'other') {
+                // Valid destination ID was selected
+                $destination_id = $this->input->post('destination');
+            }
+            
+            // Get postal_code_manual (if entered)
+            $postal_code_manual = trim($this->input->post('postal_code_manual'));
+            
 			$data = array(
                 'country_id' => $this->input->post('country'),
-                'province_id' => $this->input->post('province'),
-                'destination_id' => $this->input->post('destination'),
+                'province_id' => $province_id,
+                'province_name_manual' => $province_name_manual,
+                'destination_id' => $destination_id,
+                'destination_name_manual' => $destination_name_manual,
+                'postal_code_manual' => $postal_code_manual,
                 'weight' => $this->input->post('weight'),
                 'volume' => $this->input->post('volume'),
                 'tariff_price' => $this->input->post('tariff_price'),
@@ -72,10 +100,38 @@ class Tariff extends CI_Controller {
 		}
 
 		if ($this->input->post('enviar_form')){
+            // Determine province_id and province_name_manual based on form submission
+            $province_id = null;
+            $province_name_manual = null;
+            if ($this->input->post('province_manual')) {
+                // Manual province was entered
+                $province_name_manual = trim($this->input->post('province_manual'));
+            } elseif ($this->input->post('province') && $this->input->post('province') !== 'other') {
+                // Valid province ID was selected
+                $province_id = $this->input->post('province');
+            }
+            
+            // Determine destination_id and destination_name_manual based on form submission
+            $destination_id = null;
+            $destination_name_manual = null;
+            if ($this->input->post('destination_manual')) {
+                // Manual destination was entered
+                $destination_name_manual = trim($this->input->post('destination_manual'));
+            } elseif ($this->input->post('destination') && $this->input->post('destination') !== 'other') {
+                // Valid destination ID was selected
+                $destination_id = $this->input->post('destination');
+            }
+            
+            // Get postal_code_manual (if entered)
+            $postal_code_manual = trim($this->input->post('postal_code_manual'));
+            
 			$data = array(
 				'country_id' => $this->input->post('country'),
-                'province_id' => $this->input->post('province'),
-                'destination_id' => $this->input->post('destination'),
+                'province_id' => $province_id,
+                'province_name_manual' => $province_name_manual,
+                'destination_id' => $destination_id,
+                'destination_name_manual' => $destination_name_manual,
+                'postal_code_manual' => $postal_code_manual,
                 'weight' => $this->input->post('weight'),
                 'volume' => $this->input->post('volume'),
                 'tariff_price' => $this->input->post('tariff_price'),

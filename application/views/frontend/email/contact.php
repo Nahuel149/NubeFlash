@@ -1,4 +1,4 @@
-<?php $this->view('frontend/email/_header',array('img' => base_url('assets/public/contacto.png'))); ?>
+<?php $this->view('frontend/email/_header', array()); ?>
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#FFFFFF;background-color:rgb(247,190,13);">
                 <tr>
                     <td align="center" valign="top">
@@ -23,6 +23,8 @@
         </td>
     </tr>
     <!-- // MODULE ROW -->
+    <br>
+    <!-- MODULE ROW // -->
     <tr>
         <td align="center" valign="top">
             <!-- CENTERING TABLE // -->
@@ -31,7 +33,6 @@
                     <td align="center" valign="top">
                      <!-- FLEXIBLE CONTAINER // -->
                      <br>
-                        <img src="https://i.ibb.co/YSs3qT9/superflash.png" width="100"/>
                     <!-- // FLEXIBLE CONTAINER -->
                     </td>
                 </tr>

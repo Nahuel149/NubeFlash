@@ -37,11 +37,12 @@
           </div>
         </div>
         <!-- END - Mobile Menu -->
-        <div class="desktop-menu menu-top-image-w menu-activated-on-hover" style="background: url('<?php echo base_url('assets/backend/img/bg_panle_nube.jpg') ?>');background-size: cover; background-position: center 500px;">
+        <div class="desktop-menu menu-top-image-w menu-activated-on-hover">
           <div class="top-part-w">
             <div class="logo-w">
               <a class="logo" href="<?php echo base_url('backend/dashboard') ?>"><img src="<?php echo base_url('assets/public/logo_analisis_del_sur.png') ?>"><span>Dashboard</span></a>
             </div>
+            <!--
             <div class="user-and-search">
               <div class="logged-user-w">
                 <div class="avatar-w">
@@ -53,6 +54,7 @@
                 </div>
               </div>
             </div>
+            -->
           </div>
           <h2 class="page-menu-header">
             <?php echo $title ?>

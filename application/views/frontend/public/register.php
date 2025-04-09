@@ -65,10 +65,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="register-province">Departamento <span class="required">*</span></label>
+                            <label for="register-province">Departamento/Provincia <span class="required">*</span></label>
                             <select id="register-province" disabled required name="province" class="form-control" autocomplete="address-level1">
                                 <option value="">Seleccione un Departamento</option>
                             </select>
+                            <input type="text" id="register-province-manual" class="form-control mt-2" placeholder="Ingrese su Departamento/Provincia" style="display: none;" autocomplete="address-level1-manual">
                         </div>
                         <div class="form-group">
                             <label for="register-destination">Localidad <span class="required">*</span></label>
@@ -100,7 +101,7 @@
                         <div class="form-group text-center">
                             <label for="register-terms">
                                 <input type="checkbox" id="register-terms" name="terms" required>
-                                <a href="<?php echo base_url('assets/public/LaNube Falsh - Terminos y condiciones.pdf') ?>" target="_blank"> Acepto términos y condiciones</a>
+                                <a href="<?php echo base_url('terminos-pdf') ?>" target="_blank"> Acepto términos y condiciones</a>
                             </label>
                         </div>
                         <div class="form-group d-flex justify-content-center">
@@ -141,6 +142,8 @@
                 $("#register-province").html('<option value="">Seleccione un Departamento</option>');
                 $("#register-destination").html('<option value="">Seleccione una Localidad</option>');
                 $("#postal_code").val('');
+                $("#register-province-manual").hide().removeAttr('required').removeAttr('name').val('');
+                $("#register-province").prop('disabled', false).attr('required', true);
             },
         }).done(function (data) {
             var htm = "<option value=''>Seleccione un Departamento</option>";
@@ -149,6 +152,7 @@
                 $.each(data.provinces, function (index, value) { 
                      htm += "<option value='"+value.province_id+"'>"+value.name+"</option>";
                 });
+                htm += "<option value='other'>-- Otro --</option>";
                 $("#register-province").html(htm);
                 $("#register-province").removeAttr('disabled');
             }
@@ -160,8 +164,28 @@
         });
     });
 
-    $("#register-province").change(function (e) { 
+    $("#register-province").change(function (e) {
         e.preventDefault();
-        $("#register-destination").removeAttr('disabled');
+        var selectedValue = $(this).val();
+        var manualInput = $("#register-province-manual");
+
+        if (selectedValue === 'other') {
+            manualInput.show();
+            manualInput.attr('required', true);
+            manualInput.attr('name', 'province_manual'); // Add name attribute
+            $(this).removeAttr('required'); // Remove required from select
+            // Ensure 'Localidad' remains enabled
+            $("#register-destination").removeAttr('disabled'); 
+        } else {
+            manualInput.hide();
+            manualInput.removeAttr('required');
+            manualInput.removeAttr('name'); // Remove name attribute
+            manualInput.val(''); // Clear manual input value
+            $(this).attr('required', true); // Add required back to select
+            // Ensure 'Localidad' is enabled if a valid province is selected
+            if (selectedValue) {
+                $("#register-destination").removeAttr('disabled');
+            }
+        }
     });
 </script>

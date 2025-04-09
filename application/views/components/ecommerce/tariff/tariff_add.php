@@ -33,21 +33,22 @@
 	            <label for="province">Departamento/Provincia <span class="required">*</span></label>
 	            <select id="province" disabled required name="province" class="form-control">
 					<option value="">Seleccione una Provincia</option>
-					
 				</select>
+                <input type="text" id="province_manual" class="form-control mt-2" placeholder="Ingrese Provincia Manualmente" style="display: none;">
 	        </div>
 			<div class="form-group">
 	            <label for="destination">Localidad <span class="required">*</span></label>
 	            <select id="destination" disabled required name="destination" class="form-control">
 					<option value="">Seleccione una Localidad</option>
 				</select>
+                <input type="text" id="destination_manual" class="form-control mt-2" placeholder="Ingrese Localidad Manualmente" style="display: none;">
 	        </div>
 			<div class="form-group">
 	            <label for="postal_code">Codigo Postal</label>
-	            <input id="postal_code" readonly type="text" name="postal_code" value="" class="form-control" />
+	            <input id="postal_code" type="text" name="postal_code_manual" value="" class="form-control" />
 	        </div>
 			<div class="form-group">
-	            <label for="weight">Peso en kilogramos <span class="required">*</span></label>
+	            <label for="weight">Peso en gramos <span class="required">*</span></label>
 	            <input id="weight" required type="number" step=".01" name="weight" value="" class="form-control" />
 	        </div>
 			<div class="form-group">
@@ -82,6 +83,10 @@ $("#country").change(function (e) {
 			$("#province").html('<option value="">Seleccione una Provincia</option>');
 			$("#destination").html('<option value="">Seleccione una Localidad</option>');
 			$("#postal_code").val('');
+            $("#province_manual").hide().removeAttr('required').removeAttr('name').val('');
+            $("#province").prop('required', true).attr('name', 'province');
+            $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
+            $("#destination").prop('required', true).attr('name', 'destination');
 		},
 	}).done(function (data) {
 		// Update CSRF hash if provided
@@ -96,6 +101,7 @@ $("#country").change(function (e) {
 			$.each(data.provinces, function (index, value) { 
 				 htm += "<option value='"+value.province_id+"'>"+value.name+"</option>";
 			});
+            htm += "<option value='other'>-- Otro --</option>";
 			$("#province").html(htm);
 			$("#province").removeAttr('disabled');
 		}
@@ -112,6 +118,32 @@ $("#country").change(function (e) {
 $("#province").change(function (e) { 
 	e.preventDefault();
 	var province_id = $(this).val();
+    
+    // Handle "Other" option
+    if (province_id === 'other') {
+        // Show manual input, hide dropdown functionality
+        $("#province_manual").show().attr('required', true).attr('name', 'province_manual');
+        $(this).removeAttr('required').removeAttr('name');
+        
+        // Clear destination and enable manual destination
+        $("#destination").html('<option value="">Seleccione una Localidad</option>');
+        $("#destination").attr('disabled', 'disabled');
+        
+        // Enable destination manual field by default
+        $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+        $("#destination").removeAttr('required').removeAttr('name');
+        
+        return;
+    } else {
+        // Hide manual input, restore dropdown functionality
+        $("#province_manual").hide().removeAttr('required').removeAttr('name').val('');
+        $(this).attr('required', true).attr('name', 'province');
+        
+        // Hide destination manual if not selected
+        $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
+        $("#destination").attr('required', true).attr('name', 'destination');
+    }
+    
 	$.ajax({
 		type: "POST",
 		url: base_url + 'ecommerce/tariff/getDestination',
@@ -138,6 +170,7 @@ $("#province").change(function (e) {
 			$.each(data.destinations, function (index, value) { 
 				 htm += "<option value='"+value.destination_id+"' data-code='"+value.postal_code+"'>"+value.name+"</option>";
 			});
+            htm += "<option value='other'>-- Otro --</option>";
 			$("#destination").html(htm);
 			$("#destination").removeAttr('disabled');
 		}
@@ -154,6 +187,22 @@ $("#province").change(function (e) {
 $("#destination").change(function (e) { 
 	e.preventDefault();
 	var destination_id = $(this).val();
+    
+    // Handle "Other" option for destination
+    if (destination_id === 'other') {
+        // Show manual input, hide dropdown functionality
+        $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+        $(this).removeAttr('required').removeAttr('name');
+        
+        // Clear postal code, user will enter it manually
+        $("#postal_code").val('');
+        return;
+    } else {
+        // Hide manual input, restore dropdown functionality
+        $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
+        $(this).attr('required', true).attr('name', 'destination');
+    }
+    
 	var postal_code = $("#destination option[value='"+destination_id+"']").data("code");
 	if(postal_code)
 	{

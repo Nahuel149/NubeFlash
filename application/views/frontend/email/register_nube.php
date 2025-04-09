@@ -1,85 +1,38 @@
-<?php $this->view('frontend/email/_header',array('img' => base_url('assets/public/superflash.png'))); ?>
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#FFFFFF;background-color:rgb(247,190,13);">
-                <tr>
-                    <td align="center" valign="top">
-                    <table border="0" cellpadding="0" cellspacing="0" width="500" class="flexibleContainer">
-                        <tr>
-                            <td align="center" valign="top" width="500" class="flexibleContainerCell">
-                                <table border="0" cellpadding="20" cellspacing="0" width="100%">
-                                <tr>
-                                    <td align="center" valign="top" class="textContent">
-                                        <h2 style="text-align:center;font-weight:normal;font-family:Helvetica,Arial,sans-serif;font-size:23px;margin-bottom:0px;margin-top: 0px;color:#fff;line-height:135%;">
-                                        </h2>
-                                    </td>
-                                </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <!-- // MODULE ROW -->
-    <tr>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Confirmación de cuenta</title>
+  <style type="text/css">
+    /* Basic Reset */
+    html { background-color:#FFFFFF; margin:0; padding:0; }
+    body, table, td, p, a { font-family:Helvetica, Arial, sans-serif; font-size: 15px; color:#5F5F5F; line-height:135%; }
+    table { border-collapse:collapse; }
+    img { border:0; outline:none; text-decoration:none; display:block; }
+    a { text-decoration:none !important; }
+    h4 { font-size: 18px; font-weight:bold; margin-bottom:0; margin-top:10px; }
+  </style>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
+  <center style="background-color:#FFFFFF; padding: 20px 0;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:600px;">
+      <tr>
         <td align="center" valign="top">
-            <!-- CENTERING TABLE // -->
-            <table border="0" cellpadding="0" cellspacing="0" width="500">
-                <tr>
-                    <td align="center" valign="top">
-                     <!-- FLEXIBLE CONTAINER // -->
-                     <br>
-                        <img src="https://i.ibb.co/YSs3qT9/superflash.png" width="100"/>
-                    <!-- // FLEXIBLE CONTAINER -->
-                    </td>
-                </tr>
-            </table>
-            <!-- // CENTERING TABLE -->
+          <!-- Main Image -->
+          <table border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+              <td align="center" valign="top" style="padding-bottom: 20px;">
+                <a href="https://www.nubeflash.com" target="_blank">
+                  <img src="https://i.ibb.co/HDkQ1vrG/REGISTRONUBEFLASH.jpg" width="100%" style="max-width:600px;" alt="Registro Exitoso"/>
+                </a>
+              </td>
+            </tr>
+          </table>
         </td>
-    </tr>
-    <!-- // MODULE ROW -->
-    <br>
-    <!-- MODULE ROW // -->
-    <tr>
-        <td align="center" valign="top">
-            <!-- CENTERING TABLE // -->
-            <table border="0" cellpadding="0" cellspacing="0" width="500">
-                <tr>
-                    <td align="center" valign="top">
-                        <!-- FLEXIBLE CONTAINER // -->
-                        <table border="0" cellpadding="30" cellspacing="0" width="500" class="flexibleContainer">
-                            <tr>
-                                <td style="padding-top:0;" align="center" valign="top" width="500" class="flexibleContainerCell">
-                                    <!-- CONTENT TABLE // -->
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="flexibleContainer">
-                                        <tr>
-                                            <td>
-                                                <div style="text-align:center;font-family:Helvetica,Arial,sans-serif;margin-bottom:0;margin-top:10px;color:#5F5F5F;line-height:135%;">
-                                                    <strong><h4>¡TU REGISTRO FUE REALIZADO CON ÉXITO!</h4></strong><br>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table align="center" border="0" cellpadding="0" cellspacing="0" class="flexibleContainer">
-                                        <tr>
-                                            <td align="center" valign="top" class="textContent">
-                                                <div style="text-align:center;font-family:Helvetica,Arial,sans-serif;font-size:15px;margin-bottom:0;margin-top:10px;color:#5F5F5F;line-height:135%;">
-                                                    <span>Revisa tu correo electrónico para confirmar el registro</span><br>
-                                                    <span>¡No te olvides de chequear el SPAM!</span><br>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <!-- // CONTENT TABLE -->
-                                </td>
-                            </tr>
-                        </table>
-                        <!-- // FLEXIBLE CONTAINER -->
-                    </td>
-                </tr>
-            </table>
-            <!-- // CENTERING TABLE -->
-        </td>
-    </tr>
-<?php $this->view('frontend/email/_footer'); ?>
+      </tr>
+    </table>
+  </center>
+</body>
+</html>

@@ -54,36 +54,21 @@ class Dashboard extends CI_Controller
 		if ($this->input->post()) {
 			try {
 				// Validate required fields
-				$required_fields = ['name', 'telephone', 'social_reason', 'id_fiscal', 'address', 'business_hours'];
+				$required_fields = ['name', 'telephone', 'address', 'business_hours'];
 				foreach ($required_fields as $field) {
 					if (empty($this->input->post($field))) {
 						if ($this->input->is_ajax_request()) {
 							echo json_encode([
 								'success' => false,
-								'message' => 'Todos los campos son requeridos.',
+								'message' => 'Los campos Nombre, Teléfono, Dirección y Horario de atención son requeridos.',
 								$this->security->get_csrf_token_name() => $this->security->get_csrf_hash()
 							]);
 							return;
 						}
-						$this->session->set_flashdata('error', 'Todos los campos son requeridos.');
+						$this->session->set_flashdata('error', 'Los campos Nombre, Teléfono, Dirección y Horario de atención son requeridos.');
 						redirect(base_url('mi-perfil'));
 						return;
 					}
-				}
-
-				// Validate fiscal identifier format
-				if (strlen($this->input->post('id_fiscal')) < 5 || strlen($this->input->post('id_fiscal')) > 25) {
-					if ($this->input->is_ajax_request()) {
-						echo json_encode([
-							'success' => false,
-							'message' => 'El identificador fiscal debe contener entre 5 y 25 caracteres.',
-							$this->security->get_csrf_token_name() => $this->security->get_csrf_hash()
-						]);
-						return;
-					}
-					$this->session->set_flashdata('error', 'El identificador fiscal debe contener entre 5 y 25 caracteres.');
-					redirect(base_url('mi-perfil'));
-					return;
 				}
 
 				// Validate phone number format

@@ -32,9 +32,9 @@
                     <tr>
                         <td><?php echo $result->tariff_id ?></td>
                         <td><?php echo $result->country ?></td>
-                        <td><?php echo $result->province ?></td>
-                        <td><?php echo $result->destination ?></td>
-                        <td><?php echo $result->postal_code ?></td>
+                        <td><?php echo !empty($result->province_name_manual) ? $result->province_name_manual . ' (manual)' : $result->province ?></td>
+                        <td><?php echo !empty($result->destination_name_manual) ? $result->destination_name_manual . ' (manual)' : $result->destination ?></td>
+                        <td><?php echo !empty($result->postal_code_manual) ? $result->postal_code_manual . ' (manual)' : $result->postal_code ?></td>
                         <td><?php echo '$ '.$result->tariff_price ?></td>
                         <td align="right" width="15%">
                           <div class="btn-group">

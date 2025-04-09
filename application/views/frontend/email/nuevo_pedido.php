@@ -1,4 +1,4 @@
-<?php $this->view('frontend/email/_header',array('img' => base_url('assets/public/contacto.png'))); ?>
+<?php $this->view('frontend/email/_header', array()); ?>
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="color:#FFFFFF;background-color:rgb(247,190,13);">
                 <tr>
                     <td align="center" valign="top">
@@ -20,23 +20,6 @@
                     </td>
                 </tr>
             </table>
-        </td>
-    </tr>
-    <!-- // MODULE ROW -->
-    <tr>
-        <td align="center" valign="top">
-            <!-- CENTERING TABLE // -->
-            <table border="0" cellpadding="0" cellspacing="0" width="500">
-                <tr>
-                    <td align="center" valign="top">
-                        <!-- FLEXIBLE CONTAINER // -->
-                        <br>
-                        <img src="https://i.ibb.co/YSs3qT9/superflash.png" width="100"/>
-                        <!-- // FLEXIBLE CONTAINER -->
-                    </td>
-                </tr>
-            </table>
-            <!-- // CENTERING TABLE -->
         </td>
     </tr>
     <!-- // MODULE ROW -->
@@ -66,11 +49,22 @@
                                                         <b>Código postal: </b><?php echo $dato['postal_code']; ?><br>
                                                         <b>Dirección: </b><?php echo $dato['address']; ?><br>
                                                         <b>Teléfono: </b><?php echo $dato['telephone']; ?><br>
-                                                        <b>Volumen: </b><?php echo $dato['volume']; ?> cm3<br>
-                                                        <b>Peso: </b><?php echo $dato['weight']; ?> kg<br>
+                                                        <b>Volumen: </b><?php 
+                                                            if ($dato['volume'] >= 1000) {
+                                                                echo ($dato['volume'] / 1000) . ' L';
+                                                            } else {
+                                                                echo $dato['volume'] . ' cm3';
+                                                            }
+                                                        ?><br>
+                                                        <b>Peso: </b><?php 
+                                                            if ($dato['weight'] >= 1000) {
+                                                                echo ($dato['weight'] / 1000) . ' kg';
+                                                            } else {
+                                                                echo $dato['weight'] . ' g';
+                                                            }
+                                                        ?><br>
                                                         <b>Precio: </b> $ <?php echo $dato['price']; ?><br>
                                                     <?php else:?>
-                                                        <div style="text-align: center;font-size: 18px;"><b><?php echo $dato['message']; ?></b></div><br>
                                                         <b>Store: </b><?php echo $dato['store']; ?><br>
                                                         <b>Cliente: </b><?php echo $dato['client']; ?><br>
                                                         <b>Email: </b><?php echo $dato['email']; ?><br>
@@ -79,8 +73,20 @@
                                                         <b>Código postal: </b><?php echo $dato['postal_code']; ?><br>
                                                         <b>Dirección: </b><?php echo $dato['address']; ?><br>
                                                         <b>Teléfono: </b><?php echo $dato['telephone']; ?><br>
-                                                        <b>Volumen: </b><?php echo $dato['volume']; ?> cm3<br>
-                                                        <b>Peso: </b><?php echo $dato['weight']; ?> kg<br>
+                                                        <b>Volumen: </b><?php 
+                                                            if ($dato['volume'] >= 1000) {
+                                                                echo ($dato['volume'] / 1000) . ' L';
+                                                            } else {
+                                                                echo $dato['volume'] . ' cm3';
+                                                            }
+                                                        ?><br>
+                                                        <b>Peso: </b><?php 
+                                                            if ($dato['weight'] >= 1000) {
+                                                                echo ($dato['weight'] / 1000) . ' kg';
+                                                            } else {
+                                                                echo $dato['weight'] . ' g';
+                                                            }
+                                                        ?><br>
                                                     <?php endif; ?>
                                                 </div>
                                             </td>

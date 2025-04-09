@@ -120,18 +120,58 @@ class Customers extends CI_Controller
 					'telephone' => $this->input->post('telephone'),
 					'email' => $this->input->post('email'),
 					'country_id' => $this->input->post('country'),
-					'province_id' => $this->input->post('province') ?: null,
-					'destination_id' => $this->input->post('destination') ?: null,
 					'update_by' => $this->session->userdata('user_id'),
 					'address' => $this->input->post('address'),
 					'business_hours' => $this->input->post('business_hours'),
 					'updated_at' => date('Y-m-d H:i:s')  // This will be handled by DEFAULT_GENERATED, so we can remove it
 				);
+
+				// Debug input values
+				log_message('debug', 'Customer edit POST values: ' . json_encode($_POST));
+				log_message('debug', 'province value: "' . $this->input->post('province') . '"');
+				log_message('debug', 'province_manual value: "' . $this->input->post('province_manual') . '"');
+				log_message('debug', 'destination value: "' . $this->input->post('destination') . '"');
+				log_message('debug', 'destination_manual value: "' . $this->input->post('destination_manual') . '"');
+				log_message('debug', 'province === "other"? ' . ($this->input->post('province') === 'other' ? 'true' : 'false'));
+				log_message('debug', 'destination === "other"? ' . ($this->input->post('destination') === 'other' ? 'true' : 'false'));
+
+				// Handle "Other" option for province
+				if ($this->input->post('province') === 'other' || !empty($this->input->post('province_manual'))) {
+					$data['province_id'] = NULL;
+					$data['province_name_manual'] = $this->input->post('province_manual');
+					log_message('debug', 'Using province_manual: ' . $this->input->post('province_manual'));
+				} else {
+					$data['province_id'] = $this->input->post('province') ?: null;
+					$data['province_name_manual'] = NULL;
+					log_message('debug', 'Using province_id: ' . $this->input->post('province'));
+				}
 				
-				// Remove null or empty values to prevent overwriting with empty data
-				$data = array_filter($data, function($value) {
+				// Handle "Other" option for destination
+				if ($this->input->post('destination') === 'other' || !empty($this->input->post('destination_manual'))) {
+					$data['destination_id'] = NULL;
+					$data['destination_name_manual'] = $this->input->post('destination_manual');
+					log_message('debug', 'Using destination_manual: ' . $this->input->post('destination_manual'));
+				} else {
+					$data['destination_id'] = $this->input->post('destination') ?: null;
+					$data['destination_name_manual'] = NULL;
+					log_message('debug', 'Using destination_id: ' . $this->input->post('destination'));
+				}
+				
+				// Debug data before filtering
+				log_message('debug', 'Customer edit data before filtering: ' . json_encode($data));
+				
+				// Remove null or empty values to prevent overwriting with empty data, except for social_reason and fiscal_identifier
+				$data = array_filter($data, function($value, $key) {
+					if ($key === 'social_reason' || $key === 'fiscal_identifier' || 
+						$key === 'province_id' || $key === 'province_name_manual' || 
+						$key === 'destination_id' || $key === 'destination_name_manual') {
+						return true; // Always keep these fields, even if empty
+					}
 					return $value !== null && $value !== '';
-				});
+				}, ARRAY_FILTER_USE_BOTH);
+				
+				// Debug data after filtering
+				log_message('debug', 'Customer edit data after filtering: ' . json_encode($data));
 
 				// Validate password if provided
 				$password = $this->input->post('password');
