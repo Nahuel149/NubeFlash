@@ -31,27 +31,25 @@
                                 Enviar el siguiente formato (JSON) a la siguiente url: "<?php echo base_url('api/get-shippingCost')  ?>"
                             </p>
                             <pre><code data-lang="html">{
-    "token":"*******************************",
+    "token":"****************************",
     "data_client": {
         "postal_code":"client_postal_code",
         "client":"client_name",
         "reference":"client_address"
     },
     "weight":"10",
-    "depth":"5",
+    "long":"5",
     "width":"1",
-    "height":"2"
+    "high":"2",
+    "volume":"10"
 }</code></pre>
-                            <p>Después de enviar los datos correctamente, la API retornara un mensaje de éxito y la respectiva cotización del envío. </p>
-                            <p>Note: El parámetro `weight` debe proporcionarse en gramos (g), y los parámetros `depth`, `width`, `height` deben proporcionarse en centímetros (cm).</p>
+                            <p>Después de enviar los datos correctamente, la API retornara un mensaje de exito y la respectiva cotizacion del envio.</p>
 <pre>{
-    "status": "success",
+    "status": "Success",
     "data": {
-        "price_item": "20.00",
-        "calculated_volume_cm3": 10
+        "price_item": "20.00"
     }
 }</pre>
-                            <p>La respuesta incluye el `price_item` (precio del envío) y el `calculated_volume_cm3`, que es el volumen calculado automáticamente a partir de las dimensiones (depth * width * height) en centímetros cúbicos (cm³).</p>
                             <p>Aquí una representacion de los posibles errores retornados de la API.</p>
                             <div class="table-responsive">
                             <table class="table">
@@ -118,7 +116,7 @@
                                         </th>
                                         <th>
                                             <p>
-                                                En este caso, el error indica que el volumen enviado no coincide con la operacion de las dimensiones enviadas del paquete. El volumen se calcula automáticamente a partir de las dimensiones.
+                                                En este caso, el error indica que el volumen enviado no coincide con la operacion de las dimensiones enviadas del paquete.
                                             </p>
                                         </th>
                                     </tr>
@@ -133,7 +131,7 @@
                                         </th>
                                         <th>
                                             <p>
-                                                En este caso, el error indica que no se pudo calcular el volumen a partir de las dimensiones. Asegúrese de que los valores de depth, width y height sean numéricos y mayores que cero.
+                                                En este caso, el error indica que recibio el campo "Volume" vacio, lo cual el campo es necesario para la validacion con las dimensiones del paquete.
                                             </p>
                                         </th>
                                     </tr>
@@ -169,13 +167,13 @@
         "reference":"client_address"
     },
     "weight":"10",
-    "depth":"5",
+    "long":"5",
     "width":"1",
-    "height":"2"
+    "high":"2",
+    "volume":"10"
 }</pre>
                             
-                            <p>Después de enviar los datos correctamente, la API retornara un mensaje de exito y el codigo del envío para su respectivo seguimiento.</p>
-                            <p>Note: El parámetro `weight` debe proporcionarse en gramos (g), y los parámetros `depth`, `width`, `height` deben proporcionarse en centímetros (cm).</p> 
+                            <p>Después de enviar los datos correctamente, la API retornara un mensaje de exito y el codigo del envío para su respectivo seguimiento.</p> 
 <pre>{
     "status": "Success",
     "data": {
@@ -248,7 +246,7 @@
                                             </th>
                                             <th>
                                                 <p>
-                                                    En este caso, el error indica que no se pudo calcular el volumen a partir de las dimensiones. Asegúrese de que los valores de depth, width y height sean numéricos y mayores que cero.
+                                                    En este caso, el error indica que recibio el campo "Volume" vacio, lo cual el campo es necesario para la validacion con las dimensiones del paquete.
                                                 </p>
                                             </th>
                                         </tr>

@@ -49,20 +49,8 @@
                                                         <b>Código postal: </b><?php echo $dato['postal_code']; ?><br>
                                                         <b>Dirección: </b><?php echo $dato['address']; ?><br>
                                                         <b>Teléfono: </b><?php echo $dato['telephone']; ?><br>
-                                                        <b>Volumen: </b><?php 
-                                                            if ($dato['volume'] >= 1000) {
-                                                                echo ($dato['volume'] / 1000) . ' L';
-                                                            } else {
-                                                                echo $dato['volume'] . ' cm3';
-                                                            }
-                                                        ?><br>
-                                                        <b>Peso: </b><?php 
-                                                            if ($dato['weight'] >= 1000) {
-                                                                echo ($dato['weight'] / 1000) . ' kg';
-                                                            } else {
-                                                                echo $dato['weight'] . ' g';
-                                                            }
-                                                        ?><br>
+                                                        <b>Volumen: </b><?php echo $dato['volume']; ?> cm3<br>
+                                                        <b>Peso: </b><?php echo $dato['weight']; ?> kg<br>
                                                         <b>Precio: </b> $ <?php echo $dato['price']; ?><br>
                                                     <?php else:?>
                                                         <b>Store: </b><?php echo $dato['store']; ?><br>
@@ -73,20 +61,8 @@
                                                         <b>Código postal: </b><?php echo $dato['postal_code']; ?><br>
                                                         <b>Dirección: </b><?php echo $dato['address']; ?><br>
                                                         <b>Teléfono: </b><?php echo $dato['telephone']; ?><br>
-                                                        <b>Volumen: </b><?php 
-                                                            if ($dato['volume'] >= 1000) {
-                                                                echo ($dato['volume'] / 1000) . ' L';
-                                                            } else {
-                                                                echo $dato['volume'] . ' cm3';
-                                                            }
-                                                        ?><br>
-                                                        <b>Peso: </b><?php 
-                                                            if ($dato['weight'] >= 1000) {
-                                                                echo ($dato['weight'] / 1000) . ' kg';
-                                                            } else {
-                                                                echo $dato['weight'] . ' g';
-                                                            }
-                                                        ?><br>
+                                                        <b>Volumen: </b><?php echo $dato['volume']; ?> cm3<br>
+                                                        <b>Peso: </b><?php echo $dato['weight']; ?> kg<br>
                                                     <?php endif; ?>
                                                 </div>
                                             </td>

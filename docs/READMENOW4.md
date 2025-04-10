@@ -20,15 +20,15 @@ La Nube's shipping cost system is designed to be flexible and easy to manage. Th
 ### Basic Concepts
 
 1. **Weight Types**:
-   - **Actual Weight**: The physical weight of the package in grams
+   - **Actual Weight**: The physical weight of the package in kilograms
    - **Volumetric Weight**: Calculated from package dimensions
    - **Effective Weight**: The greater of actual and volumetric weight
 
 2. **Pricing Factors**:
    - Origin location
    - Destination location
-   - Package weight (in grams)
-   - Package dimensions (in centimeters)
+   - Package weight
+   - Package dimensions
    - Special handling requirements
    - Service type (regular/express)
 
@@ -36,19 +36,20 @@ La Nube's shipping cost system is designed to be flexible and easy to manage. Th
 
 1. **Volumetric Weight Formula**:
    ```
-   Volume (cm³) = Length × Width × Height
+   Volumetric Weight = (Length × Width × Height) ÷ 5000
    ```
    - Measurements in centimeters
-   - Example: A box 30cm × 20cm × 15cm = 9,000cm³
+   - 5000 is the standard divisor for domestic shipments
+   - Example: A box 30cm × 20cm × 15cm = 1.8kg volumetric weight
 
 2. **Effective Weight**:
    ```
    Effective Weight = MAX(Actual Weight, Volumetric Weight)
    ```
    Example:
-   - Actual Weight: 1,500 g
-   - Volumetric Weight calculation using density factor: 1,800 g
-   - Effective Weight used: 1,800 g
+   - Actual Weight: 1.5 kg
+   - Volumetric Weight: 1.8 kg
+   - Effective Weight used: 1.8 kg
 
 ## Managing Shipping Rates
 

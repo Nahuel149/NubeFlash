@@ -5,25 +5,12 @@ class Order_model extends CI_Model {
     private $table;
 	private $id;
 
-    /**
-     * Constructor
-     * 
-     * @access public
-     */
     public function __construct() {
         parent::__construct();
         $this->table = TABLE_ORDER;
         $this->id = 'order_id';
     }
 
-    /**
-     * Get all orders
-     * 
-     * weights are in grams (g) and volumes in cubic centimeters (cm³)
-     * 
-     * @access public
-     * @return array
-     */
     public function get($params = null)
     {
         $this->db->select('orders.*,tariff.tariff_price as price,destinations.name as destination,destinations.postal_code,countries.name as country,provinces.name as province,statuses.name as status');
@@ -42,26 +29,12 @@ class Order_model extends CI_Model {
     	return $query->result();
     }
 
-    /**
-     * Insert a new order
-     * 
-     * @access public
-     * @param array $data Data to insert with weight in grams (g) and volume in cubic centimeters (cm³)
-     * @return int
-     */
     public function insert($data)
     {
     	$this->db->insert($this->table, $data);
     	return $this->db->insert_id();
     }
 
-    /**
-     * Find an order by ID
-     * 
-     * @access public
-     * @param int $id Order ID
-     * @return object Order with weight in grams (g) and volume in cubic centimeters (cm³)
-     */
     public function find($id)
     {
         $this->db->select('orders.*,tariff.tariff_price as price,destinations.name as destination,destinations.postal_code,countries.name as country,provinces.name as province,statuses.name as status');
@@ -76,14 +49,6 @@ class Order_model extends CI_Model {
     	return $query->row();
     }
 
-    /**
-     * Edit an order
-     * 
-     * @access public
-     * @param array $data New data with weight in grams (g) and volume in cubic centimeters (cm³)
-     * @param int $id Order ID
-     * @return int
-     */
     public function edit($data, $id)
     {
     	$this->db->where($this->id, $id);

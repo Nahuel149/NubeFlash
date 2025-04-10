@@ -240,24 +240,24 @@ INSERT INTO `tariff` (
 ) VALUES
 -- Standard Package Prices (Uruguayan Pesos)
 -- Hasta 2Kg / 40 x 20 x 20 cm
-(1, 1, 1, 130.00, 2000.00, 16000.00, 1),    -- Normal delivery
-(1, 1, 1, 160.00, 2000.00, 16000.00, 1),    -- 24h delivery
+(1, 1, 1, 130.00, 2.00, 16000.00, 1),    -- Normal delivery
+(1, 1, 1, 160.00, 2.00, 16000.00, 1),    -- 24h delivery
 
 -- De 2 a 5 Kg / 40 x 30 x 30 cm
-(1, 1, 1, 155.00, 5000.00, 36000.00, 1),    -- Normal delivery
-(1, 1, 1, 185.00, 5000.00, 36000.00, 1),    -- 24h delivery
+(1, 1, 1, 155.00, 5.00, 36000.00, 1),    -- Normal delivery
+(1, 1, 1, 185.00, 5.00, 36000.00, 1),    -- 24h delivery
 
 -- De 5 a 20 Kg / 100 x 60 x 60 cm
-(1, 1, 1, 200.00, 20000.00, 360000.00, 1),   -- Normal delivery
-(1, 1, 1, 230.00, 20000.00, 360000.00, 1),   -- 24h delivery
+(1, 1, 1, 200.00, 20.00, 360000.00, 1),   -- Normal delivery
+(1, 1, 1, 230.00, 20.00, 360000.00, 1),   -- 24h delivery
 
 -- De 20 a 30 Kg / 100 x 60 x 60 cm
-(1, 1, 1, 360.00, 30000.00, 360000.00, 1),   -- Normal delivery
-(1, 1, 1, 390.00, 30000.00, 360000.00, 1),   -- 24h delivery
+(1, 1, 1, 360.00, 30.00, 360000.00, 1),   -- Normal delivery
+(1, 1, 1, 390.00, 30.00, 360000.00, 1),   -- 24h delivery
 
 -- Paquetes de gran tamaño
-(1, 1, 1, 750.00, 40000.00, 500000.00, 1),   -- Normal delivery
-(1, 1, 1, 980.00, 40000.00, 500000.00, 1),   -- 24h delivery
+(1, 1, 1, 750.00, 40.00, 500000.00, 1),   -- Normal delivery
+(1, 1, 1, 980.00, 40.00, 500000.00, 1),   -- 24h delivery
 
 -- Retiro de Mercadería
 (1, 1, 1, 80.00, 0.00, 0.00, 1);     -- Fixed price
@@ -273,25 +273,25 @@ INSERT INTO `orders` (
  '{"items":[{"name":"Product 1","quantity":1}]}',
  'Empresa A', 'Pedido 1',
  '{"address":"Av. Corrientes 1234","city":"Buenos Aires"}',
- '1000', 2000.00, 16000.00, 1),
+ '1000', 2.00, 16000.00, 1),
 
 (2, 3, 2, 'ORD-2024-002', 155.00, 'TRK002',
  '{"items":[{"name":"Product 2","quantity":2}]}',
  'Comercial B', 'Pedido 2',
  '{"address":"Rua Augusta 567","city":"São Paulo"}',
- '01000', 5000.00, 36000.00, 1),
+ '01000', 5.00, 36000.00, 1),
 
 (3, 5, 3, 'ORD-2024-003', 200.00, 'TRK003',
  '{"items":[{"name":"Product 3","quantity":1}]}',
  'Distribuidora C', 'Pedido 3',
  '{"address":"Av. Providencia 789","city":"Santiago"}',
- '8320000', 15000.00, 360000.00, 1),
+ '8320000', 15.00, 360000.00, 1),
 
 (4, 7, 4, 'ORD-2024-004', 360.00, 'TRK004',
  '{"items":[{"name":"Product 4","quantity":3}]}',
  'Importadora D', 'Pedido 4',
  '{"address":"Av. 18 de Julio 456","city":"Montevideo"}',
- '11000', 25000.00, 360000.00, 1);
+ '11000', 25.00, 360000.00, 1);
 
 -- Insert order items
 INSERT INTO `order_items` (

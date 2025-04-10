@@ -120,8 +120,8 @@ CREATE TABLE IF NOT EXISTS `tariff` (
     `country_id` INT NOT NULL,
     `province_id` INT NOT NULL,
     `tariff_price` DECIMAL(10,2) NOT NULL,
-    `weight` DECIMAL(15,2),       /* Weight in grams */
-    `volume` DECIMAL(15,2),       /* Volume in cubic centimeters (cm³) */
+    `weight` DECIMAL(10,2),
+    `volume` DECIMAL(10,3),
     `active` TINYINT NOT NULL DEFAULT 1,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -136,23 +136,23 @@ CREATE TABLE IF NOT EXISTS `tariff` (
 ### Pricing Structure
 The system implements a tiered pricing model in Uruguayan Pesos:
 
-1. **Small Packages** (up to 2000g / 40 x 20 x 20 cm)
+1. **Small Packages** (up to 2kg / 40 x 20 x 20 cm)
    - Normal delivery: 130.00
    - 24h delivery: 160.00
 
-2. **Medium Packages** (2000-5000g / 40 x 30 x 30 cm)
+2. **Medium Packages** (2-5kg / 40 x 30 x 30 cm)
    - Normal delivery: 155.00
    - 24h delivery: 185.00
 
-3. **Large Packages** (5000-20000g / 100 x 60 x 60 cm)
+3. **Large Packages** (5-20kg / 100 x 60 x 60 cm)
    - Normal delivery: 200.00
    - 24h delivery: 230.00
 
-4. **Extra Large Packages** (20000-30000g / 100 x 60 x 60 cm)
+4. **Extra Large Packages** (20-30kg / 100 x 60 x 60 cm)
    - Normal delivery: 360.00
    - 24h delivery: 390.00
 
-5. **Oversized Packages** (up to 500000 cm³)
+5. **Oversized Packages** (up to 40kg / 500cm³)
    - Normal delivery: 750.00
    - 24h delivery: 980.00
 
@@ -161,19 +161,19 @@ The system implements a tiered pricing model in Uruguayan Pesos:
 
 ### Shipping Cost Calculation
 The system calculates shipping costs based on:
-1. Package weight (in grams) and volume (in cm³)
+1. Package weight and volume
 2. Delivery location (country, province, destination)
 3. Delivery speed (normal vs 24h)
 4. Customer's location validation
 
 #### Calculation Process:
 1. Validates customer token
-2. Calculates volume from dimensions (in cm) if provided
+2. Calculates volume from dimensions if provided
 3. Verifies volume matches provided dimensions
 4. Retrieves applicable tariff based on:
    - Postal code
-   - Weight thresholds (in grams)
-   - Volume thresholds (in cm³)
+   - Weight thresholds
+   - Volume thresholds
 5. Validates customer's country matches tariff's country
 6. Returns the lowest applicable price
 
@@ -191,8 +191,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
     `items` TEXT,
     `shipping_data` TEXT,
     `postal_code` VARCHAR(20),
-    `weight` DECIMAL(15,2),  /* Weight in grams */
-    `volume` DECIMAL(15,2)   /* Volume in cubic centimeters (cm³) */
+    `weight` DECIMAL(10,2),
+    `volume` DECIMAL(10,3)
 )
 ```
 
@@ -306,274 +306,128 @@ $config['site_url'] = 'https://lanubeflash.com';
 
 ## API Endpoints
 
-### Calculate Shipping Cost
+### 1. Get Shipping Cost
+```http
+POST /frontend/api/getShippingCost
+Content-Type: application/json
 
-**Endpoint**: `POST /frontend/api/getShippingCost`
-
-**Description**: Calculates the shipping cost based on package weight (grams), dimensions (centimeters), and destination postal code.
-
-**Request Body**:
-
-```json
 {
-    "token": "YOUR_CUSTOMER_API_TOKEN",
+    "token": "YOUR_TOKEN",
     "data_client": {
-        "postal_code": "DESTINATION_POSTAL_CODE",
-        "client": "CLIENT_NAME",
-        "reference": "CLIENT_ORDER_REFERENCE",
+        "postal_code": "1000"
+    },
+    "weight": "10",
+    "long": "1",
+    "width": "1",
+    "high": "0.5",
+    "volume": "0.5"
+}
+```
+
+### 2. Get Customer
+```http
+POST /frontend/api/getCustomer
+Content-Type: application/json
+
+{
+    "user": "customer@email.com",
+    "token": "YOUR_TOKEN"
+}
+```
+
+### 3. Send Order
+```http
+POST /frontend/api/sendOrder
+Content-Type: application/json
+
+{
+    "token": "YOUR_TOKEN",
+    "data_client": {
+        "postal_code": "1000",
+        "client": "Client Name",
+        "reference": "Address Reference",
         "shipping_data": {
             "store": {
                 "name": "Store Name"
             },
-            "email": "recipient@example.com",
-            "province": "Recipient Province",
-            "city": "Recipient City",
-            "address": "Recipient Address",
-            "telephone": "Recipient Phone"
+            "email": "client@email.com",
+            "province": "Province Name",
+            "city": "City Name",
+            "address": "Full Address",
+            "telephone": "Phone Number"
         }
     },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "60"     // Height in centimeters (cm)
+    "weight": "10",
+    "long": "1",
+    "width": "1",
+    "high": "0.5",
+    "volume": "0.5"
 }
 ```
 
-**Success Response (200 OK)**:
+### API Endpoints
 
+#### Shipping Cost Calculation
+```
+POST /frontend/api/getShippingCost
+```
+Request body:
 ```json
 {
-    "status": "Success",
-    "data": {
-        "price_item": "200.00", // Calculated price
-        "calculated_volume_cm3": 360000 // Volume automatically calculated (depth * width * height) in cm³
-    }
-}
-```
-
-**Error Responses**:
-
-*   **Invalid Token**: `{"status":"Error","data":{"message":"Lanubeflash response: Invalid token"}}`
-*   **Missing/Invalid Dimension/Weight**: `{"status":"Error","data":{"message":"Lanubeflash response: [Field] (in [unit]) is required and must be numeric"}}` (e.g., Depth (in centimeters)...)
-*   **Tariff Not Found**: `{"status":"Error","data":{"message":"Lanubeflash response: No tariff available for this shipping"}}`
-*   **Country Mismatch**: `{"status":"Error","data":{"message":"Lanubeflash response: Country doesn't match"}}`
-
-### Send Order
-
-**Endpoint**: `POST /frontend/api/sendOrder`
-
-**Description**: Creates a new shipping order using the provided details. Calculates cost internally based on weight/dimensions.
-
-**Request Body**:
-
-```json
-{
-    "token": "YOUR_CUSTOMER_API_TOKEN",
-    "data_client": {
-        "client": "CLIENT_NAME",
-        "reference": "Pedido #12345",
-        "postal_code": "DESTINATION_POSTAL_CODE",
-        "shipping_data": {
-            "store": {
-                "name": "Store Name"
-            },
-            "email": "recipient@example.com",
-            "province": "Recipient Province",
-            "city": "Recipient City",
-            "address": "Recipient Address",
-            "telephone": "Recipient Phone"
-        }
-    },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "50"     // Height in centimeters (cm)
-    // Note: Volume is calculated automatically based on dimensions
-}
-```
-
-**Success Response (200 OK)**:
-
-```json
-{
-    "status": "Success",
-    "data": {
-        "code_tracking": "GENERATED_TRACKING_CODE_HASH"
-    }
-}
-```
-
-**Error Responses**:
-
-*   **Invalid Token**: `{"status":"Error","data":{"message":"Lanubeflash response: Invalid token"}}`
-*   **Tariff Not Found**: `{"status":"Error","data":{"message":"Lanubeflash response: Tariff no exists"}}`
-*   **Invalid Weight/Volume**: `{"status":"Error","data":{"message":"Lanubeflash response: Invalid weight or volume"}}`
-*   **Token Revoked**: `{"status":"Error","data":{"message":"Lanubeflash response: Token has been revoked"}}`
-
-
-## Database Schema Details
-
-(Includes tables like `users`, `groups`, `customers`, `orders`, `tariff`, `destinations`, etc.)
-
-Refer to `create_database.sql` for the complete schema.
-
-## Code Structure
-
-- **application/**: Core CodeIgniter structure.
-  - **config/**: Configuration files (database, routes, constants).
-  - **controllers/**: Handles incoming requests (e.g., `frontend/Api.php`, `backend/Users.php`).
-  - **models/**: Database interaction logic (e.g., `Tariff_model.php`, `Order_model.php`).
-  - **views/**: HTML templates (e.g., frontend/public, backend).
-  - **libraries/**: Custom libraries (e.g., `Frontend_lib.php`).
-  - **helpers/**: Custom helper functions.
-- **assets/**: Frontend assets (CSS, JS, images).
-- **docs/**: Documentation files (like this README).
-- **system/**: CodeIgniter core files.
-- **uploads/**: Directory for file uploads.
-
-## Testing
-
-Includes PHPUnit tests and a pre-deployment script (`pre_deployment_test.php`) to check environment compatibility.
-
-## Security Considerations
-
-- Uses CodeIgniter's security features (CSRF protection, XSS filtering).
-- Passwords hashed using SHA1 (consider upgrading to bcrypt or Argon2).
-- API tokens used for customer authentication.
-- Input validation implemented on controllers.
-
-## Future Enhancements
-
-- Upgrade password hashing mechanism.
-- Implement more comprehensive unit and integration tests.
-- Enhance frontend UI/UX.
-- Integrate with more third-party shipping providers.
-
-## Contribution Guidelines
-
-(Details on how to contribute to the project - if applicable)
-
-## License
-
-(Project license information)
-
-```bash
-# Example API Call - Calculate Shipping Cost
-curl -X POST "http://localhost:8000/frontend/api/getShippingCost" \
--H "Content-Type: application/json" \
--d '{
-    "token": "tk_empresaa_896a1b7d840b59b0518f7ea5a349d90c6aa68207b0392b96e35205414e805efb",
+    "token": "customer_token",
     "data_client": {
         "postal_code": "1000",
-        "client": "Empresa A",
-        "reference": "Av. Corrientes 1234",
         "shipping_data": {
-            "store": {
-                "name": "Tienda Central"
-            },
-            "email": "cliente@example.com",
-            "province": "Buenos Aires",
-            "city": "Buenos Aires",
-            "address": "Calle Falsa 123",
-            "telephone": "+541155555555"
+            "store": {"name": "Store Name"},
+            "email": "customer@email.com",
+            "province": "Province Name",
+            "city": "City Name",
+            "address": "Street Address",
+            "telephone": "Phone Number"
         }
     },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "60"     // Height in centimeters (cm)
-}'
-
-# Example Success Response
-# The API returns the calculated shipping price and the volume calculated from dimensions.
+    "weight": 2.0,
+    "volume": 0.016,
+    "long": 40,
+    "width": 20,
+    "high": 20
+}
+```
+Response (Success):
+```json
 {
     "status": "Success",
     "data": {
-        "price_item": "200.00",
-        "calculated_volume_cm3": 360000 // Volume automatically calculated (depth * width * height) in cm³
-    }
-}
-
-# Example Error Response (Tariff Not Found)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: No tariff available for this shipping"
-    }
-}
-
-# Example Error Response (Invalid Token)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Invalid token"
-    }
-}
-
-# Example Error Response (Missing Dimension)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Depth (in centimeters) is required and must be numeric"
-    }
-}
-
-# Example Error Response (Country Mismatch)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Country doesn't match"
+        "price_item": 130.00
     }
 }
 ```
 
-```bash
-# Example API Call - Send Order
-curl -X POST "http://localhost:8000/frontend/api/sendOrder" \
--H "Content-Type: application/json" \
--d '{
-    "token": "tk_empresaa_896a1b7d840b59b0518f7ea5a349d90c6aa68207b0392b96e35205414e805efb",
+#### Create Order
+```
+POST /frontend/api/createOrder
+```
+Request body includes shipping cost calculation data plus:
+```json
+{
     "data_client": {
-        "client": "Empresa A",
-        "reference": "Pedido #12345",
-        "postal_code": "1000",
-        "shipping_data": {
-            "store": {
-                "name": "Tienda Central"
-            },
-            "email": "cliente@example.com",
-            "province": "Buenos Aires",
-            "city": "Buenos Aires",
-            "address": "Calle Falsa 123",
-            "telephone": "+541155555555"
-        }
-    },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "50"     // Height in centimeters (cm)
-}'
-
-# Example Success Response (Send Order)
+        "client": "Client Name",
+        "reference": "Order Reference"
+    }
+}
+```
+Response (Success):
+```json
 {
     "status": "Success",
     "data": {
-        "code_tracking": "SOME_TRACKING_CODE_HASH"
+        "code_tracking": "generated_tracking_code"
     }
 }
+```
 
-# Example Error Response (Send Order - Invalid Token)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Invalid token"
-    }
-}
+### Data Flow
 
-# Example Error Response (Send Order - Tariff Not Found)
-{
-    "status": "Error",
-    "data": {
 1. **Shipping Cost Calculation**:
    ```mermaid
    sequenceDiagram
@@ -643,28 +497,28 @@ graph TD
 
 ### Package Categories and Prices (in Uruguayan Pesos)
 
-1. Small Packages (Hasta 2000g)
-   - Dimensions: 40 x 20 x 20 cm (Volume: 16000 cm³)
+1. Small Packages (Hasta 2Kg)
+   - Dimensions: 40 x 20 x 20 cm (Volume: 0.016 m³)
    - Normal delivery: $130
    - 24h delivery: $160
 
-2. Medium Packages (2000-5000g)
-   - Dimensions: 40 x 30 x 30 cm (Volume: 36000 cm³)
+2. Medium Packages (2-5 Kg)
+   - Dimensions: 40 x 30 x 30 cm (Volume: 0.036 m³)
    - Normal delivery: $155
    - 24h delivery: $185
 
-3. Large Packages (5000-20000g)
-   - Dimensions: 100 x 60 x 60 cm (Volume: 360000 cm³)
+3. Large Packages (5-20 Kg)
+   - Dimensions: 100 x 60 x 60 cm (Volume: 0.360 m³)
    - Normal delivery: $200
    - 24h delivery: $230
 
-4. Extra Large Packages (20000-30000g)
-   - Dimensions: 100 x 60 x 60 cm (Volume: 360000 cm³)
+4. Extra Large Packages (20-30 Kg)
+   - Dimensions: 100 x 60 x 60 cm (Volume: 0.360 m³)
    - Normal delivery: $360
    - 24h delivery: $390
 
 5. Oversized Packages
-   - Volume: 500000 cm³ and above
+   - Volume: 0.500 m³ and above
    - Normal delivery: $750
    - 24h delivery: $980
 
@@ -676,18 +530,18 @@ graph TD
 - Complete Storage (50 m²): $400
 
 ## Volume Calculation Formula
-Volume is calculated in cubic centimeters (cm³) using the following formula:
+Volume is calculated in cubic meters (m³) using the following formula:
 ```
 volume = length * width * height
 ```
 Where:
-- length, width, and height are in centimeters
-- Result is in cubic centimeters (cm³)
+- length, width, and height are in meters
+- Result is rounded to 3 decimal places
 
 Example:
 ```
-Package dimensions: 100 cm x 100 cm x 50 cm
-Volume = 100 * 100 * 50 = 500000 cm³
+Package dimensions: 1m x 1m x 0.5m
+Volume = 1 * 1 * 0.5 = 0.500 m³
 ```
 
 ## Response Formats
@@ -865,16 +719,15 @@ curl -X GET "http://localhost:8000/frontend/ajax/getTokens" \
 curl -X POST "http://localhost:8000/frontend/api/getShippingCost" \
 -H "Content-Type: application/json" \
 -d '{
-    "token": "tk_empresaa_6aa75eec3d0a4999bbcb4a4a04980d2eccb49666ab973fed41f3bd649a2617d1",
+    "token": "YOUR_PRODUCTION_TOKEN",
     "data_client": {
-        "postal_code": "1000",
-        "client": "Empresa A",
-        "reference": "Av. Corrientes 1234"
+        "postal_code": "1000"
     },
-    "weight": "10000",
-    "depth": "100",
-    "width": "60",
-    "height": "60"
+    "weight": "2",
+    "long": "0.4",
+    "width": "0.2",
+    "high": "0.2",
+    "volume": "0.016"
 }'
 ```
 
@@ -886,25 +739,13 @@ curl -X POST "http://localhost:8000/frontend/api/getShippingCost" \
 -d '{
     "token": "YOUR_DEV_TOKEN",
     "data_client": {
-        "postal_code": "1000",
-        "client": "Empresa A",
-        "reference": "Av. Corrientes 1234",
-        "shipping_data": {
-            "store": {
-                "name": "Test Store"
-            },
-            "email": "contacto@empresaa.com",
-            "province": "Buenos Aires",
-            "city": "Buenos Aires",
-            "address": "Av. Corrientes 1234",
-            "telephone": "+54933333333"
-        }
+        "postal_code": "1000"
     },
-    "weight": "10000",
-    "depth": "100",
-    "width": "60",
-    "height": "50",
-    "volume": "300000"
+    "weight": "2",
+    "long": "0.4",
+    "width": "0.2",
+    "high": "0.2",
+    "volume": "0.016"
 }'
 ```
 
@@ -1044,11 +885,11 @@ curl -X POST "http://localhost:8000/frontend/api/sendOrder" \
             "telephone": "+54933333333"
         }
     },
-    "weight": "10000",
-    "depth": "100",
-    "width": "60",
-    "height": "50",
-    "volume": "300000"
+    "weight": "10",
+    "long": "1",
+    "width": "1",
+    "high": "0.5",
+    "volume": "0.5"
 }'
 ```
 
@@ -1261,11 +1102,11 @@ curl -X POST "http://localhost:8000/frontend/api/sendOrder" \
             "telephone": "+54933333333"
         }
     },
-    "weight": "10000",
-    "depth": "100",
-    "width": "60",
-    "height": "50",
-    "volume": "300000"
+    "weight": "10",
+    "long": "1",
+    "width": "1",
+    "high": "0.5",
+    "volume": "0.5"
 }'
 ```
 
@@ -1519,125 +1360,3 @@ The backend provides access to various management sections:
 - Activity Logs
 
 For a complete list of available backend pages and detailed instructions, refer to [READMENOW3.md](./READMENOW3.md#backend-administration).
-
-```bash
-# Example API Call - Calculate Shipping Cost
-curl -X POST "http://localhost:8000/frontend/api/getShippingCost" \
--H "Content-Type: application/json" \
--d '{
-    "token": "tk_empresaa_896a1b7d840b59b0518f7ea5a349d90c6aa68207b0392b96e35205414e805efb",
-    "data_client": {
-        "postal_code": "1000",
-        "client": "Empresa A",
-        "reference": "Av. Corrientes 1234",
-        "shipping_data": {
-            "store": {
-                "name": "Tienda Central"
-            },
-            "email": "cliente@example.com",
-            "province": "Buenos Aires",
-            "city": "Buenos Aires",
-            "address": "Calle Falsa 123",
-            "telephone": "+541155555555"
-        }
-    },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "60"     // Height in centimeters (cm)
-}'
-
-# Example Success Response
-# The API returns the calculated shipping price and the volume calculated from dimensions.
-{
-    "status": "Success",
-    "data": {
-        "price_item": "200.00",
-        "calculated_volume_cm3": 360000 // Volume automatically calculated (depth * width * height) in cm³
-    }
-}
-
-# Example Error Response (Tariff Not Found)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: No tariff available for this shipping"
-    }
-}
-
-# Example Error Response (Invalid Token)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Invalid token"
-    }
-}
-
-# Example Error Response (Missing Dimension)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Depth (in centimeters) is required and must be numeric"
-    }
-}
-
-# Example Error Response (Country Mismatch)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Country doesn't match"
-    }
-}
-```
-
-```bash
-# Example API Call - Send Order
-curl -X POST "http://localhost:8000/frontend/api/sendOrder" \
--H "Content-Type: application/json" \
--d '{
-    "token": "tk_empresaa_896a1b7d840b59b0518f7ea5a349d90c6aa68207b0392b96e35205414e805efb",
-    "data_client": {
-        "client": "Empresa A",
-        "reference": "Pedido #12345",
-        "postal_code": "1000",
-        "shipping_data": {
-            "store": {
-                "name": "Tienda Central"
-            },
-            "email": "cliente@example.com",
-            "province": "Buenos Aires",
-            "city": "Buenos Aires",
-            "address": "Calle Falsa 123",
-            "telephone": "+541155555555"
-        }
-    },
-    "weight": "10000",   // Weight in grams (g)
-    "depth": "100",    // Depth in centimeters (cm)
-    "width": "60",     // Width in centimeters (cm)
-    "height": "50"     // Height in centimeters (cm)
-}'
-
-# Example Success Response (Send Order)
-{
-    "status": "Success",
-    "data": {
-        "code_tracking": "SOME_TRACKING_CODE_HASH"
-    }
-}
-
-# Example Error Response (Send Order - Invalid Token)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Invalid token"
-    }
-}
-
-# Example Error Response (Send Order - Tariff Not Found)
-{
-    "status": "Error",
-    "data": {
-        "message": "Lanubeflash response: Tariff no exists"
-    }
-}
-```

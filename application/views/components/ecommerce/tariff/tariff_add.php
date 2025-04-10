@@ -48,11 +48,11 @@
 	            <input id="postal_code" type="text" name="postal_code_manual" value="" class="form-control" />
 	        </div>
 			<div class="form-group">
-	            <label for="weight">Peso en gramos <span class="required">*</span></label>
+	            <label for="weight">Peso en kilogramos <span class="required">*</span></label>
 	            <input id="weight" required type="number" step=".01" name="weight" value="" class="form-control" />
 	        </div>
 			<div class="form-group">
-	            <label for="volume">Volumen en cm3 <span class="required">*</span></label>
+	            <label for="volume">Volumen (cm³) <span class="required">*</span></label>
 	            <input id="volume" required type="number" step=".01" name="volume" value="" class="form-control" />
 	        </div>
 			<div class="form-group">
