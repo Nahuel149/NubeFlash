@@ -2,7 +2,7 @@
 
 NubeFlash is a web application for managing shipping logistics, customer data, and order processing.
 
-## Recent Updates (May 2024)
+## Recent Updates
 
 ### UI Enhancements
 - **Hero Section Redesign**: Improved layout with centered flying character image and responsive text positioning
