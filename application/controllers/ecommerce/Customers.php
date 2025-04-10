@@ -13,6 +13,8 @@ class Customers extends CI_Controller
 		$this->load->model('destination_model', 'destination');
 		$this->load->model('province_model', 'province');
 		$this->load->model('country_model', 'country');
+		$this->load->model('Codegen_model', 'codegen_model');
+		$this->load->library('Location_service', ['codegen_model' => $this->codegen_model]);
 	}
 
 	function index()
@@ -44,30 +46,74 @@ class Customers extends CI_Controller
 	function add()
 	{
 		if ($this->input->post('enviar_form')) {
-			$data = array(
-				'social_reason' => $this->input->post('social_reason'),
-				'fiscal_identifier' => $this->input->post('fiscal_identifier'),
-				'person_contact' => $this->input->post('person_contact'),
-				'telephone' => $this->input->post('telephone'),
-				'email' => $this->input->post('email'),
-				'country_id' => $this->input->post('country'),
-				'province_id' => $this->input->post('province'),
-				'destination_id' => $this->input->post('destination'),
-				'password' => sha1($this->input->post('password')),
-				'created_by' => $this->session->userdata('user_id'),
-				'address'	=>	$this->input->post('address'),
-				'business_hours'	=>	$this->input->post('business_hours'),
-			);
-			$customer = $this->customer->insert($data);
+			try {
+				// Start database transaction
+				$this->db->trans_start();
+				
+				// Validate postal code when destination is 'other'
+				$destination = $this->input->post('destination');
+				$postalCodeManual = $this->input->post('postal_code_manual');
+				
+				if ($destination === 'other' && empty(trim($postalCodeManual))) {
+					throw new Exception('El código postal es obligatorio cuando se ingresa una localidad manual.');
+				}
+				
+				// Handle location using the LocationService
+				$locationData = $this->location_service->handleManualLocationInput(
+					$this->input->post('country'),
+					$this->input->post('province'),
+					$this->input->post('province_manual'),
+					$this->input->post('destination'),
+					$this->input->post('destination_manual'),
+					$this->input->post('postal_code_manual')
+				);
+				
+				// Validate the password
+				$password = $this->input->post('password');
+				if (empty($password) || strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/[!@#$%^&*]/', $password)) {
+					throw new Exception('La contraseña debe tener al menos 8 caracteres, 1 letra mayúscula y 1 símbolo (por ejemplo, !@#$%^&*).');
+				}
+				
+				$data = array(
+					'social_reason' => $this->input->post('social_reason'),
+					'fiscal_identifier' => $this->input->post('fiscal_identifier'),
+					'person_contact' => $this->input->post('person_contact'),
+					'telephone' => $this->input->post('telephone'),
+					'email' => $this->input->post('email'),
+					'country_id' => $this->input->post('country'),
+					'province_id' => $locationData['province_id'],
+					'destination_id' => $locationData['destination_id'],
+					'password' => sha1($password),
+					'created_by' => $this->session->userdata('user_id'),
+					'address' => $this->input->post('address'),
+					'business_hours' => $this->input->post('business_hours'),
+				);
+				
+				$customer = $this->customer->insert($data);
 
-			$token = sha1($customer . uniqid());
-			$data_token = array(
-				'token' => $token,
-				'token_dev' => 'Dev-' . $token,
-				'customer_id' => $customer,
-			);
-			$this->codegen_model->add('token_customers', $data_token);
-			redirect(base_url('ecommerce/customers'), 'refresh');
+				$token = sha1($customer . uniqid());
+				$data_token = array(
+					'token' => $token,
+					'token_dev' => 'Dev-' . $token,
+					'customer_id' => $customer,
+				);
+				$this->codegen_model->add('token_customers', $data_token);
+				
+				// Complete transaction
+				$this->db->trans_complete();
+				
+				if ($this->db->trans_status() === FALSE) {
+					// Transaction failed
+					throw new Exception('Error al crear el cliente');
+				}
+				
+				$this->session->set_flashdata('success', 'Cliente creado exitosamente');
+				redirect(base_url('ecommerce/customers'), 'refresh');
+			} catch (Exception $e) {
+				// Transaction will be rolled back automatically
+				$this->session->set_flashdata('error', $e->getMessage());
+				redirect(base_url('ecommerce/customers/add'), 'refresh');
+			}
 		}
 
 		$vista_interna = array(
@@ -113,6 +159,27 @@ class Customers extends CI_Controller
 
 		if ($this->input->post('enviar_form')) {
 			try {
+				// Start database transaction
+				$this->db->trans_start();
+				
+				// Validate postal code when destination is 'other'
+				$destination = $this->input->post('destination');
+				$postalCodeManual = $this->input->post('postal_code_manual');
+				
+				if ($destination === 'other' && empty(trim($postalCodeManual))) {
+					throw new Exception('El código postal es obligatorio cuando se ingresa una localidad manual.');
+				}
+				
+				// Handle location using the LocationService
+				$locationData = $this->location_service->handleManualLocationInput(
+					$this->input->post('country'),
+					$this->input->post('province'),
+					$this->input->post('province_manual'),
+					$this->input->post('destination'),
+					$this->input->post('destination_manual'),
+					$this->input->post('postal_code_manual')
+				);
+				
 				$data = array(
 					'social_reason' => $this->input->post('social_reason'),
 					'fiscal_identifier' => $this->input->post('fiscal_identifier'),
@@ -120,81 +187,42 @@ class Customers extends CI_Controller
 					'telephone' => $this->input->post('telephone'),
 					'email' => $this->input->post('email'),
 					'country_id' => $this->input->post('country'),
+					'province_id' => $locationData['province_id'],
+					'destination_id' => $locationData['destination_id'],
 					'update_by' => $this->session->userdata('user_id'),
 					'address' => $this->input->post('address'),
 					'business_hours' => $this->input->post('business_hours'),
-					'updated_at' => date('Y-m-d H:i:s')  // This will be handled by DEFAULT_GENERATED, so we can remove it
+					'updated_at' => date('Y-m-d H:i:s')
 				);
-
-				// Debug input values
-				log_message('debug', 'Customer edit POST values: ' . json_encode($_POST));
-				log_message('debug', 'province value: "' . $this->input->post('province') . '"');
-				log_message('debug', 'province_manual value: "' . $this->input->post('province_manual') . '"');
-				log_message('debug', 'destination value: "' . $this->input->post('destination') . '"');
-				log_message('debug', 'destination_manual value: "' . $this->input->post('destination_manual') . '"');
-				log_message('debug', 'province === "other"? ' . ($this->input->post('province') === 'other' ? 'true' : 'false'));
-				log_message('debug', 'destination === "other"? ' . ($this->input->post('destination') === 'other' ? 'true' : 'false'));
-
-				// Handle "Other" option for province
-				if ($this->input->post('province') === 'other' || !empty($this->input->post('province_manual'))) {
-					$data['province_id'] = NULL;
-					$data['province_name_manual'] = $this->input->post('province_manual');
-					log_message('debug', 'Using province_manual: ' . $this->input->post('province_manual'));
-				} else {
-					$data['province_id'] = $this->input->post('province') ?: null;
-					$data['province_name_manual'] = NULL;
-					log_message('debug', 'Using province_id: ' . $this->input->post('province'));
-				}
 				
-				// Handle "Other" option for destination
-				if ($this->input->post('destination') === 'other' || !empty($this->input->post('destination_manual'))) {
-					$data['destination_id'] = NULL;
-					$data['destination_name_manual'] = $this->input->post('destination_manual');
-					log_message('debug', 'Using destination_manual: ' . $this->input->post('destination_manual'));
-				} else {
-					$data['destination_id'] = $this->input->post('destination') ?: null;
-					$data['destination_name_manual'] = NULL;
-					log_message('debug', 'Using destination_id: ' . $this->input->post('destination'));
-				}
-				
-				// Debug data before filtering
-				log_message('debug', 'Customer edit data before filtering: ' . json_encode($data));
-				
-				// Remove null or empty values to prevent overwriting with empty data, except for social_reason and fiscal_identifier
-				$data = array_filter($data, function($value, $key) {
-					if ($key === 'social_reason' || $key === 'fiscal_identifier' || 
-						$key === 'province_id' || $key === 'province_name_manual' || 
-						$key === 'destination_id' || $key === 'destination_name_manual') {
-						return true; // Always keep these fields, even if empty
-					}
-					return $value !== null && $value !== '';
-				}, ARRAY_FILTER_USE_BOTH);
-				
-				// Debug data after filtering
-				log_message('debug', 'Customer edit data after filtering: ' . json_encode($data));
-
 				// Validate password if provided
 				$password = $this->input->post('password');
 				if (!empty($password)) {
 					// Check password requirements
 					if (strlen($password) < 8 || !preg_match('/[A-Z]/', $password) || !preg_match('/[!@#$%^&*]/', $password)) {
-						if ($this->input->is_ajax_request()) {
-							$response = [
-								'success' => false,
-								'message' => 'La contraseña debe tener al menos 8 caracteres, 1 mayúscula y 1 símbolo (!@#$%^&*)',
-								'csrf_hash' => $this->security->get_csrf_hash()
-							];
-							$this->output->set_content_type('application/json')->set_output(json_encode($response));
-							return;
-						}
-						$this->session->set_flashdata('error', 'La contraseña debe tener al menos 8 caracteres, 1 mayúscula y 1 símbolo (!@#$%^&*)');
-						redirect(current_url(), 'refresh');
-						return;
+						throw new Exception('La contraseña debe tener al menos 8 caracteres, 1 letra mayúscula y 1 símbolo (!@#$%^&*)');
 					}
 					$data['password'] = sha1($password);
 				}
+				
+				// Remove null or empty values to prevent overwriting with empty data, except for social_reason and fiscal_identifier
+				$data = array_filter($data, function($value, $key) {
+					if ($key === 'social_reason' || $key === 'fiscal_identifier' || 
+						$key === 'province_id' || $key === 'destination_id') {
+						return true; // Always keep these fields, even if empty
+					}
+					return $value !== null && $value !== '';
+				}, ARRAY_FILTER_USE_BOTH);
 
 				$result = $this->customer->edit($data, $id);
+				
+				// Complete transaction
+				$this->db->trans_complete();
+				
+				if ($this->db->trans_status() === FALSE) {
+					// Transaction failed
+					throw new Exception('Error al actualizar el cliente');
+				}
 
 				if ($this->input->is_ajax_request()) {
 					$response = [
@@ -210,6 +238,7 @@ class Customers extends CI_Controller
 				redirect(base_url('ecommerce/customers'), 'refresh');
 				
 			} catch (Exception $e) {
+				// Transaction will be rolled back automatically
 				if ($this->input->is_ajax_request()) {
 					$response = [
 						'success' => false,

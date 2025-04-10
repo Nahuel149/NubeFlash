@@ -123,25 +123,21 @@ $("#province").change(function (e) {
     if (province_id === 'other') {
         // Show manual input, hide dropdown functionality
         $("#province_manual").show().attr('required', true).attr('name', 'province_manual');
-        $(this).removeAttr('required').removeAttr('name');
         
-        // Clear destination and enable manual destination
-        $("#destination").html('<option value="">Seleccione una Localidad</option>');
-        $("#destination").attr('disabled', 'disabled');
+        // Clear destination and set to 'other' and hide (instead of disabling)
+        $("#destination").html('<option value="other">-- Otro --</option>');
+        $("#destination").val('other').hide();
         
         // Enable destination manual field by default
         $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
-        $("#destination").removeAttr('required').removeAttr('name');
         
         return;
     } else {
         // Hide manual input, restore dropdown functionality
         $("#province_manual").hide().removeAttr('required').removeAttr('name').val('');
-        $(this).attr('required', true).attr('name', 'province');
         
         // Hide destination manual if not selected
         $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
-        $("#destination").attr('required', true).attr('name', 'destination');
     }
     
 	$.ajax({
@@ -192,7 +188,6 @@ $("#destination").change(function (e) {
     if (destination_id === 'other') {
         // Show manual input, hide dropdown functionality
         $("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
-        $(this).removeAttr('required').removeAttr('name');
         
         // Clear postal code, user will enter it manually
         $("#postal_code").val('');
@@ -200,7 +195,6 @@ $("#destination").change(function (e) {
     } else {
         // Hide manual input, restore dropdown functionality
         $("#destination_manual").hide().removeAttr('required').removeAttr('name').val('');
-        $(this).attr('required', true).attr('name', 'destination');
     }
     
 	var postal_code = $("#destination option[value='"+destination_id+"']").data("code");

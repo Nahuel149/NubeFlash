@@ -13,7 +13,14 @@ class Tariff_model extends CI_Model {
 
     public function get()
     {
-        $this->db->select('tariff.*,destinations.name as destination,destinations.postal_code,countries.name as country,provinces.name as province');
+        $this->db->select('tariff.*,
+            destinations.name as destination,
+            destinations.postal_code,
+            countries.name as country,
+            provinces.name as province,
+            COALESCE(destinations.name, tariff.destination_name_manual) as display_destination,
+            COALESCE(provinces.name, tariff.province_name_manual) as display_province,
+            COALESCE(destinations.postal_code, tariff.postal_code_manual) as display_postal_code');
         $this->db->join('destinations','destinations.destination_id = tariff.destination_id AND destinations.active = "'.ACTIVE.'"','LEFT');
         $this->db->join('countries','countries.country_id = tariff.country_id AND countries.active = "'.ACTIVE.'"','LEFT');
         $this->db->join('provinces','provinces.province_id = tariff.province_id AND provinces.active = "'.ACTIVE.'"','LEFT');
@@ -31,7 +38,14 @@ class Tariff_model extends CI_Model {
 
     public function find($id)
     {
-        $this->db->select('tariff.*,,destinations.name as destination,destinations.postal_code,countries.name as country,provinces.name as province');
+        $this->db->select('tariff.*,
+            destinations.name as destination,
+            destinations.postal_code,
+            countries.name as country,
+            provinces.name as province,
+            COALESCE(destinations.name, tariff.destination_name_manual) as display_destination,
+            COALESCE(provinces.name, tariff.province_name_manual) as display_province,
+            COALESCE(destinations.postal_code, tariff.postal_code_manual) as display_postal_code');
         $this->db->join('destinations','destinations.destination_id = tariff.destination_id AND destinations.active = "'.ACTIVE.'"','LEFT');
         $this->db->join('countries','countries.country_id = tariff.country_id AND countries.active = "'.ACTIVE.'"','LEFT');
         $this->db->join('provinces','provinces.province_id = tariff.province_id AND provinces.active = "'.ACTIVE.'"','LEFT');

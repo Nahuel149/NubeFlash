@@ -21,12 +21,12 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="social_reason">Razón Social<span class="required">*</span></label>
-			<input id="social_reason" required type="text" name="social_reason" value="" class="form-control" placeholder="Razón Social" />
+			<label for="social_reason">Razón Social</label>
+			<input id="social_reason" type="text" name="social_reason" value="" class="form-control" placeholder="Razón Social" />
 		</div>
 		<div class="form-group">
-			<label for="fiscal_identifier">Identificador Fiscal<span class="required">*</span></label>
-			<input id="fiscal_identifier" required type="text" name="fiscal_identifier" value="" class="form-control" placeholder="Identificador fiscal" />
+			<label for="fiscal_identifier">Identificador Fiscal</label>
+			<input id="fiscal_identifier" type="text" name="fiscal_identifier" value="" class="form-control" placeholder="Identificador fiscal" />
 		</div>
 		<div class="form-group">
 			<label for="Pais">País <span class="required">*</span></label>
@@ -41,18 +41,19 @@
 			<label for="province">Departamento/Provincia <span class="required">*</span></label>
 			<select id="province" disabled required name="province" class="form-control">
 				<option value="">Seleccione una Provincia</option>
-
 			</select>
+			<input type="text" id="province_manual" class="form-control mt-2" placeholder="Ingrese Provincia Manualmente" style="display: none;">
 		</div>
 		<div class="form-group">
 			<label for="destination">Localidad <span class="required">*</span></label>
 			<select id="destination" disabled required name="destination" class="form-control">
 				<option value="">Seleccione una Localidad</option>
 			</select>
+			<input type="text" id="destination_manual" class="form-control mt-2" placeholder="Ingrese Localidad Manualmente" style="display: none;">
 		</div>
 		<div class="form-group">
-			<label for="address">Dirección</label>
-			<input id="address" type="text" name="address" value="" class="form-control" placeholder="Dirección" />
+			<label for="address">Dirección<span class="required">*</span></label>
+			<input id="address" required type="text" name="address" value="" class="form-control" placeholder="Dirección" />
 		</div>
 		<div class="form-group">
 			<label for="business_hours">Horario de atención</label>
@@ -74,10 +75,41 @@
 			<label for="password">Contraseña<span class="required">*</span></label>
 			<input id="password" required type="password" name="password" value="" class="form-control" placeholder="contraseña" />
 		</div>
+		<div class="form-group">
+			<label for="postal_code">Código Postal<span class="required">*</span></label>
+			<input id="postal_code" required type="text" name="postal_code_manual" value="" class="form-control" placeholder="Código Postal" />
+			<div class="invalid-feedback postal-code-error">
+				El código postal es obligatorio
+			</div>
+		</div>
 		<?php echo form_close(); ?>
 	</div>
 </div>
 <script>
+	// Get CSRF token name and hash
+	var csrfTokenName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+	var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+	// Form submission validation
+	$('form').on('submit', function(e) {
+		// If destination is "other", ensure postal code is not empty
+		if ($('#destination').val() === 'other') {
+			const postalCode = $('#postal_code').val().trim();
+			if (!postalCode) {
+				e.preventDefault();
+				$('#postal_code').addClass('is-invalid');
+				$('.postal-code-error').show();
+				return false;
+			}
+			
+			// Ensure destination field has the name attribute
+			if ($('#destination').attr('name') !== 'destination') {
+				console.log('Adding missing name attribute to destination field');
+				$('#destination').attr('name', 'destination');
+			}
+		}
+	});
+
 	$("#country").change(function(e) {
 		e.preventDefault();
 		var country_id = $(this).val();
@@ -85,7 +117,8 @@
 			type: "POST",
 			url: base_url + 'ecommerce/customers/getProvince',
 			data: {
-				country_id: country_id
+				country_id: country_id,
+				[csrfTokenName]: csrfHash
 			},
 			dataType: "JSON",
 			beforeSend: function() {
@@ -95,11 +128,18 @@
 				$("#postal_code").val('');
 			},
 		}).done(function(data) {
+			// Update CSRF hash if provided
+			if (data.csrf_hash) {
+				csrfHash = data.csrf_hash;
+				$('input[name="' + csrfTokenName + '"]').val(csrfHash);
+			}
+			
 			var htm = "<option value=''>Seleccione una Provincia</option>";
 			if (data.success) {
 				$.each(data.provinces, function(index, value) {
 					htm += "<option value='" + value.province_id + "'>" + value.name + "</option>";
 				});
+				htm += "<option value='other'>-- Otro --</option>";
 				$("#province").html(htm);
 				$("#province").removeAttr('disabled');
 			}
@@ -114,11 +154,47 @@
 	$("#province").change(function(e) {
 		e.preventDefault();
 		var province_id = $(this).val();
+		
+		// Handle "Other" option
+		if (province_id === 'other') {
+			// Show manual input
+			$("#province_manual").show().attr('required', true).attr('name', 'province_manual');
+			
+			// Set destination to "other" and ensure it's correctly set up for form submission
+			$("#destination").html('<option value="other">-- Otro --</option>');
+			$("#destination").val('other');
+			$("#destination").attr('name', 'destination').attr('required', true);
+			
+			// Make destination dropdown visible but readonly
+			$("#destination").removeAttr('disabled').css({
+				'position': 'absolute',
+				'opacity': '0',
+				'pointer-events': 'none',
+				'z-index': '-1'
+			});
+			
+			// Show destination manual field
+			$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+			
+			// Ensure postal code is required
+			$("#postal_code").attr('required', true);
+			
+			console.log('Changed to manual province mode. Destination value:', $("#destination").val());
+			console.log('Destination has name attribute:', $("#destination").attr('name') === 'destination');
+			
+			return;
+		}
+		
+		// Hide manual inputs for normal selection
+		$("#province_manual").hide().removeAttr('required').removeAttr('name');
+		$("#destination_manual").hide().removeAttr('required').removeAttr('name');
+		
 		$.ajax({
 			type: "POST",
 			url: base_url + 'ecommerce/customers/getDestination',
 			data: {
-				province_id: province_id
+				province_id: province_id,
+				[csrfTokenName]: csrfHash
 			},
 			dataType: "JSON",
 			beforeSend: function() {
@@ -127,11 +203,18 @@
 				$("#postal_code").val('');
 			},
 		}).done(function(data) {
+			// Update CSRF hash if provided
+			if (data.csrf_hash) {
+				csrfHash = data.csrf_hash;
+				$('input[name="' + csrfTokenName + '"]').val(csrfHash);
+			}
+			
 			var htm = "<option value=''>Seleccione una Localidad</option>";
 			if (data.success) {
 				$.each(data.destinations, function(index, value) {
 					htm += "<option value='" + value.destination_id + "' data-code='" + value.postal_code + "'>" + value.name + "</option>";
 				});
+				htm += "<option value='other'>-- Otro --</option>";
 				$("#destination").html(htm);
 				$("#destination").removeAttr('disabled');
 			}
@@ -141,5 +224,39 @@
 		}).always(function() {
 			console.log("complete")
 		});
+	});
+
+	// Destination change handler
+	$("#destination").change(function(e) {
+		e.preventDefault();
+		var destination_id = $(this).val();
+		
+		// Handle "Other" option for destination
+		if (destination_id === 'other') {
+			// Show manual input
+			$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+			
+			// Ensure destination dropdown retains its name
+			$(this).attr('name', 'destination').attr('required', true);
+			
+			// Ensure postal code field is required (it is already, but let's be extra clear)
+			$("#postal_code").attr('required', true);
+			
+			console.log('Changed to manual destination mode. Dropdown name:', $(this).attr('name'));
+			console.log('Dropdown value:', $(this).val());
+			
+			return;
+		} else {
+			// Hide manual input, restore dropdown functionality
+			$("#destination_manual").hide().removeAttr('required').removeAttr('name');
+		}
+		
+		// Set postal code if available
+		var postal_code = $("#destination option[value='"+destination_id+"']").data("code");
+		if(postal_code) {
+			$("#postal_code").val(postal_code);
+		} else {
+			$("#postal_code").val('');
+		}
 	});
 </script>

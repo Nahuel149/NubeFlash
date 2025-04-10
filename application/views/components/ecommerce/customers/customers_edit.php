@@ -94,6 +94,13 @@
 			<input id="address" type="text" name="address" value="<?php echo $result->address ?>" class="form-control" placeholder="Dirección" />
 		</div>
 		<div class="form-group">
+			<label for="postal_code">Código Postal <span class="required">*</span></label>
+			<input id="postal_code" type="text" name="postal_code_manual" value="<?php echo $result->postal_code ?>" class="form-control" placeholder="Código Postal" required />
+			<div class="invalid-feedback postal-code-error">
+				El código postal es obligatorio
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="business_hours">Horario de atención</label>
 			<input id="business_hours" type="text" name="business_hours" value="<?php echo $result->business_hours ?>" class="form-control" placeholder="Horario de atneción" />
 		</div>
@@ -200,6 +207,23 @@
 				$('#password').addClass('is-invalid');
 				$('#password').siblings('.invalid-feedback').show();
 				return false;
+			}
+			
+			// Validate postal code when destination is set to 'other'
+			if ($('#destination').val() === 'other') {
+				const postalCode = $('#postal_code').val().trim();
+				if (!postalCode) {
+					$('#postal_code').addClass('is-invalid');
+					$('.postal-code-error').show();
+					return false;
+				}
+				
+				// Ensure 'destination' field is included with value 'other'
+				// Double-check that destination has the name attribute
+				if ($('#destination').attr('name') !== 'destination') {
+					console.log('Adding missing name attribute to destination field');
+					$('#destination').attr('name', 'destination');
+				}
 			}
 			
 			// Get the form data and add CSRF token
@@ -324,17 +348,33 @@
 			if (province_id === 'other') {
 				// Show manual input, hide dropdown functionality
 				$("#province_manual").show().attr('required', true).attr('name', 'province_manual');
-				$(this).removeAttr('required').removeAttr('name');
 				
-				// Log that we've changed to manual province mode
-				console.log('Changed to manual province mode, input name:', $('#province_manual').attr('name'));
+				// Clear destination and set to 'other'
+				$("#destination").html('<option value="other">-- Otro --</option>');
+				$("#destination").val('other');
 				
-				// Clear destination and enable manual destination
-				$("#destination").html('<option value="">Seleccione una Localidad</option>');
-				$("#destination").attr('disabled', 'disabled').removeAttr('name').removeAttr('required');
+				// Instead of hiding with CSS, keep the dropdown visible but fix its position
+				// This ensures the value gets submitted properly
+				$("#destination").removeAttr('disabled').css({
+					'position': 'absolute',
+					'opacity': '0',
+					'pointer-events': 'none',
+					'z-index': '-1'
+				});
+				
+				// Ensure the dropdown has the name and required attributes
+				$("#destination").attr('name', 'destination').attr('required', true);
 				
 				// Enable destination manual field by default
 				$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
+				
+				// Ensure postal code is required
+				$("#postal_code").attr('required', true);
+				
+				// Log that we've changed to manual province mode
+				console.log('Changed to manual province mode, input name:', $('#province_manual').attr('name'));
+				console.log('Destination value is set to:', $("#destination").val());
+				console.log('Destination has name attribute:', $("#destination").attr('name') === 'destination');
 				
 				// Log that we've also changed to manual destination mode
 				console.log('Also changed to manual destination mode, input name:', $('#destination_manual').attr('name'));
@@ -343,12 +383,12 @@
 			} else {
 				// Hide manual input, restore dropdown functionality
 				$("#province_manual").hide().removeAttr('required').removeAttr('name');
-				$(this).attr('required', true).attr('name', 'province');
+				// Don't explicitly set name attribute - it should already have it
 				
 				// Hide destination manual if not selected
 				if (!hasManualDestination) {
 					$("#destination_manual").hide().removeAttr('required').removeAttr('name');
-					$("#destination").attr('required', true).attr('name', 'destination');
+					// Don't explicitly set name attribute - it should already have it
 				}
 				
 				// Log that we've changed to dropdown province mode
@@ -409,17 +449,23 @@
 			
 			// Handle "Other" option for destination
 			if (destination_id === 'other') {
-				// Show manual input, hide dropdown functionality
+				// Show manual input
 				$("#destination_manual").show().attr('required', true).attr('name', 'destination_manual');
-				$(this).removeAttr('required').removeAttr('name');
+				
+				// Ensure destination dropdown keeps its name and required attributes
+				$(this).attr('name', 'destination').attr('required', true);
+				
+				// Ensure postal code is required
+				$("#postal_code").attr('required', true);
 				
 				// Log that we've changed to manual destination mode
 				console.log('Changed to manual destination mode, input name:', $('#destination_manual').attr('name'));
+				console.log('Destination dropdown name:', $(this).attr('name'));
+				console.log('Destination dropdown value:', $(this).val());
 				return;
 			} else {
 				// Hide manual input, restore dropdown functionality
 				$("#destination_manual").hide().removeAttr('required').removeAttr('name');
-				$(this).attr('required', true).attr('name', 'destination');
 				
 				// Log that we've changed to dropdown destination mode
 				console.log('Changed to dropdown destination mode, select name:', $(this).attr('name'));

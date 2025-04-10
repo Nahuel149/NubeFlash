@@ -9,6 +9,8 @@ class Tariff extends CI_Controller {
 		$this->load->model('destination_model','destination');
         $this->load->model('province_model','province');
         $this->load->model('country_model','country');
+        $this->load->model('Codegen_model','codegen_model');
+        $this->load->library('Location_service', ['codegen_model' => $this->codegen_model]);
 	}	
 	
 	function index() {
@@ -29,45 +31,68 @@ class Tariff extends CI_Controller {
 
 	function add(){
 		if ($this->input->post('enviar_form')){
-			// Determine province_id and province_name_manual based on form submission
-            $province_id = null;
-            $province_name_manual = null;
-            if ($this->input->post('province_manual')) {
-                // Manual province was entered
-                $province_name_manual = trim($this->input->post('province_manual'));
-            } elseif ($this->input->post('province') && $this->input->post('province') !== 'other') {
-                // Valid province ID was selected
-                $province_id = $this->input->post('province');
-            }
-            
-            // Determine destination_id and destination_name_manual based on form submission
-            $destination_id = null;
-            $destination_name_manual = null;
-            if ($this->input->post('destination_manual')) {
-                // Manual destination was entered
-                $destination_name_manual = trim($this->input->post('destination_manual'));
-            } elseif ($this->input->post('destination') && $this->input->post('destination') !== 'other') {
-                // Valid destination ID was selected
-                $destination_id = $this->input->post('destination');
-            }
-            
-            // Get postal_code_manual (if entered)
-            $postal_code_manual = trim($this->input->post('postal_code_manual'));
-            
-			$data = array(
-                'country_id' => $this->input->post('country'),
-                'province_id' => $province_id,
-                'province_name_manual' => $province_name_manual,
-                'destination_id' => $destination_id,
-                'destination_name_manual' => $destination_name_manual,
-                'postal_code_manual' => $postal_code_manual,
-                'weight' => $this->input->post('weight'),
-                'volume' => $this->input->post('volume'),
-                'tariff_price' => $this->input->post('tariff_price'),
-                'create_by' => $this->session->userdata('user_id')
-			);
-			$this->tariff->insert($data);
-			redirect(base_url('ecommerce/tariff'),'refresh');
+			try {
+				// Start database transaction
+				$this->db->trans_start();
+				
+				// Log input values for debugging
+				log_message('debug', 'Tariff add POST values: ' . json_encode($_POST));
+				
+				// Handle location using the LocationService
+				$locationData = $this->location_service->handleManualLocationInput(
+					$this->input->post('country'),
+					$this->input->post('province'),
+					$this->input->post('province_manual'),
+					$this->input->post('destination'),
+					$this->input->post('destination_manual'),
+					$this->input->post('postal_code_manual')
+				);
+				
+				// Log the location data returned by the service
+				log_message('debug', 'LocationService returned: ' . json_encode($locationData));
+				
+				$data = array(
+					'country_id' => $this->input->post('country'),
+					'province_id' => $locationData['province_id'],
+					'destination_id' => $locationData['destination_id'],
+					'weight' => $this->input->post('weight'),
+					'volume' => $this->input->post('volume'),
+					'tariff_price' => $this->input->post('tariff_price'),
+					'create_by' => $this->session->userdata('user_id')
+				);
+				
+				// For debugging - store the manual values
+				if (!empty($this->input->post('province_manual'))) {
+					$data['province_name_manual'] = $this->input->post('province_manual');
+				}
+				if (!empty($this->input->post('destination_manual'))) {
+					$data['destination_name_manual'] = $this->input->post('destination_manual');
+				}
+				if (!empty($this->input->post('postal_code_manual'))) {
+					$data['postal_code_manual'] = $this->input->post('postal_code_manual');
+				}
+				
+				// Log the final data being saved
+				log_message('debug', 'Data being saved to tariff: ' . json_encode($data));
+				
+				$this->tariff->insert($data);
+				
+				// Complete transaction
+				$this->db->trans_complete();
+				
+				if ($this->db->trans_status() === FALSE) {
+					// Transaction failed
+					throw new Exception('Error al guardar la tarifa');
+				}
+				
+				$this->session->set_flashdata('success', 'Tarifa creada exitosamente');
+				redirect(base_url('ecommerce/tariff'),'refresh');
+			} catch (Exception $e) {
+				// Transaction will be rolled back automatically
+				log_message('error', 'Error in Tariff::add: ' . $e->getMessage());
+				$this->session->set_flashdata('error', $e->getMessage());
+				redirect(base_url('ecommerce/tariff/add'),'refresh');
+			}
 		}	
 
 		$vista_interna = array(
@@ -100,46 +125,76 @@ class Tariff extends CI_Controller {
 		}
 
 		if ($this->input->post('enviar_form')){
-            // Determine province_id and province_name_manual based on form submission
-            $province_id = null;
-            $province_name_manual = null;
-            if ($this->input->post('province_manual')) {
-                // Manual province was entered
-                $province_name_manual = trim($this->input->post('province_manual'));
-            } elseif ($this->input->post('province') && $this->input->post('province') !== 'other') {
-                // Valid province ID was selected
-                $province_id = $this->input->post('province');
-            }
-            
-            // Determine destination_id and destination_name_manual based on form submission
-            $destination_id = null;
-            $destination_name_manual = null;
-            if ($this->input->post('destination_manual')) {
-                // Manual destination was entered
-                $destination_name_manual = trim($this->input->post('destination_manual'));
-            } elseif ($this->input->post('destination') && $this->input->post('destination') !== 'other') {
-                // Valid destination ID was selected
-                $destination_id = $this->input->post('destination');
-            }
-            
-            // Get postal_code_manual (if entered)
-            $postal_code_manual = trim($this->input->post('postal_code_manual'));
-            
-			$data = array(
-				'country_id' => $this->input->post('country'),
-                'province_id' => $province_id,
-                'province_name_manual' => $province_name_manual,
-                'destination_id' => $destination_id,
-                'destination_name_manual' => $destination_name_manual,
-                'postal_code_manual' => $postal_code_manual,
-                'weight' => $this->input->post('weight'),
-                'volume' => $this->input->post('volume'),
-                'tariff_price' => $this->input->post('tariff_price'),
-                'update_by' => $this->session->userdata('user_id')
-			);
-			$this->tariff->edit($data, $id);
-			$this->session->set_flashdata('success', 'Tarifa actualizada exitosamente');
-			redirect(base_url('ecommerce/tariff'),'refresh');
+			try {
+				// Start database transaction
+				$this->db->trans_start();
+				
+				// Log input values for debugging
+				log_message('debug', 'Tariff edit POST values: ' . json_encode($_POST));
+				
+				// Handle location using the LocationService
+				$locationData = $this->location_service->handleManualLocationInput(
+					$this->input->post('country'),
+					$this->input->post('province'),
+					$this->input->post('province_manual'),
+					$this->input->post('destination'),
+					$this->input->post('destination_manual'),
+					$this->input->post('postal_code_manual')
+				);
+				
+				// Log the location data returned by the service
+				log_message('debug', 'LocationService returned: ' . json_encode($locationData));
+				
+				$data = array(
+					'country_id' => $this->input->post('country'),
+					'province_id' => $locationData['province_id'],
+					'destination_id' => $locationData['destination_id'],
+					'weight' => $this->input->post('weight'),
+					'volume' => $this->input->post('volume'),
+					'tariff_price' => $this->input->post('tariff_price'),
+					'update_by' => $this->session->userdata('user_id')
+				);
+				
+				// For debugging - store the manual values
+				if (!empty($this->input->post('province_manual'))) {
+					$data['province_name_manual'] = $this->input->post('province_manual');
+				} else {
+					$data['province_name_manual'] = NULL;
+				}
+				
+				if (!empty($this->input->post('destination_manual'))) {
+					$data['destination_name_manual'] = $this->input->post('destination_manual');
+				} else {
+					$data['destination_name_manual'] = NULL;
+				}
+				
+				if (!empty($this->input->post('postal_code_manual'))) {
+					$data['postal_code_manual'] = $this->input->post('postal_code_manual');
+				} else {
+					$data['postal_code_manual'] = NULL;
+				}
+				
+				// Log the final data being saved
+				log_message('debug', 'Data being saved to tariff: ' . json_encode($data));
+				
+				$this->tariff->edit($data, $id);
+				
+				// Complete transaction
+				$this->db->trans_complete();
+				
+				if ($this->db->trans_status() === FALSE) {
+					// Transaction failed
+					throw new Exception('Error al actualizar la tarifa');
+				}
+				
+				$this->session->set_flashdata('success', 'Tarifa actualizada exitosamente');
+				redirect(base_url('ecommerce/tariff'),'refresh');
+			} catch (Exception $e) {
+				// Transaction will be rolled back automatically
+				log_message('error', 'Error in Tariff::edit: ' . $e->getMessage());
+				$this->session->set_flashdata('error', $e->getMessage());
+				redirect(current_url(),'refresh');
+			}
 		}
 
 		$vista_interna = array(

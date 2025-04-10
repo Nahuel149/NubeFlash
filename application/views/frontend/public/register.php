@@ -69,11 +69,21 @@
                             <select id="register-province" disabled required name="province" class="form-control" autocomplete="address-level1">
                                 <option value="">Seleccione un Departamento</option>
                             </select>
-                            <input type="text" id="register-province-manual" class="form-control mt-2" placeholder="Ingrese su Departamento/Provincia" style="display: none;" autocomplete="address-level1-manual">
+                            <input type="text" id="register-province-manual" name="province_manual" class="form-control mt-2" placeholder="Ingrese su Departamento/Provincia" style="display: none;" autocomplete="address-level1-manual">
                         </div>
                         <div class="form-group">
                             <label for="register-destination">Localidad <span class="required">*</span></label>
-                            <input id="register-destination" required type="text" name="destination_text" class="form-control" placeholder="Ingrese su localidad o barrio" autocomplete="address-level2" />
+                            <select id="register-destination" disabled required name="destination" class="form-control" autocomplete="address-level2">
+                                <option value="">Seleccione una Localidad</option>
+                            </select>
+                            <input type="text" id="register-destination-manual" name="destination_manual" class="form-control mt-2" placeholder="Ingrese su localidad o barrio" style="display: none;" autocomplete="address-level2-manual">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-postal-code">Código Postal <span class="required">*</span></label>
+                            <input id="register-postal-code" required type="text" name="postal_code_manual" class="form-control" placeholder="Código Postal" autocomplete="postal-code" />
+                             <div class="invalid-feedback postal-code-error" style="display: none; color: #dc3545; font-size: 0.85em;">
+                                El código postal es obligatorio
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="register-contact">Persona de Contacto <span class="required">*</span></label>
@@ -125,67 +135,228 @@
         $('#enviar').prop("disabled", false);
     }
 
+    // Get CSRF token name and hash
+    var csrfTokenName = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+    
+    // Reusable AJAX setup for CSRF
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && settings.data) {
+                // Append CSRF token if data is string
+                if (typeof settings.data === 'string') {
+                    settings.data += '&' + csrfTokenName + '=' + csrfHash;
+                } 
+                // If data is object, add CSRF token property
+                else if (typeof settings.data === 'object') {
+                    settings.data[csrfTokenName] = csrfHash;
+                }
+            }
+        },
+        complete: function(xhr) {
+            // Update CSRF hash from response headers if available
+            var newCsrfHash = xhr.getResponseHeader('X-CSRF-Token');
+            if (newCsrfHash) {
+                csrfHash = newCsrfHash;
+                $('input[name="' + csrfTokenName + '"]').val(csrfHash);
+            }
+            // Or from JSON response if available
+            try {
+                var jsonResponse = JSON.parse(xhr.responseText);
+                if (jsonResponse && jsonResponse.csrf_hash) {
+                    csrfHash = jsonResponse.csrf_hash;
+                    $('input[name="' + csrfTokenName + '"]').val(csrfHash);
+                }
+            } catch (e) {
+                // Not a JSON response, ignore
+            }
+        }
+    });
+
     $("#register-country").change(function (e) { 
         e.preventDefault();
         var country_id = $(this).val();
         $.ajax({
             type: "POST",
+            // Assuming a similar endpoint exists under frontend/ajax (VERIFY THIS)
             url: base_url + 'frontend/ajax/getProvince',
             data: {
-                country_id: country_id,
-                '<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+                country_id: country_id
+                // CSRF token added by ajaxSetup
             },
             dataType: "JSON",
             beforeSend: function () {
-                $("#register-province").attr('disabled','');
-                $("#register-destination").attr('disabled','');
-                $("#register-province").html('<option value="">Seleccione un Departamento</option>');
-                $("#register-destination").html('<option value="">Seleccione una Localidad</option>');
-                $("#postal_code").val('');
+                $("#register-province").attr('disabled','disabled').html('<option value="">Seleccione un Departamento</option>');
+                $("#register-destination").attr('disabled','disabled').html('<option value="">Seleccione una Localidad</option>');
+                $("#register-postal-code").val('');
                 $("#register-province-manual").hide().removeAttr('required').removeAttr('name').val('');
+                $("#register-destination-manual").hide().removeAttr('required').removeAttr('name').val('');
                 $("#register-province").prop('disabled', false).attr('required', true);
             },
         }).done(function (data) {
             var htm = "<option value=''>Seleccione un Departamento</option>";
-            if(data.success)
-            {
+            if(data.success && data.provinces) {
                 $.each(data.provinces, function (index, value) { 
                      htm += "<option value='"+value.province_id+"'>"+value.name+"</option>";
                 });
                 htm += "<option value='other'>-- Otro --</option>";
-                $("#register-province").html(htm);
-                $("#register-province").removeAttr('disabled');
+                $("#register-province").html(htm).removeAttr('disabled');
+            } else {
+                console.error("Error fetching provinces:", data.message);
+                 $("#register-province").html('<option value="">Error al cargar</option>');
             }
-            console.log("success")
-        }).fail(function () {
-            console.log("error")
-        }).always(function () {
-            console.log("complete")
+        }).fail(function (xhr, status, error) {
+            console.error("AJAX Error fetching provinces:", status, error);
+            $("#register-province").html('<option value="">Error de conexión</option>');
         });
     });
 
     $("#register-province").change(function (e) {
         e.preventDefault();
-        var selectedValue = $(this).val();
-        var manualInput = $("#register-province-manual");
+        var province_id = $(this).val();
+        var manualProvinceInput = $("#register-province-manual");
+        var destinationSelect = $("#register-destination");
+        var manualDestinationInput = $("#register-destination-manual");
+        var postalCodeInput = $("#register-postal-code");
 
-        if (selectedValue === 'other') {
-            manualInput.show();
-            manualInput.attr('required', true);
-            manualInput.attr('name', 'province_manual'); // Add name attribute
-            $(this).removeAttr('required'); // Remove required from select
-            // Ensure 'Localidad' remains enabled
-            $("#register-destination").removeAttr('disabled'); 
+        // Reset destination and postal code
+        destinationSelect.attr('disabled','disabled').html('<option value="">Seleccione una Localidad</option>');
+        manualDestinationInput.hide().removeAttr('required').removeAttr('name').val('');
+        postalCodeInput.val('').removeAttr('required');
+        destinationSelect.removeAttr('style'); // Remove inline styles if any
+
+        if (province_id === 'other') {
+            manualProvinceInput.show().attr('required', true).attr('name', 'province_manual');
+            $(this).removeAttr('required'); // Select is no longer required
+            
+            // Set destination to 'other' and configure for manual input
+            destinationSelect.html('<option value="other" selected>-- Otro --</option>');
+            destinationSelect.val('other');
+            destinationSelect.attr('name', 'destination').attr('required', true);
+            destinationSelect.removeAttr('disabled'); // Keep it enabled but hidden for submission
+             // Use CSS to hide while keeping it in flow for submission
+            destinationSelect.css({
+                'position': 'absolute', 'opacity': '0', 'pointer-events': 'none', 'z-index': '-1'
+            });
+
+            manualDestinationInput.show().attr('required', true).attr('name', 'destination_manual');
+            postalCodeInput.attr('required', true);
+            console.log('Manual province selected. Destination set to other.');
+
+        } else if (province_id) {
+            manualProvinceInput.hide().removeAttr('required').removeAttr('name').val('');
+            $(this).attr('required', true); // Select is required
+
+            // Fetch destinations for the selected province
+            $.ajax({
+                type: "POST",
+                 // Assuming a similar endpoint exists under frontend/ajax (VERIFY THIS)
+                url: base_url + 'frontend/ajax/getDestination',
+                data: { 
+                    province_id: province_id
+                    // CSRF token added by ajaxSetup
+                },
+                dataType: "JSON",
+                beforeSend: function() {
+                    destinationSelect.attr('disabled', 'disabled').html('<option value="">Cargando...</option>');
+                }
+            }).done(function(data) {
+                var htm = "<option value=''>Seleccione una Localidad</option>";
+                if (data.success && data.destinations) {
+                    $.each(data.destinations, function(index, value) {
+                        htm += "<option value='" + value.destination_id + "' data-code='" + value.postal_code + "'>" + value.name + "</option>";
+                    });
+                     htm += "<option value='other'>-- Otro --</option>";
+                    destinationSelect.html(htm).removeAttr('disabled').attr('name', 'destination').attr('required', true);
+                } else {
+                    console.error("Error fetching destinations:", data.message);
+                    destinationSelect.html('<option value="">Error al cargar</option>').removeAttr('disabled');
+                     // Still add Other option even on error?
+                    destinationSelect.append("<option value='other'>-- Otro --</option>"); 
+                }
+            }).fail(function(xhr, status, error) {
+                console.error("AJAX Error fetching destinations:", status, error);
+                 destinationSelect.html('<option value="">Error de conexión</option>').removeAttr('disabled');
+                 // Still add Other option even on error?
+                 destinationSelect.append("<option value='other'>-- Otro --</option>"); 
+            });
         } else {
-            manualInput.hide();
-            manualInput.removeAttr('required');
-            manualInput.removeAttr('name'); // Remove name attribute
-            manualInput.val(''); // Clear manual input value
-            $(this).attr('required', true); // Add required back to select
-            // Ensure 'Localidad' is enabled if a valid province is selected
-            if (selectedValue) {
-                $("#register-destination").removeAttr('disabled');
+             // No province selected (or invalid)
+             manualProvinceInput.hide().removeAttr('required').removeAttr('name').val('');
+             $(this).attr('required', true);
+        }
+    });
+
+    // Destination change handler
+    $("#register-destination").change(function (e) {
+        e.preventDefault();
+        var destination_id = $(this).val();
+        var manualDestinationInput = $("#register-destination-manual");
+        var postalCodeInput = $("#register-postal-code");
+
+        if (destination_id === 'other') {
+            manualDestinationInput.show().attr('required', true).attr('name', 'destination_manual');
+            postalCodeInput.attr('required', true).val(''); // Require and clear postal code
+             // Ensure the select itself still has the name attribute for submission
+            $(this).attr('name', 'destination').attr('required', true); 
+            console.log('Manual destination selected.');
+        } else {
+            manualDestinationInput.hide().removeAttr('required').removeAttr('name').val('');
+            postalCodeInput.removeAttr('required'); // Postal code not strictly required if selected from list
+             // Set postal code if available from selected destination
+            var postal_code = $("#register-destination option:selected").data("code");
+            if(postal_code) {
+                postalCodeInput.val(postal_code);
+            } else {
+                postalCodeInput.val('');
             }
         }
     });
+
+    // Form submission validation
+    $('form').on('submit', function(e) {
+        // Clear previous postal code errors
+        $('#register-postal-code').removeClass('is-invalid');
+        $('.postal-code-error').hide();
+
+        // Check if destination is "other" and validate postal code
+        if ($('#register-destination').val() === 'other') {
+            const postalCode = $('#register-postal-code').val().trim();
+            if (!postalCode) {
+                e.preventDefault(); // Stop submission
+                $('#register-postal-code').addClass('is-invalid');
+                $('.postal-code-error').show();
+                alert('El código postal es obligatorio cuando se ingresa una localidad manual.'); // Also show an alert
+                return false;
+            }
+             // Ensure destination select has name attribute
+            if ($('#register-destination').attr('name') !== 'destination') {
+                 console.warn('Correcting missing name attribute on destination select during submit.');
+                 $('#register-destination').attr('name', 'destination');
+             }
+        }
+        
+        // Add password confirmation check if needed
+        const password = $('#register-password').val();
+        const confirmPassword = $('#register-password-confirm').val();
+        if (password !== confirmPassword) {
+             e.preventDefault(); // Stop submission
+             alert('Las contraseñas no coinciden.');
+             // Optionally add visual feedback
+             $('#register-password, #register-password-confirm').addClass('is-invalid');
+             return false;
+        }
+
+        // Additional validation for password complexity can be added here if backend validation isn't sufficient
+        // Example using regex (similar to backend):
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+        if (password && !passwordRegex.test(password)) {
+             e.preventDefault();
+             alert('La contraseña no cumple con los requisitos: 8+ caracteres, 1 mayúscula, 1 símbolo (!@#$%^&*).');
+             $('#register-password').addClass('is-invalid');
+             return false;
+        }
+        
+    });
+
 </script>

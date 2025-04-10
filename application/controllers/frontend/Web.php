@@ -111,6 +111,17 @@ class Web extends CI_Controller {
 				)
 			);
 			
+			// Set validation rules for postal code
+			$this->form_validation->set_rules(
+				'postal_code_manual',
+				'código postal',
+				'trim|max_length[10]|regex_match[/^[a-zA-Z0-9\-\s]+$/]',
+				array(
+					'max_length' => 'El %s no puede tener más de 10 caracteres.',
+					'regex_match' => 'El %s solo puede contener letras, números, espacios y guiones.'
+				)
+			);
+			
 			// Run validation
 			if ($this->form_validation->run() == FALSE) {
 				// Validation failed, load the form with errors
@@ -145,67 +156,74 @@ class Web extends CI_Controller {
 					if ($this->input->post('re-password') == $this->input->post('password')) {
 						$exists_email = $this->codegen_model->row('customers','*','email="'.$this->input->post('email').'" AND active="'.ACTIVE.'"');
 						if (!$exists_email) {
-							// Use the location field to store the manually entered destination
-							$location_text = $this->input->post('destination_text');
-							
-							// Handle manual province input
-							$province_id = null;
-							$province_name_manual = null;
-
-							if (!empty($this->input->post('province_manual'))) {
-								// Manual province input was used
-								$province_name_manual = trim($this->input->post('province_manual'));
-								// Keep province_id as null
-							} elseif (!empty($this->input->post('province'))) {
-								// Dropdown selection was used
-								$province_input = $this->input->post('province');
-								// Check if it's a numeric ID or the 'other' value
-								if (is_numeric($province_input)) {
-									$province_id = (int)$province_input;
-								} else {
-									// Handle case where 'other' might be submitted unexpectedly
-									$province_id = null;
+							try {
+								// Start database transaction
+								$this->db->trans_start();
+								
+								// Load LocationService if not already loaded
+								if (!$this->load->is_loaded('location_service')) {
+									$this->load->model('Codegen_model', 'codegen_model');
+									$this->load->library('Location_service', ['codegen_model' => $this->codegen_model]);
 								}
-								// Keep province_name_manual as null
+								
+								// Handle location using the LocationService
+								$locationData = $this->location_service->handleManualLocationInput(
+									$this->input->post('country'),
+									$this->input->post('province'),
+									$this->input->post('province_manual'),
+									$this->input->post('destination'),
+									$this->input->post('destination_manual'),
+									$this->input->post('postal_code_manual')
+								);
+								
+								$data = array(
+									'social_reason' => $this->input->post('social_reason'),
+									'name' => $this->input->post('social_reason'),
+									'fiscal_identifier' => $this->input->post('fiscal_identifier'),
+									'person_contact' => $this->input->post('person_contact'),
+									'telephone' => $this->input->post('telephone'),
+									'email' => $this->input->post('email'),
+									'password' => sha1($this->input->post('password')),
+									'country_id' => $this->input->post('country'),
+									'province_id' => $locationData['province_id'],
+									'destination_id' => $locationData['destination_id']
+								);
+								
+								$customer = $this->customer->insert($data);
+								
+								$token = sha1($customer.uniqid());
+								$data_token = array(
+									'token' => $token,
+									'token_dev' => 'Dev-'.$token,
+									'customer_id' => $customer,
+								);
+								$this->codegen_model->add('token_customers', $data_token);
+			
+								$datosStore = array(
+									'name' 	=> 	$data['person_contact'],
+									'email' 	=> 	$data['email'],
+									'enterprise' 	=>	$data['social_reason'],
+								);
+			
+								$configuracion = $this->codegen_model->row('configurations','*','id_configuration = 3');
+								$remitente = $this->codegen_model->row('configurations','*','id_configuration = 1');
+			
+								// Complete transaction
+								$this->db->trans_complete();
+								
+								if ($this->db->trans_status() === FALSE) {
+									// Transaction failed
+									throw new Exception('Error al registrar el usuario');
+								}
+			
+								$this->frontend_lib->enviarEmail($datosStore, 'frontend/email/register_nube', 'Confirmación de cuenta.', $datosStore['email'], CORREO_QA, $remitente->value);
+								$this->frontend_lib->enviarEmail($datosStore, 'frontend/email/register', 'Confirmación de cuenta.', $configuracion->value, CORREO_QA, $remitente->value);
+			
+								$this->session->set_flashdata('success', 'Se registró con éxito. Por favor, revise su correo electrónico para la confirmación.<br>Inicie sesión con su correo y contraseña usando el botón "LOGIN / REGISTRATE"');
+							} catch (Exception $e) {
+								// Transaction will be rolled back automatically
+								$this->session->set_flashdata('error', 'Error al registrar: ' . $e->getMessage());
 							}
-							
-							$data = array(
-								'social_reason' => $this->input->post('social_reason'),
-								'fiscal_identifier' => $this->input->post('fiscal_identifier'),
-								'person_contact' => $this->input->post('person_contact'),
-								'telephone' => $this->input->post('telephone'),
-								'email' => $this->input->post('email'),
-								'password' => sha1($this->input->post('password')),
-								'country_id' => $this->input->post('country'),
-								'province_id' => $province_id,
-								'province_name_manual' => $province_name_manual,
-								'destination_id' => null, // Set to NULL since we're using a text field
-								'location' => $location_text // Use existing location field to store text input
-							);
-							
-							$customer = $this->customer->insert($data);
-							
-							$token = sha1($customer.uniqid());
-							$data_token = array(
-								'token' => $token,
-								'token_dev' => 'Dev-'.$token,
-								'customer_id' => $customer,
-							);
-							$this->codegen_model->add('token_customers',$data_token);
-		
-							$datosStore = array(
-								'name' 	=> 	$data['person_contact'],
-								'email' 	=> 	$data['email'],
-								'enterprise' 	=>	$data['social_reason'],
-							);
-		
-							$configuracion = $this->codegen_model->row('configurations','*','id_configuration = 3');
-							$remitente = $this->codegen_model->row('configurations','*','id_configuration = 1');
-		
-							$this->frontend_lib->enviarEmail($datosStore, 'frontend/email/register_nube', 'Confirmación de cuenta.', $datosStore['email'], CORREO_QA, $remitente->value);
-							$this->frontend_lib->enviarEmail($datosStore, 'frontend/email/register', 'Confirmación de cuenta.', $configuracion->value, CORREO_QA, $remitente->value);
-		
-							$this->session->set_flashdata('success', 'Se registró con éxito. Por favor, revise su correo electrónico para la confirmación.<br>Inicie sesión con su correo y contraseña usando el botón "LOGIN / REGISTRATE"');
 						} else {
 							$this->session->set_flashdata('error', 'Este correo electronico ya existe');
 						}
