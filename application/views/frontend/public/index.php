@@ -116,7 +116,7 @@
         </div>
     </div>
     <div style="position: absolute; bottom: -30px; right: 4%; z-index: 10;" class="delivery-truck-container">
-        <img src="<?php echo base_url('assets/public/ENTREGA_CAMION.png') ?>" style="max-width: 700px; height: auto;" class="delivery-truck-img">
+        <img src="https://i.ibb.co/NnbjKmBt/ENTREGA-CAMION.png" style="max-width: 700px; height: auto;" class="delivery-truck-img">
     </div>
 </section>
 <section id="section_price">

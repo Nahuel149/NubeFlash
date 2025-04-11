@@ -16,6 +16,8 @@
 
 <!-- Core Dependencies -->
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Add Popper.js from CDN before Bootstrap -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- DataTables Core and Extensions -->
@@ -29,15 +31,16 @@
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/ckeditor/ckeditor.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="<?php echo base_url(); ?>assets/backend/bower_components/dropzone/dist/min/dropzone.min.js"></script>
+<!-- Replace problematic Dropzone local file with CDN version -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
 <script src="<?php echo base_url() ?>assets/backend/bower_components/editable-table/mindmup-editabletable.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/tether/dist/js/tether.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/backend/bower_components/fancybox/dist/jquery.fancybox.min.js"></script>
 
-<!-- SweetAlert2 -->
-<script src="<?php echo base_url(); ?>assets/backend/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<!-- SweetAlert2 - Replace problematic local file with CDN version -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 <!-- Custom Scripts -->
 <script src="<?php echo base_url() ?>assets/backend/js/main.js?version=3.9.1"></script>
