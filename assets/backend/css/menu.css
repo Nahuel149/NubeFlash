@@ -1,0 +1,364 @@
+/* Menu Styles */
+.menu-side-w {
+    background-color: #fff;
+    box-shadow: 0px 0px 30px rgba(69, 101, 173, 0.1);
+    position: relative;
+    width: 300px;
+    border-radius: 4px 0px 0px 4px;
+    transition: all 0.3s ease;
+}
+
+/* Main Menu Items */
+.menu-side-w ul.main-menu {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+.menu-side-w ul.main-menu > li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.menu-side-w ul.main-menu > li > a {
+    color: #3E4B5B;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-side-w ul.main-menu > li > a .icon-w {
+    color: #0073ff;
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* Submenu Styles */
+.menu-side-w ul.sub-menu {
+    display: none;
+    list-style: none;
+    padding: 0.5rem 0 0.5rem 3rem;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.menu-side-w ul.main-menu > li.active ul.sub-menu {
+    display: block;
+}
+
+.menu-side-w ul.sub-menu li a {
+    color: #3E4B5B;
+    padding: 0.5rem 1rem;
+    display: block;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Styles */
+@media (min-width: 1024px) {
+    .menu-side-w {
+        width: 300px;
+    }
+    
+    .menu-mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .menu-side-w {
+        width: 250px;
+    }
+    
+    .menu-side-w ul.main-menu > li > a {
+        padding: 0.8rem;
+    }
+    
+    .menu-side-w ul.main-menu > li > a .icon-w {
+        font-size: 1.2rem;
+    }
+    
+    .menu-mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu-side-w {
+        display: none;
+    }
+    
+    .menu-mobile {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #fff;
+        z-index: 999;
+        transition: all 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .menu-mobile.active {
+        left: 0;
+    }
+    
+    .menu-mobile .menu-header {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .menu-mobile .menu-header .close-menu {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .menu-mobile ul.main-menu {
+        padding: 1rem;
+    }
+    
+    .menu-mobile ul.main-menu > li > a {
+        padding: 0.8rem;
+    }
+    
+    .menu-mobile ul.sub-menu {
+        padding-left: 2rem;
+    }
+    
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    
+    .menu-overlay.active {
+        display: block;
+    }
+    
+    .menu-trigger {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 997;
+        background: #0073ff;
+        color: #fff;
+        padding: 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
+
+/* Menu Item States */
+.menu-side-w ul.main-menu > li > a:hover,
+.menu-mobile ul.main-menu > li > a:hover {
+    background: rgba(0, 115, 255, 0.05);
+}
+
+.menu-side-w ul.sub-menu li a:hover,
+.menu-mobile ul.sub-menu li a:hover {
+    background: rgba(0, 115, 255, 0.05);
+    padding-left: 1.5rem;
+}
+
+.menu-side-w ul.main-menu > li.active > a,
+.menu-mobile ul.main-menu > li.active > a {
+    background: #0073ff;
+    color: #fff;
+}
+
+.menu-side-w ul.main-menu > li.active > a .icon-w,
+.menu-mobile ul.main-menu > li.active > a .icon-w {
+    color: #fff;
+}
+
+/* Dropdown Indicators */
+.menu-side-w ul.main-menu > li.has-submenu > a:after,
+.menu-mobile ul.main-menu > li.has-submenu > a:after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.menu-side-w ul.main-menu > li.has-submenu.active > a:after,
+.menu-mobile ul.main-menu > li.has-submenu.active > a:after {
+    transform: rotate(180deg);
+}
+
+/* Responsive Menu Styles */
+
+/* Original Menu Structure Enhancement */
+.menu-mobile {
+    transition: all 0.3s ease;
+}
+
+.menu-mobile .main-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Desktop Menu - Original structure enhancement */
+.desktop-menu {
+    transition: all 0.3s ease;
+}
+
+/* Color scheme for menu items */
+.menu-mobile .main-menu > li > a span {
+    color: #3E4B5B;
+    font-weight: 500;
+}
+
+.menu-mobile .main-menu > li > a .icon-w .os-icon {
+    color: #047bf8;
+    font-size: 1.2rem;
+}
+
+/* Media queries for responsive behavior */
+@media (min-width: 1024px) {
+    /* Standard desktop view - keep original structure */
+    .menu-mobile {
+        /* Keep default settings */
+    }
+}
+
+/* Tablet view (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Show only main menu items with submenu dropdowns */
+    .menu-mobile .main-menu > li > a {
+        padding: 10px;
+        position: relative;
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu > a:after {
+        content: '\f107';
+        font-family: 'FontAwesome';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu.active > a:after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu.active .sub-menu {
+        display: block;
+    }
+    
+    .menu-mobile .main-menu .sub-menu {
+        display: none;
+        padding-left: 20px;
+    }
+    
+    .desktop-menu {
+        /* Adjust desktop menu for tablet */
+    }
+}
+
+/* Mobile view (less than 768px) */
+@media (max-width: 767px) {
+    /* Hamburger menu with dropdown style */
+    .menu-mobile {
+        background-color: #fff;
+    }
+    
+    .menu-mobile.menu-active {
+        display: block;
+    }
+    
+    .menu-mobile .main-menu > li > a {
+        padding: 12px 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu > a:after {
+        content: '\f107';
+        font-family: 'FontAwesome';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu.active > a:after {
+        transform: translateY(-50%) rotate(180deg);
+    }
+    
+    .menu-mobile .main-menu > li.has-sub-menu.active .sub-menu {
+        display: block;
+    }
+    
+    .menu-mobile .main-menu .sub-menu {
+        display: none;
+        padding-left: 15px;
+    }
+    
+    .menu-mobile .mm-logo-buttons-w {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+}
+
+/* Common submenu styles for all breakpoints */
+.menu-mobile .main-menu > li.has-sub-menu .sub-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 15px;
+}
+
+.menu-mobile .main-menu > li.has-sub-menu .sub-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: #3E4B5B;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.menu-mobile .main-menu > li.has-sub-menu .sub-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Styling for active states */
+.menu-mobile .main-menu > li.active > a,
+.menu-mobile .main-menu > li.has-sub-menu.active > a {
+    background-color: rgba(4, 123, 248, 0.1);
+}
+
+.menu-mobile .main-menu > li.has-sub-menu .sub-menu a.active {
+    font-weight: bold;
+    background-color: rgba(4, 123, 248, 0.05);
+}
+
+/* Icon styling */
+.menu-mobile .main-menu > li > a .icon-w {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.menu-mobile .main-menu > li > a span {
+    display: inline-block;
+    vertical-align: middle;
+} 

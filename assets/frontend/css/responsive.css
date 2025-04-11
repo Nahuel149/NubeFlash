@@ -46,3 +46,385 @@
         font-size: 24px !important;
     }
 }
+
+/* Responsive styles for the frontend */
+
+/* Hamburger menu styles */
+@media (max-width: 993px) {
+    /* Ensure hamburger menu is visible and properly styled */
+    .navbar-toggler {
+        display: block;
+        padding: 0.25rem 0.75rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 0.25rem;
+        background-color: transparent;
+        margin-left: auto;
+    }
+    
+    /* Style the hamburger icon */
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        background-size: 100% 100%;
+    }
+    
+    /* Mobile menu styling - Change to overlay positioning */
+    #navbarNav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 250px;
+        z-index: 1030;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+        padding: 0;
+        margin: 0;
+        border-radius: 0 0 4px 4px;
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        display: block !important;
+        height: auto !important;
+        overflow: hidden;
+    }
+    
+    /* When the menu is shown */
+    #navbarNav.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    /* Make collapsing transition work properly */
+    #navbarNav.collapsing {
+        height: auto !important;
+        transition: none;
+    }
+    
+    /* Mobile menu links */
+    #navbarNav .navbar-nav {
+        padding: 0.5rem 0;
+        margin: 0;
+    }
+    
+    #navbarNav .nav-item {
+        padding: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #navbarNav .nav-link {
+        padding: 0.75rem 1.5rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+    }
+    
+    #navbarNav .nav-item.active .nav-link {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Ensure all menu items are shown */
+    #navbarNav .navbar-nav .nav-item {
+        display: block !important;
+    }
+    
+    /* Make navbar position relative so the dropdown is positioned correctly */
+    .navbar {
+        position: relative;
+    }
+}
+
+/* User dropdown styling - Apply same styling as hamburger menu */
+.dropdown.text-center {
+    position: relative;
+}
+
+.custom-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1030;
+    min-width: 200px;
+    padding: 0;
+    border: none;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    background-color: #297ded;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.custom-dropdown.show {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-dropdown .dropdown-item {
+    padding: 0.75rem 1.5rem;
+    color: #fff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-weight: normal;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+/* Add extremely specific rule to override any Bootstrap defaults */
+.navbar .dropdown .dropdown-menu.custom-dropdown .dropdown-item,
+.navbar .dropdown-menu.custom-dropdown a.dropdown-item,
+.custom-dropdown a,
+.custom-dropdown a.dropdown-item {
+    color: #fff !important;
+}
+
+.custom-dropdown .dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.custom-dropdown .dropdown-item:hover, 
+.custom-dropdown .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff !important;
+}
+
+.dropdown-toggle::after {
+    margin-left: .5em;
+    vertical-align: .1em;
+}
+
+.dropdown-toggle.text-session {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.dropdown-toggle.text-session:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Fine-tune for tablets */
+@media (min-width: 768px) and (max-width: 993px) {
+    #navbarNav {
+        max-width: 320px;
+        margin-left: auto;
+    }
+}
+
+/* Fine-tune for mobile phones */
+@media (max-width: 767px) {
+    .navbar-toggler {
+        padding: 0.15rem 0.5rem;
+    }
+    
+    #navbarNav .nav-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* SERVICIOS SECTION RESPONSIVE STYLES */
+/* This section handles the "Servicios" section with the ENVÍOS and BOXES cards */
+
+/* General improvements for all screen sizes */
+#section_service, .servicios-section {
+    position: relative;
+    overflow: hidden;
+}
+
+#section_service .container, .servicios-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Style the service cards consistently */
+.service-card {
+    background-color: #4e7de9;
+    border-radius: 12px;
+    padding: 30px;
+    height: 100%;
+    margin-bottom: 30px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.service-card h2 {
+    color: #ffffff;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.service-card p {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Responsive layout for different screen sizes */
+/* For desktop and large tablets */
+@media (min-width: 992px) {
+    /* Position the delivery person image */
+    .delivery-person-img {
+        position: absolute;
+        bottom: -50px;
+        right: 0;
+        width: 300px;
+        z-index: 1;
+    }
+    
+    /* Make sure the service cards have consistent height */
+    .service-card {
+        min-height: 380px;
+    }
+    
+    /* Service section spacer */
+    #section_service, .servicios-section {
+        padding: 80px 0 120px;
+    }
+}
+
+/* For medium tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Stack the cards with proper spacing */
+    .service-card {
+        margin-bottom: 30px;
+    }
+    
+    /* Adjust the delivery truck image */
+    .delivery-truck-container {
+        position: relative !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        text-align: center;
+        margin-top: 30px;
+        width: 100%;
+    }
+    
+    .delivery-truck-img {
+        max-width: 100% !important;
+        position: relative;
+    }
+    
+    /* Service section spacer */
+    #section_service, .servicios-section {
+        padding: 60px 0 60px !important;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 767px) {
+    /* Stack cards vertically */
+    .service-card {
+        margin-bottom: 30px;
+    }
+    
+    /* Center the title */
+    #section_service h1, .servicios-section h1 {
+        text-align: center;
+    }
+    
+    /* Adjust the delivery truck image */
+    .delivery-truck-container {
+        position: relative !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        text-align: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+    
+    .delivery-truck-img {
+        max-width: 100% !important;
+        position: relative;
+    }
+    
+    /* Service card title smaller */
+    .service-card h2 {
+        font-size: 24px;
+    }
+    
+    /* Service section spacer */
+    #section_service, .servicios-section {
+        padding: 40px 0 40px !important;
+    }
+}
+
+/* For very small devices */
+@media (max-width: 480px) {
+    .service-card {
+        padding: 20px;
+    }
+    
+    .service-card h2 {
+        font-size: 22px;
+    }
+    
+    .service-card p {
+        font-size: 14px;
+    }
+    
+    /* Further adjust truck image on smallest screens */
+    .delivery-truck-container {
+        margin-top: 10px;
+    }
+    
+    .delivery-truck-img {
+        width: 100%;
+    }
+}
+
+/* Specific media query for the delivery truck image at 990px or less */
+@media (max-width: 990px) {
+    /* Make the delivery truck image 60% smaller */
+    .delivery-truck-img {
+        max-width: 40% !important; /* 40% of original size = 60% smaller */
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    /* Center the image in its container */
+    .delivery-truck-container {
+        position: relative !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        text-align: center;
+        width: 100%;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    
+    /* Adjust spacing for the section */
+    #section_service {
+        padding-bottom: 20px !important;
+    }
+}
+
+/* Specific media query for the API documentation camion-nf.png truck image */
+@media (max-width: 768px) {
+    /* Specifically target the truck image */
+    img[src*="camion-nf.png"],
+    img.img-fluid[alt="Camión"],
+    .nav-pills + img.img-fluid,
+    .nav-pills ~ img.img-fluid {
+        max-width: 30% !important; /* 30% of original size = 70% smaller */
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
+    }
+}

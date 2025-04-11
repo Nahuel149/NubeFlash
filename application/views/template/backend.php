@@ -9,6 +9,12 @@
         $this->load->view('template/backend/js');
         $user_row = $this->ion_auth->user()->row();
     ?>
+    <!-- Custom Menu Styles -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/backend/css/menu.css') ?>">
+    <!-- Responsive Tables Styles -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/backend/css/responsive-tables.css') ?>">
+    <!-- Dropdown Menu Fix Styles -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/backend/css/dropdown-fix.css') ?>">
   </head>
   <body style="padding: 0px;">
   <div class="all-wrapper menu-top">
@@ -42,6 +48,14 @@
         </div>
     </div>
     <?php $this->load->view('template/backend/modal'); ?>    
+    <!-- Custom Menu Scripts -->
+    <script src="<?php echo base_url('assets/backend/js/menu.js') ?>"></script>
+    <!-- Responsive Tables Scripts -->
+    <script src="<?php echo base_url('assets/backend/js/responsive-tables.js') ?>"></script>
+    <!-- Dropdown Menu Fix Scripts -->
+    <script src="<?php echo base_url('assets/backend/js/dropdown-fix.js') ?>"></script>
+    <!-- Menu Links Fix Script -->
+    <script src="<?php echo base_url('assets/backend/js/menu-links-fix.js') ?>"></script>
   </body>
 </html>
 <?php } ?>

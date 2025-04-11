@@ -90,37 +90,33 @@
         <h2 class="simple-text text-center mb-5 wow bounceInUp" style="color: #4e7de9;">SERVICIOS</h2>
         <br />
         <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-5 mb-4 wow bounceInUp">
-                <div class="card h-100" style="background-color: #4e7de9; border-radius: 15px; border: none; position: relative; overflow: visible;">
+            <div class="col-lg-5 col-md-6 mb-4 wow bounceInUp">
+                <div class="service-card">
                     <div style="position: absolute; top: 20px; left: 30px; z-index: 5;">
                         <img src="<?php echo base_url('assets/public/flash_naranja.png') ?>" style="width: 80px; height: auto; transform: rotate(-5deg);">
                     </div>
-                    <div class="card-body" style="padding: 60px 30px 30px 30px;">
-                        <h4 class="card-title text-center" style="color: white; letter-spacing: 3px; font-weight: 600; margin-bottom: 20px;">ENVÍOS</h4>
-                        <p class="text-white">Entrega de paquetes a domicilio dentro de Montevideo</p>
-                        <p class="text-white">Una visita, con entrega bajo firma, presentando cédula de identidad de la persona responsable (mayor de edad).</p>
-                        <p class="text-white">Si no pudiera entregarse, se advertirá al receptor mediante un aviso de visita informando que dispone de 5 días corridos para recoger el envío en el centro logístico.</p>
-                    </div>
+                    <h2 class="text-center" style="letter-spacing: 3px; margin-top: 30px;">ENVÍOS</h2>
+                    <p>Entrega de paquetes a domicilio dentro de Montevideo</p>
+                    <p>Una visita, con entrega bajo firma, presentando cédula de identidad de la persona responsable (mayor de edad).</p>
+                    <p>Si no pudiera entregarse, se advertirá al receptor mediante un aviso de visita informando que dispone de 5 días corridos para recoger el envío en el centro logístico.</p>
                 </div>
             </div>
-            <div class="col-lg-5 col-md-5 mb-4 wow bounceInUp position-relative">
-                <div class="card h-100" style="background-color: #4e7de9; border-radius: 15px; border: none; position: relative; overflow: visible;">
+            <div class="col-lg-5 col-md-6 mb-4 wow bounceInUp">
+                <div class="service-card">
                     <div style="position: absolute; top: 20px; left: 30px; z-index: 5;">
                         <img src="<?php echo base_url('assets/public/flash_naranja.png') ?>" style="width: 80px; height: auto; transform: rotate(-5deg);">
                     </div>
-                    <div class="card-body" style="padding: 60px 30px 30px 30px;">
-                        <h4 class="card-title text-center" style="color: white; letter-spacing: 3px; font-weight: 600; margin-bottom: 20px;">BOXES</h4>
-                        <p class="text-white">Bodegas para acopio de mercadería con la posibilidad de alquilar desde 10 m2</p>
-                        <p class="text-white">Control de stock</p>
-                        <p class="text-white">Con vigilancia 24hs. servicio interno de video vigilancia</p>
-                        <p class="text-white">Responsabilidad sobre mercadería</p>
-                    </div>
+                    <h2 class="text-center" style="letter-spacing: 3px; margin-top: 30px;">BOXES</h2>
+                    <p>Bodegas para acopio de mercadería con la posibilidad de alquilar desde 10 m2</p>
+                    <p>Control de stock</p>
+                    <p>Con vigilancia 24hs. servicio interno de video vigilancia</p>
+                    <p>Responsabilidad sobre mercadería</p>
                 </div>
             </div>
         </div>
     </div>
-    <div style="position: absolute; bottom: -30px; right: 4%; z-index: 10;">
-        <img src="<?php echo base_url('assets/public/ENTREGA_CAMION.png') ?>" style="max-width: 700px; height: auto;">
+    <div style="position: absolute; bottom: -30px; right: 4%; z-index: 10;" class="delivery-truck-container">
+        <img src="<?php echo base_url('assets/public/ENTREGA_CAMION.png') ?>" style="max-width: 700px; height: auto;" class="delivery-truck-img">
     </div>
 </section>
 <section id="section_price">

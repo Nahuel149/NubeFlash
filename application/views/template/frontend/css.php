@@ -16,6 +16,9 @@
 <link href="<?php echo base_url() ?>assets/frontend/plugins/dataTables/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/frontend/plugins/dataTables/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
+<!-- Responsive Styles -->
+<link href="<?php echo base_url() ?>assets/frontend/css/responsive.css" rel="stylesheet">
+
 <!-- Additional Styles -->
 <link href="<?php echo base_url() ?>assets/frontend/extras/extra.css?v=<?php echo uniqid() ?>" rel="stylesheet">
 <link href="<?php echo base_url() ?>assets/frontend/extras/montserrat.css?v=<?php echo uniqid() ?>" rel="stylesheet">

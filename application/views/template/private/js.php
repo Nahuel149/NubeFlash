@@ -137,3 +137,11 @@
         });
     });
 </script>
+
+<!-- Core JavaScript -->
+<script src="<?php echo base_url() ?>assets/frontend/js/bootstrap.min.js"></script>
+
+<!-- Dropdown Menu Fix Script -->
+<script src="<?php echo base_url() ?>assets/frontend/js/menu-dropdown-fix.js"></script>
+
+<!-- Additional Libraries -->

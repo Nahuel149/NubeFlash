@@ -30,14 +30,14 @@
                 <a class="nav-link dropdown-toggle text-session line-botton" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <?php echo $this->session->userdata('name') ?> ¡Hola!
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="#" id="cambiarPassBtn">Cambiar contraseña</a>
-                	<a class="dropdown-item" href="<?php echo(base_url('logout')); ?>">Cerrar sesión</a>
+                <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown" style="color: #fff !important;">
+					<a class="dropdown-item text-white" href="#" id="cambiarPassBtn" style="color: #fff !important;">Cambiar contraseña</a>
+                	<a class="dropdown-item text-white" href="<?php echo(base_url('logout')); ?>" style="color: #fff !important;">Cerrar sesión</a>
                 </div>
             </div>
         </div>
 		<button class="navbar-toggler d-block d-sm-block d-md-block d-lg-none" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="fas fa-bars text-white"></span>
+			<span class="navbar-toggler-icon"></span>
 		</button>
     </div>
   </div>
@@ -52,6 +52,11 @@
 		<li class="nav-item <?php echo($this->uri->segment(1) == 'mi-perfil' ? 'active':''); ?>">
 			<a class="nav-link" href="<?php echo(base_url('mi-perfil')); ?>">
 				<img src="<?php echo(base_url('assets/public/dashboard/icons/blanco/099-medal.png')); ?>" class="tam-icon icon-pago"/>&nbsp;&nbsp; Perfil
+			</a>
+		</li>
+		<li class="nav-item <?php echo($this->uri->segment(1) == 'mis-pedidos' ? 'active':''); ?>">
+			<a class="nav-link" href="<?php echo(base_url('mis-pedidos')); ?>">
+				<img src="<?php echo(base_url('assets/public/dashboard/icons/blanco/073-dollar-symbol-2.png')); ?>" class="tam-icon icon-venta"/>&nbsp;&nbsp; Pedidos
 			</a>
 		</li>
 		<li class="nav-item <?php echo($this->uri->segment(1) == 'mi-token' ? 'active':''); ?>">

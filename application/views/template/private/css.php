@@ -18,6 +18,9 @@
 <!-- Dropzone -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" rel="stylesheet">
 
+<!-- Responsive Styles -->
+<link href="<?php echo base_url() ?>assets/frontend/css/responsive.css" rel="stylesheet">
+
 <?php if($this->uri->segment(1) == 'mis-pedidos'): ?>
 <!-- Orders page specific CSS for accessibility -->
 <link href="<?php echo base_url() ?>assets/frontend/css/orders-accessibility.css?v=<?php echo uniqid() ?>" rel="stylesheet">

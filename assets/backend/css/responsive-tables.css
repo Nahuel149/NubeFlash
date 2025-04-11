@@ -1,0 +1,98 @@
+/* Responsive Tables CSS */
+
+/* Basic table styles */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+/* Ensure tables maintain their structure and enable horizontal scrolling at 1200px or less */
+@media (max-width: 1200px) {
+    /* Apply to all table containers */
+    .content-box .table-responsive,
+    .element-box .table-responsive,
+    .card-body.table-responsive,
+    .element-wrapper .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        margin-bottom: 1rem;
+    }
+
+    /* Force tables to not be collapsed */
+    .content-box table.table,
+    .element-box table.table,
+    .card-body table.table,
+    .element-wrapper table.table {
+        width: 100% !important;
+        margin-bottom: 0;
+        table-layout: auto;
+        white-space: nowrap;
+    }
+
+    /* Apply to all tables even if they're not in a .table-responsive container */
+    .content-box .row .col-lg-12 table.table,
+    .content-box .row .col-md-12 table.table,
+    .element-box .row .col-lg-12 table.table,
+    .element-box .row .col-md-12 table.table {
+        width: 100% !important;
+        margin-bottom: 0;
+        table-layout: auto;
+        white-space: nowrap;
+    }
+    
+    /* Make sure the container has appropriate overflow */
+    .content-i .content-box,
+    .element-wrapper .element-box {
+        overflow-x: auto;
+    }
+}
+
+/* Custom scrollbar for better UX in webkit browsers */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* For Firefox */
+.table-responsive {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+/* Ensure no unexpected margins or padding in containers */
+.content-box .row,
+.element-box .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Handle tables that aren't in .table-responsive containers */
+@media (max-width: 1200px) {
+    .content-box table.table,
+    .element-box table.table {
+        min-width: 100%;
+        display: inline-table;
+    }
+    
+    /* Add table-responsive dynamically to any table container that isn't already responsive */
+    .content-box div:not(.table-responsive) > table.table,
+    .element-box div:not(.table-responsive) > table.table {
+        overflow-x: auto;
+        display: block;
+    }
+} 
