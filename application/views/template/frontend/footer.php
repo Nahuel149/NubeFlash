@@ -61,15 +61,15 @@
 				<ul class="list-unstyled footer-links contact-info">
 					<li class="mb-3 d-flex align-items-start">
 						<i class="fas fa-map-marker-alt me-3 text-primary" style="margin-top: 5px;"></i>
-						<span>Damaso Antonio Larrañaga 3581 esq. Rep. De Corea, Montevideo</span>
+						<span><?php echo isset($configuracion['direccion_pie_pagina']) ? htmlspecialchars($configuracion['direccion_pie_pagina']) : 'Dirección no configurada'; ?></span>
 					</li>
 					<li class="mb-3 d-flex align-items-center">
 						<i class="fas fa-phone-alt me-3 text-primary"></i>
-						<span>+598 XX XX XX XX</span>
+						<span><?php echo isset($configuracion['telefono_pie_pagina']) ? htmlspecialchars($configuracion['telefono_pie_pagina']) : 'Teléfono no configurado'; ?></span>
 					</li>
 					<li class="mb-3 d-flex align-items-center">
 						<i class="fas fa-envelope me-3 text-primary"></i>
-						<span>info@nubeflash.com</span>
+						<span><?php echo isset($configuracion['email_pie_pagina']) ? htmlspecialchars($configuracion['email_pie_pagina']) : 'Email no configurado'; ?></span>
 					</li>
 				</ul>
 			</div>

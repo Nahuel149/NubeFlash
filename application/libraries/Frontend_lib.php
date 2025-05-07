@@ -93,7 +93,7 @@ class frontend_lib{
   		@chmod($filepath, FILE_WRITE_MODE);
 	}
 
-	public function enviarEmail($data, $vista, $titulo, $email_destino, $email_origen, $remitente){
+	public function enviarEmail($data, $vista, $titulo, $email_destino, $email_origen, $remitente, $email_bcc = null){
 		// Inicializar libreria
 		$this->load->library('email');
 
@@ -107,9 +107,14 @@ class frontend_lib{
 		$this->email->subject($titulo);
 		$this->email->message($mensaje);
 
+		// Add BCC if provided
+		if ($email_bcc && !empty(trim($email_bcc))) {
+			$this->email->bcc($email_bcc);
+		}
+
 		// Enviar email y verificar si hubo error
 		if (!$this->email->send(FALSE)) { // Pass FALSE to prevent clearing attachments on failure
-			$message = "ERROR EMAIL => Email: $vista, \n  Título: $titulo \n Destino: $email_destino \n Origen: $email_origen \n Remitente: $remitente \n Datos: " . json_encode($data);
+			$message = "ERROR EMAIL => Email: $vista, \n  Título: $titulo \n Destino: $email_destino \n Origen: $email_origen \n Remitente: $remitente \n BCC: $email_bcc \n Datos: " . json_encode($data);
 			log_message('error', $message);
             log_message('error', 'Email Debugging Info: ' . $this->email->print_debugger());
 		}

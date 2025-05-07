@@ -3,8 +3,8 @@
 $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.gmail.com';
 $config['smtp_port'] = 587;
-$config['smtp_user'] = 'nahuelbalsasbtta@gmail.com';
-$config['smtp_pass'] = 'umpr cfqe hukf kypd';
+$config['smtp_user'] = 'nubeflashinfo@gmail.com';
+$config['smtp_pass'] = 'zhhd nfqb rfrl rmih';
 $config['smtp_crypto'] = 'tls';
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';

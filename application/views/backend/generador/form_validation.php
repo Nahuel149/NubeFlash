@@ -1,7 +1,7 @@
 <?php
 
 $config = array(
-             	{form_validation_data}
+             	form_validation_data
 			   );
 			   
 ?>

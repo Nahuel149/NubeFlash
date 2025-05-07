@@ -154,7 +154,7 @@ class Web extends CI_Controller {
 				// Verificar si el captcha es correcto
 				if($verificado) {
 					if ($this->input->post('re-password') == $this->input->post('password')) {
-						$exists_email = $this->codegen_model->row('customers','*','email="'.$this->input->post('email').'" AND active="'.ACTIVE.'"');
+						$exists_email = $this->codegen_model->row('customers','*','email="'.$this->input->post('email').'"');
 						if (!$exists_email) {
 							try {
 								// Start database transaction

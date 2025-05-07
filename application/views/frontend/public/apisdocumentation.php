@@ -80,7 +80,9 @@
 <pre>{
     "status": "error",
     "data": {
-        "message": "Tariff no Exists"
+        "message": 
+        "There are no Tariffs for these package size differences. 
+         Check the size of the product again"
     }
 }</pre>
                                         </th>
@@ -195,7 +197,7 @@
 <pre>{
     "status": "error",
     "data": {
-        "message": "Tariff no Exists"
+        "message": "There are no Tariffs for these package size differences. \nCheck the size of the product again in La Nube"
     }
 }</pre>
                                             </th>

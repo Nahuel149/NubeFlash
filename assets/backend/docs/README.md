@@ -87,3 +87,25 @@ The CSS now implements a consistent approach to responsive design:
    - Use standard breakpoints
    - Test thoroughly on multiple devices
    - Consider touch interfaces for interactive elements 
+
+### Order Status Email Notifications
+
+**Feature Description:**
+Clients now receive an email notification whenever the status of their order is updated via the backend interface (e.g., in `ecommerce/orders`).
+
+**Implementation Details:**
+- The primary logic is implemented in the `changeStatus()` method of the `application/controllers/ecommerce/Orders.php` controller.
+- Upon a successful status change, the controller fetches necessary order and customer details.
+- It utilizes the `enviarEmail` method from `application/libraries/Frontend_lib.php`.
+- A new email template `application/views/frontend/email/order_status_update.php` is used for these notifications.
+- Sender details (From Email, From Name) are dynamically retrieved from the `configurations` table in the database.
+- The `Frontend_lib.php`'s `enviarEmail` method was enhanced to support an optional BCC parameter, which is used to send a copy to the `CORREO_QA` email address (defined in `application/config/constants.php`).
+
+**Configuration:**
+- Ensure email settings like `email_soporte` (for From Email), `nombre_sistema` (for From Name/Store Name in email), and `email_remitente` (fallback From Name) are correctly configured in the `configurations` database table (accessible via backend system configurations UI).
+- The `CORREO_QA` constant in `application/config/constants.php` determines the BCC recipient for these notifications. Verify its value if BCC is not reaching the intended QA email.
+
+**Key Files Modified:**
+- `application/controllers/ecommerce/Orders.php`: Added logic to trigger email sending.
+- `application/libraries/Frontend_lib.php`: Modified `enviarEmail` to accept a BCC parameter.
+- `application/views/frontend/email/order_status_update.php`: New email template created. 

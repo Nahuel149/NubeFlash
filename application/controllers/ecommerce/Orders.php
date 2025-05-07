@@ -12,6 +12,7 @@ class Orders extends CI_Controller
         $this->load->model('destination_model', 'destination');
         $this->load->model('province_model', 'province');
         $this->load->model('country_model', 'country');
+        $this->load->model('codegen_model');
     }
 
     function index()
@@ -188,6 +189,79 @@ class Orders extends CI_Controller
                     'status_id' => $status_id,
                 ], $order_id);
                 $message = 'Se ha modificado el estado del pedido';
+
+                // Fetch order details for email
+                $order = $this->order->find($order_id);
+                if ($order) {
+                    $customer = $this->customer->find($order->customer_id);
+                    log_message('debug', 'Customer data for order ID ' . $order_id . ': ' . print_r($customer, true));
+                    
+                    // Extract email from shipping_data when available
+                    $shipping_data_json = $order->shipping_data;
+                    $notification_email = $customer->email; // Default to customer account email
+                    
+                    // Try to get email from shipping_data if it exists
+                    if (!empty($shipping_data_json)) {
+                        $shipping_data = json_decode($shipping_data_json, true);
+                        if (isset($shipping_data['email']) && !empty($shipping_data['email'])) {
+                            // Use shipping email instead of customer account email
+                            $notification_email = $shipping_data['email'];
+                            log_message('debug', 'Using shipping data email ' . $notification_email . ' instead of account email ' . $customer->email . ' for order ID ' . $order_id);
+                        }
+                    }
+                    
+                    if ($customer && !empty($notification_email)) {
+                        $status_details = $this->status->find($status_id);
+                        $new_status_name = $status_details ? $status_details->name : 'Desconocido';
+
+                        // Prepare email data
+                        $email_data = [
+                            'title' => 'Actualización de Estado de tu Pedido',
+                            // Use social_reason for customer name, fallback to 'Cliente'
+                            'customer_name' => isset($customer->social_reason) && !empty($customer->social_reason) ? $customer->social_reason : (isset($customer->name) && !empty($customer->name) ? $customer->name : 'Cliente'),
+                            'order_number' => $order->order_number,
+                            'new_status' => $new_status_name,
+                            'store_name' => $this->codegen_model->row('configurations', 'value', 'key_id = "nombre_sistema"')->value ?: 'NubeFlash', // Fetch Nombre Sistema
+                            'tracking_link' => $order->tracking_number ? base_url('tracking/' . $order->tracking_number) : base_url() // Link to tracking page or home
+                        ];
+
+                        // Load Frontend_lib if not already loaded
+                        if (!isset($this->frontend_lib)) {
+                            $this->load->library('frontend_lib');
+                        }
+                        
+                        // Get email configuration using codegen_model directly
+                        $config_email_soporte = $this->codegen_model->row('configurations', 'value', 'key_id = "email_soporte"');
+                        $config_email_admin = $this->codegen_model->row('configurations', 'value', 'key_id = "email_admin"');
+                        $config_remitente = $this->codegen_model->row('configurations', 'value', 'key_id = "email_remitente"'); // This is used as From Name by Frontend_lib
+                        $config_nombre_sistema = $this->codegen_model->row('configurations', 'value', 'key_id = "nombre_sistema"');
+
+                        $email_from_address = $config_email_soporte ? $config_email_soporte->value : ($config_email_admin ? $config_email_admin->value : 'noreply@example.com');
+                        // Use Nombre Sistema as the sender name if available, otherwise the remitente email as a fallback name
+                        $sender_name = $config_nombre_sistema ? $config_nombre_sistema->value : ($config_remitente ? $config_remitente->value : 'NubeFlash');
+
+                        // Send email with corrected parameters
+                        try {
+                            $this->frontend_lib->enviarEmail(
+                                $email_data, // $data
+                                'frontend/email/order_status_update', // $vista
+                                'Tu pedido ' . $order->order_number . ' ha sido actualizado - ' . $email_data['store_name'], // $titulo
+                                $notification_email, // $email_destino - USING NOTIFICATION EMAIL HERE
+                                $email_from_address, // $email_origen (From Email)
+                                $sender_name, // $remitente (From Name)
+                                (defined('CORREO_QA') && CORREO_QA ? CORREO_QA : null) // $email_bcc (New 7th argument)
+                            );
+                            log_message('info', 'Email de actualización de estado enviado a ' . $notification_email . ' para el pedido ' . $order_id . (defined('CORREO_QA') && CORREO_QA ? ' (BCC: ' . CORREO_QA . ')' : ''));
+                        } catch (Exception $e) {
+                            log_message('error', 'Error al enviar email de actualización de estado: ' . $e->getMessage() . ' para el pedido ' . $order_id);
+                        }
+                    } else {
+                        log_message('warn', 'No se pudo enviar email: Cliente no encontrado o sin email para pedido ' . $order_id);
+                    }
+                } else {
+                    log_message('warn', 'No se pudo enviar email: Pedido no encontrado ' . $order_id);
+                }
+
             } catch (Exception $e) {
                 $error = true;
                 $message = 'Error al modificar el estado: ' . $e->getMessage();

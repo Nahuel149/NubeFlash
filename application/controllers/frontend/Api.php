@@ -162,7 +162,7 @@ class Api extends CI_Controller {
                     }
                 } else {
                     $response['status'] = 'Error';
-                    $response['data']['message'] = 'Lanubeflash response: Tariff no exists';
+                    $response['data']['message'] = 'There are no Tariffs for these package size differences. Check the size of the product again';
                 }
             } else {
                 $response['status'] = 'Error';
@@ -332,7 +332,7 @@ class Api extends CI_Controller {
                     }
                 } else {
                     $response['status'] = 'Error';
-                    $response['data']['message'] = 'Lanubeflash response: Tariff no exists';
+                    $response['data']['message'] = 'There are no Tariffs for these package size differences. Check the size of the product again';
                 }
             } else {
                 $response['status'] = 'Error';
