@@ -8,7 +8,7 @@ set_time_limit(0);
 ini_set("upload_max_filesize", 40);
 
 $protocol = isset($_SERVER['HTTP_X_FORWARDED_PROTO']) ? $_SERVER['HTTP_X_FORWARDED_PROTO'] : 'http';
-$config['base_url'] = $protocol . "://" . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost:8000');
+$config['base_url'] = $protocol . "://" . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'lakeflash.com');
 
 /*
 |--------------------------------------------------------------------------

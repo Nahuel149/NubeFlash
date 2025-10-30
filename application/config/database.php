@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
-$active_group = 'developed';
+$active_group = 'production';
 $query_builder = TRUE;
 
 $db['developed'] = array(
@@ -111,9 +111,9 @@ $db['testing'] = array(
 $db['production'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'lanubeflash',
-	'password' => 'Y8Ixrqc3Yn38V6B',
-	'database' => 'lanube_api',
+	'username' => 'lakeflas_admin',
+	'password' => 'nubeflash1',
+	'database' => 'lakeflas_lanube_api',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
