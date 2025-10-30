@@ -82,9 +82,9 @@ class Location_service {
         }
         
         // Sanitize inputs
-        $postalCodeManual = trim($postalCodeManual);
-        $provinceManual = trim($provinceManual);
-        $destinationManual = trim($destinationManual);
+        $postalCodeManual = $postalCodeManual !== null ? trim($postalCodeManual) : '';
+        $provinceManual  = $provinceManual !== null ? trim($provinceManual) : '';
+        $destinationManual = $destinationManual !== null ? trim($destinationManual) : '';
         
         // Validate postal code format if provided
         if (!empty($postalCodeManual) && !preg_match('/^[a-zA-Z0-9\-\s]{1,10}$/', $postalCodeManual)) {
@@ -100,4 +100,4 @@ class Location_service {
             $postalCodeManual
         );
     }
-} 
+}

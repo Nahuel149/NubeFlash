@@ -1,11 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'smtp.gmail.com';
-$config['smtp_port'] = 587;
-$config['smtp_user'] = 'nubeflashinfo@gmail.com';
-$config['smtp_pass'] = 'zhhd nfqb rfrl rmih';
-$config['smtp_crypto'] = 'tls';
+// Extrae valores de variables de entorno si existen, de lo contrario usa los valores del panel de control
+$config['smtp_host']   = getenv('SMTP_HOST')   ?: 'lakeflash.com';
+$config['smtp_port']   = getenv('SMTP_PORT')   ?: 465;
+$config['smtp_user']   = getenv('SMTP_USER')   ?: 'notificaciones@lakeflash.com';
+$config['smtp_pass']   = getenv('SMTP_PASS')   ?: 'TU_CONTRASEÑA_AQUÍ'; // Reemplaza con la contraseña real
+$config['smtp_crypto'] = getenv('SMTP_CRYPTO') ?: 'ssl';
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';
 $config['newline'] = "\r\n";

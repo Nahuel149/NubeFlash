@@ -18,7 +18,7 @@
 curl -X POST "https://lakeflash.com/api/get-shippingCost" \
      -H "Content-Type: application/json" \
      -d '{
-           "token": "TOK_EMPRESAA_AQUI",
+           "token": "1ec3aa57ea2c01277bb38c79b2e8842d7995241c",
            "data_client": {
                "postal_code": "1000",
                "client": "Empresa A",
@@ -36,8 +36,8 @@ curl -X POST "https://lakeflash.com/api/get-shippingCost" \
 curl -X POST "https://lakeflash.com/api/get-client" \
      -H "Content-Type: application/json" \
      -d '{
-           "user": "contacto@empresaa.com",
-           "token": "TOK_EMPRESAA_AQUI"
+           "user": "japdaylearning@gmail.com",
+           "token": "1ec3aa57ea2c01277bb38c79b2e8842d7995241c"
          }'
 ```
 
@@ -46,7 +46,7 @@ curl -X POST "https://lakeflash.com/api/get-client" \
 curl -X POST "https://lakeflash.com/api/send-order" \
      -H "Content-Type: application/json" \
      -d '{
-           "token": "TOK_EMPRESAA_AQUI",
+           "token": "1ec3aa57ea2c01277bb38c79b2e8842d7995241c",
            "data_client": {
                "postal_code": "1000",
                "client": "Empresa A",

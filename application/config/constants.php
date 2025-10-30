@@ -23,8 +23,8 @@ define('TABLE_ORDER','orders');
 define('CORREO_QA','ventas@lanube.cloud');
 
 // Captcha
-define('CAPTCHA_KEY', '6LcKBfwrAAAAAFuib0k7r5xVOSPGE34MKHWkN-aP');
-define('CAPTCHA_SECRET', '6LcKBfwrAAAAAJ7eZ2S5nGQel8cdrrM8PFoQTVH2');
+define('CAPTCHA_KEY', getenv('CAPTCHA_KEY') ?: '');
+define('CAPTCHA_SECRET', getenv('CAPTCHA_SECRET') ?: '');
 
 /*
 |--------------------------------------------------------------------------

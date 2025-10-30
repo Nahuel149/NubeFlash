@@ -1,4 +1,34 @@
+SetEnv SMTP_HOST "lakeflash.com"
+SetEnv SMTP_PORT "465"
+SetEnv SMTP_USER "notificaciones@lakeflash.com"
+SetEnv SMTP_PASS "nubeflash1"  # <- reemplaza con la real en el servidor
+SetEnv SMTP_CRYPTO "ssl"
+
+# Credenciales base de datos – entorno producción
+SetEnv DB_PROD_HOST "localhost"
+SetEnv DB_PROD_NAME "lakeflas_lanube_api"
+SetEnv DB_PROD_USER "lakeflas_admin"
+SetEnv DB_PROD_PASS "nubeflash1"
+
+# Credenciales base de datos – entorno testing
+SetEnv DB_TEST_HOST "localhost"
+SetEnv DB_TEST_NAME "elfiko_giordana"
+SetEnv DB_TEST_USER "elfiko_tienda"
+SetEnv DB_TEST_PASS "admin2016"
+
+# Credenciales base de datos – entorno desarrollo/local
+SetEnv DB_DEV_HOST "localhost"
+SetEnv DB_DEV_NAME "lanube_api"
+SetEnv DB_DEV_USER "root"
+SetEnv DB_DEV_PASS ""
+
+# Clave de cifrado de la aplicación
+SetEnv APP_ENCRYPTION_KEY "EITAILS2015EI"
+
+# Google reCAPTCHA v2
+SetEnv CAPTCHA_KEY "6LcKBfwrAAAAAFuib0k7r5xVOSPGE34MKHWkN-aP"
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L] 
+RewriteRule ^(.*)$ index.php [L,QSA]

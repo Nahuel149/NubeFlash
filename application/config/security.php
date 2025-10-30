@@ -24,7 +24,7 @@ $config['csrf_regenerate'] = TRUE;
 $config['csrf_exclude_uris'] = array('frontend/api/.*');  // Exclude API endpoints
 
 $config['global_xss_filtering'] = TRUE;  // Enable global XSS filtering
-$config['encryption_key'] = 'YOUR_STRONG_ENCRYPTION_KEY';  // Change this to a strong key
+$config['encryption_key'] = getenv('APP_ENCRYPTION_KEY') ?: '';
 
 // Security Headers
 $config['security_headers'] = array(
@@ -33,4 +33,4 @@ $config['security_headers'] = array(
     'X-Content-Type-Options' => 'nosniff',
     'Strict-Transport-Security' => 'max-age=31536000; includeSubDomains',
     'Content-Security-Policy' => "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://cdn.jsdelivr.net https://code.jquery.com https://stackpath.bootstrapcdn.com https://cdnjs.cloudflare.com; style-src * 'unsafe-inline'; style-src-elem * 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https:; frame-src 'self' https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/; object-src 'none'"
-); 
+);

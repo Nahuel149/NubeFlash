@@ -294,7 +294,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = 'EITAILS2015EI';
+$config['encryption_key'] = getenv('APP_ENCRYPTION_KEY') ?: '';
 
 /*
 |--------------------------------------------------------------------------
@@ -414,7 +414,24 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
 | 'csrf_regenerate' = Regenerate token on every submission
-| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
+| 'csrf_exclude_uris' = array(
++    // Exclude legacy frontend paths
++    'frontend/ajax/getProvince',
++    'frontend/ajax/getDestination',
++    'frontend/api/getShippingCost',
++    'frontend/api/getCustomer',
++    'frontend/api/sendOrder',
++
++    // Exclude public API routes accessed directly without the "frontend/" prefix
++    'api/get-shippingCost',
++    'api/get-client',
++    'api/send-order',
++
++    'frontend/ajax/login',
++    'frontend/ajax/validateCurrentPassword',
++    'frontend/ajax/changePassword',
++    'login'
+ )
 */
 $config['csrf_protection'] = TRUE;
 $config['csrf_token_name'] = 'csrf_token_name';
